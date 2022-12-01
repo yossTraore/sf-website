@@ -20,7 +20,7 @@ export function Lottie({
 
   useEffect(() => {
     if (readyState === 'complete') {
-      import('lottie-web/build/player/lottie_canvas.min').then((Lottie) =>
+      import('@dotlottie/player-component/').then((Lottie) =>
         setLottie(Lottie.default)
       )
     }
