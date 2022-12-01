@@ -14,11 +14,16 @@ const Arrow = dynamic(() => import('icons/arrow.svg'), { ssr: false })
 export default function Home() {
   const isMobile = useMediaQuery('(max-width: 800px)')
   const [portrait, setPortrait] = useState(false)
+  const [selectedProject, setSelectedProject] = useState(0)
   const [setRef, rect] = useRect()
 
   useEffect(() => {
     setPortrait(rect.width < 800)
   }, [rect])
+
+  useEffect(() => {
+    console.log({ selectedProject })
+  }, [selectedProject])
 
   return (
     <Layout theme="dark">
@@ -74,80 +79,32 @@ export default function Home() {
       ) : (
         <section className={cn(s.content, 'layout-grid')}>
           <ul className={s.list}>
-            <li className="p-l">
-              <p className={s.title}>Fresh Prince</p>
-              <Link
-                className={cn(s.link, 'decorate')}
-                href="https://lenis.studiofreight.com"
+            {projects.slice(0, projects.length / 2).map((project, i) => (
+              <li
+                className="p-l"
+                key={i}
+                onPointerEnter={() => setSelectedProject(i)}
               >
-                Visit Site <Arrow />
-              </Link>
-            </li>
-            <li className="p-l">
-              <p className={s.title}>Fresh Prince</p>
-              <Link
-                className={cn(s.link, 'decorate')}
-                href="https://lenis.studiofreight.com"
-              >
-                Visit Site <Arrow />
-              </Link>
-            </li>
-            <li className="p-l">
-              <p className={s.title}>Fresh Prince</p>
-              <Link
-                className={cn(s.link, 'decorate')}
-                href="https://lenis.studiofreight.com"
-              >
-                Visit Site <Arrow />
-              </Link>
-            </li>
-            <li className="p-l">
-              <p className={s.title}>Fresh Prince</p>
-              <Link
-                className={cn(s.link, 'decorate')}
-                href="https://lenis.studiofreight.com"
-              >
-                Visit Site <Arrow />
-              </Link>
-            </li>
+                <p className={s.title}>{project.title}</p>
+                <Link className={cn(s.link, 'decorate')} href={project.url}>
+                  Visit Site <Arrow />
+                </Link>
+              </li>
+            ))}
           </ul>
           <ul className={s.list}>
-            <li className="p-l">
-              <p className={s.title}>Fresh Prince</p>
-              <Link
-                className={cn(s.link, 'decorate')}
-                href="https://lenis.studiofreight.com"
+            {projects.slice(-(projects.length / 2)).map((project, i) => (
+              <li
+                className="p-l"
+                key={i}
+                onPointerEnter={() => setSelectedProject(i + 4)}
               >
-                Visit Site <Arrow />
-              </Link>
-            </li>
-            <li className="p-l">
-              <p className={s.title}>Fresh Prince</p>
-              <Link
-                className={cn(s.link, 'decorate')}
-                href="https://lenis.studiofreight.com"
-              >
-                Visit Site <Arrow />
-              </Link>
-            </li>
-            <li className="p-l">
-              <p className={s.title}>Fresh Prince</p>
-              <Link
-                className={cn(s.link, 'decorate')}
-                href="https://lenis.studiofreight.com"
-              >
-                Visit Site <Arrow />
-              </Link>
-            </li>
-            <li className="p-l">
-              <p className={s.title}>Fresh Prince</p>
-              <Link
-                className={cn(s.link, 'decorate')}
-                href="https://lenis.studiofreight.com"
-              >
-                Visit Site <Arrow />
-              </Link>
-            </li>
+                <p className={s.title}>{project.title}</p>
+                <Link className={cn(s.link, 'decorate')} href={project.url}>
+                  Visit Site <Arrow />
+                </Link>
+              </li>
+            ))}
           </ul>
           <div
             className={s.wrapper}
@@ -156,7 +113,14 @@ export default function Home() {
             }}
           />
           <div className={cn(s.image, portrait && s.portrait)}>
-            <iframe src="https://bad-boys.studiofreight.com" allowfullscreen />
+            {projects.map((project, i) => (
+              <iframe
+                key={i}
+                src={project.url}
+                allowfullscreen
+                className={cn(selectedProject === i && s.visible)}
+              />
+            ))}
           </div>
         </section>
       )}

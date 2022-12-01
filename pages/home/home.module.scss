@@ -54,7 +54,7 @@
 
   .wrapper {
     position: absolute;
-    grid-column: 7 / -1;
+    grid-column: 8 / -1;
     width: 100%;
     height: 100%;
     pointer-events: none;
@@ -62,23 +62,29 @@
 
   .image {
     user-select: none;
-    grid-column: 7 / -1;
+    grid-column: 8 / -1;
     position: relative;
     width: 100%;
-
-    aspect-ratio: 1126 / 623;
+    aspect-ratio: 1013 / 568;
     border-radius: desktop-vw(10px);
     overflow: hidden;
 
     &.portrait {
       grid-column: 11 / 15;
-      aspect-ratio: 623 /1126;
+      aspect-ratio: 568 /1013;
     }
 
     // iframe test
     iframe {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
+      transition: opacity 200ms ease-in-out;
+
+      &:not(.visible) {
+        opacity: 0;
+      }
     }
   }
 }
