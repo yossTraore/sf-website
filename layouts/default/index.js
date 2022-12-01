@@ -17,7 +17,37 @@ import useMeasure from 'react-use-measure'
 import s from './layout.module.scss'
 
 export function Layout({
-  seo = { title: '', description: '', image: '', keywords: '' },
+  seo = {
+    title: 'Studio Freight - Built on Principle',
+    description:
+      'A design studio built on principle. We grow brands by making them easy to understand and impossible to ignore. Our creative experts support with branding, art direction, strategy, web design, web development, packaging, copywriting, lettering, illustration, photography, murals, signage, video, and beyond.',
+    image: '/og.jpg',
+    keywords: [
+      'freight',
+      'studio',
+      'UX',
+      'UI',
+      'userexperience',
+      'webdesign',
+      'webdeveloper',
+      'design',
+      'codedesign',
+      'code',
+      'hashtag',
+      'development',
+      'website',
+      'websitedevelopment',
+      'webservices',
+      'art direction',
+      'strategy',
+      'web',
+      'murals',
+      'illustration',
+      'photography',
+      'signage',
+      'video',
+    ],
+  },
   children,
   theme = 'light',
   className,

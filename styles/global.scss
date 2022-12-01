@@ -20,7 +20,6 @@
 html {
   font-weight: bolder;
   font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
   background-color: var(--white);
   color: var(--black);
   scrollbar-width: thin;
@@ -62,8 +61,8 @@ select {
 }
 
 *::selection {
-  background-color: var(--black);
-  color: var(--white);
+  background-color: var(--white);
+  color: var(--black);
 }
 
 svg.icon {
@@ -77,5 +76,30 @@ svg.icon {
   rect[stroke],
   circle[stroke] {
     stroke: currentColor;
+  }
+}
+
+.decorate {
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0.075em;
+    min-height: 1px;
+    transform: scaleX(1);
+    transform-origin: left;
+    background-color: currentColor;
+    transition: transform 0.95s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  @include hover {
+    &:not(:hover):before {
+      transform-origin: right;
+      transform: scaleX(0);
+    }
   }
 }

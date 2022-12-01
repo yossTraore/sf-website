@@ -1,7 +1,7 @@
 {
-  "name": "Satus",
-  "short_name": "satus",
-  "description": "Our starting point",
+  "name": "Studio Freight",
+  "short_name": "SF",
+  "description": "A design studio built on principle. We grow brands by making them easy to understand and impossible to ignore. Our creative experts support with branding, art direction, strategy, web design, web development, packaging, copywriting, lettering, illustration, photography, murals, signage, video, and beyond.",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -16,7 +16,7 @@
       "purpose": "any"
     }
   ],
-  "theme_color": "#336CFF",
+  "theme_color": "#4160ff",
   "background_color": "#000000",
   "start_url": "/",
   "scope": ".",

@@ -1,0 +1,18 @@
+.clock {
+  font-feature-settings: 'tnum';
+
+  @include mobile {
+    font-size: 95%;
+  }
+}
+
+.separator {
+  animation: blinker 1s linear infinite;
+  animation-timing-function: step-start;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}

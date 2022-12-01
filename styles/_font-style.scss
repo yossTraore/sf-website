@@ -1,0 +1,172 @@
+// :root {
+// --font: 'Neue Montreal';
+// --font-secondary: 'GT Alpina';
+// }
+
+.h1 {
+  font-family: var(--font);
+  font-size: mobile-vw(45px);
+  font-style: normal;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+
+  font-family: 'Neue Montreal';
+
+  text-transform: uppercase;
+
+  @include desktop {
+    font-size: desktop-vw(233px);
+  }
+}
+
+.h2 {
+  font-family: var(--font);
+  font-size: mobile-vw(16px);
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+
+  letter-spacing: -0.01em;
+
+  @include desktop {
+    font-size: desktop-vw(44px);
+  }
+}
+
+.h3 {
+  font-family: var(--font);
+  font-size: mobile-vw(80px);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 77%;
+  text-transform: uppercase;
+
+  @include desktop {
+    line-height: 75%;
+    font-size: desktop-vw(256px);
+  }
+}
+
+.h4 {
+  font-family: var(--font);
+  font-size: mobile-vw(40px);
+  font-style: normal;
+  font-weight: 300;
+  line-height: 75%;
+  text-transform: uppercase;
+
+  @include desktop {
+    font-size: desktop-vw(80px);
+  }
+}
+
+.h5 {
+  font-family: var(--font);
+  font-size: mobile-vw(32px);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 85%;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+
+  @include desktop {
+    line-height: 82%;
+    font-size: desktop-vw(64px);
+  }
+}
+
+.h6 {
+  font-family: var(--font);
+  font-size: mobile-vw(24px);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 90%;
+  text-transform: uppercase;
+
+  @include desktop {
+    line-height: 85%;
+
+    font-size: desktop-vw(56px);
+  }
+}
+
+.p-l {
+  font-family: var(--font);
+  font-size: mobile-vw(16px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 110%;
+  letter-spacing: -0.01em;
+
+  @include desktop {
+    line-height: 110%;
+    font-size: desktop-vw(28px);
+  }
+}
+
+.p {
+  font-family: var(--font);
+  font-size: mobile-vw(16px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 125%;
+  text-transform: uppercase;
+
+  @include desktop {
+    line-height: 125%;
+    font-size: desktop-vw(16px);
+  }
+}
+
+.p-s {
+  font-family: var(--font);
+  font-size: mobile-vw(12px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 90%;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+
+  @include desktop {
+    font-size: desktop-vw(16px);
+  }
+}
+
+.cta {
+  font-family: var(--font);
+  font-size: mobile-vw(16px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 85%;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+
+  @include desktop {
+    line-height: 80%;
+    font-size: desktop-vw(20px);
+  }
+
+  &.vh {
+    font-size: mobile-vh(16px);
+
+    @include desktop {
+      font-size: desktop-vh(20px);
+    }
+  }
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.text-start {
+  text-align: start;
+}
+
+.text-end {
+  text-align: end;
+}

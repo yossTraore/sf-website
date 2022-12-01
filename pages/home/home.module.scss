@@ -1,143 +1,102 @@
-.accordion {
-  overflow: hidden;
-  &:first-child {
-    border-top: 1px solid var(--black);
+.content {
+  width: 100%;
+  align-items: center;
+
+  .list {
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+
+    &:nth-child(1) {
+      grid-column: 1/4;
+    }
+    &:nth-child(2) {
+      grid-column: 4/7;
+    }
+
+    .title {
+      transition: color 0.2s ease-in;
+      font-weight: 700;
+    }
+
+    .link {
+      svg {
+        vertical-align: baseline;
+        aspect-ratio: 1;
+        width: desktop-vw(15px);
+        height: desktop-vw(15px);
+        transition: opacity 200ms ease-in, transform 200ms ease-in 100ms;
+      }
+
+      @include hover {
+        &:not(:hover) {
+          svg {
+            opacity: 0;
+            transform: translateX(-5px) rotate(-20deg);
+          }
+        }
+      }
+    }
+
+    li {
+      @include hover {
+        &:hover {
+          .title {
+            color: var(--theme-contrast);
+          }
+        }
+      }
+    }
   }
 
-  border-bottom: 1px solid var(--black);
-  padding: mobile-vw(10px) 0;
-
-  @include desktop {
-    padding: desktop-vw(10px) 0;
-  }
-
-  &__content {
-    // height: 0;
-
-    > :first-child {
-      padding-top: mobile-vw(10px);
-
-      @include desktop {
-        padding-top: desktop-vw(10px);
-      }
-    }
-
-    @keyframes open {
-      from {
-        height: 0;
-      }
-      to {
-        height: var(--radix-collapsible-content-height);
-      }
-    }
-
-    @keyframes close {
-      from {
-        height: var(--radix-collapsible-content-height);
-      }
-      to {
-        height: 0;
-      }
-    }
-
-    &:global([data-state='open']) {
-      animation: open 600ms var(--ease-out-expo);
-    }
-
-    &:global([data-state='closed']) {
-      animation: close 600ms var(--ease-out-expo);
-    }
+  .image {
+    user-select: none;
+    grid-column: 7 / -1;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1126 / 623;
   }
 }
 
-.home {
-  // height: 300vh;
-  padding-top: var(--header-height);
-
-  .marquee {
-    font-size: 6vw;
-
-    .item {
-      margin-right: mobile-vw(24px);
-
-      @include desktop {
-        margin-right: desktop-vw(24px);
-      }
-    }
-  }
-
-  .kinesis {
-    > * {
-      width: 250px;
-      height: 250px;
-      background-color: red;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
+.sliders {
+  text-transform: uppercase;
+  overflow: hidden;
+  width: 100%;
+  padding-left: var(--layout-columns-gap);
 
   .slider {
-    overflow: hidden;
-    margin-bottom: 250px;
-  }
+    margin-bottom: mobile-vw(12px);
 
-  .slider-header {
-    padding-top: desktop-vw(50px);
-    text-transform: uppercase;
-    font-size: 34px;
+    &__wrapper {
+      margin: mobile-vw(50px) 0;
+    }
 
-    p:first-child {
-      font-size: 14px;
+    .slide {
+      height: mobile-vw(190px);
+      min-width: 100%;
+      margin-left: mobile-vw(20px);
+      position: relative;
+
+      .slide-image {
+        height: mobile-vw(190px);
+        width: mobile-vw(355px);
+        aspect-ratio: 1080 / 608;
+      }
     }
   }
 
-  .slide-buttons {
-    text-transform: uppercase;
+  .title {
     font-weight: 700;
-    padding-right: desktop-vw(10px);
-    user-select: none;
-    cursor: pointer;
   }
 
-  .slide {
-    min-width: 33vw;
-    display: flex;
-    flex-direction: column;
-
-    .slide-inner {
-      position: relative;
-      overflow: hidden;
-      height: desktop-vw(600px);
-      cursor: none;
-
-      .slide-title {
-        font-size: desktop-vw(25px);
-        font-weight: 900;
-        text-transform: uppercase;
-        padding-bottom: desktop-vw(25px);
-      }
-
-      .slide-text {
-        font-size: desktop-vw(16px);
-        font-weight: 400;
-        padding-bottom: desktop-vw(25px);
-      }
-
-      .slide-img {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        height: 50%;
-        min-width: 50%;
-        transform: translate(-50%, -50%);
-        object-fit: cover;
-
-        > div {
-          height: 100%;
-        }
-      }
+  .link {
+    svg {
+      vertical-align: baseline;
+      aspect-ratio: 1;
+      width: mobile-vw(8px);
+      height: mobile-vw(8px);
     }
   }
 }

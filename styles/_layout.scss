@@ -19,15 +19,15 @@
 // 'variable': (mobile, desktop)
 $layout: (
   'columns-count': (
-    4,
-    12,
+    5,
+    18,
   ),
   'columns-gap': (
-    10px,
+    15px,
     25px,
   ),
   'margin': (
-    20px,
+    10px,
     50px,
   ),
 );
@@ -69,7 +69,7 @@ $layout: (
 
   display: grid;
   grid-template-columns: repeat(var(--layout-columns-count), minmax(0, 1fr));
-  grid-gap: var(--layout-columns-gap);
+  grid-column-gap: var(--layout-columns-gap);
 }
 
 .layout-grid-inner {

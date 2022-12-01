@@ -1,156 +1,152 @@
-import * as Accordion from '@radix-ui/react-accordion'
-import { useRect } from '@studio-freight/hamo'
+import { useMediaQuery } from '@studio-freight/hamo'
+import cn from 'clsx'
 import { Image } from 'components/image'
-import { Kinesis } from 'components/kinesis'
 import { Link } from 'components/link'
-import { Marquee } from 'components/marquee'
-import { MarqueeScroll } from 'components/marquee-scroll'
-import * as Select from 'components/select'
 import { Slider } from 'components/slider'
-import { useScroll } from 'hooks/use-scroll'
 import { Layout } from 'layouts/default'
-import { useRef } from 'react'
+import { projects } from 'lib/data'
+import dynamic from 'next/dynamic'
 import s from './home.module.scss'
 
-const devs = [
-  {
-    name: 'Franco',
-    position: 'Pizza of Pizza',
-    image: 'https://assets.studiofreight.com/devs/franco.png',
-  },
-  {
-    name: 'Clement',
-    position: 'Expert on Dark Magic',
-    image: 'https://assets.studiofreight.com/devs/clement.png',
-  },
-  {
-    name: 'Leandro',
-    position: 'He didnt fucked it up',
-    image: 'https://assets.studiofreight.com/devs/leandro.png',
-  },
-  {
-    name: 'Guido',
-    position: 'Avoids owning projects',
-    image: 'https://assets.studiofreight.com/devs/guido.png',
-  },
-]
+const Arrow = dynamic(() => import('icons/arrow.svg'), { ssr: false })
 
 export default function Home() {
-  const rectRef = useRef()
-  const [setRef, rect] = useRect()
-
-  useScroll(
-    ({ scroll }) => {
-      if (!rect.top) return
-      const top = rect.top - scroll
-      const left = rect.left
-      const width = rect.width
-      const height = rect.height
-
-      const string = `left:${Math.round(left)}px<br>top:${Math.round(
-        top
-      )}px<br>width:${width}px<br>height:${height}px<br>right:${Math.round(
-        left + width
-      )}px<br>bottom:${Math.round(top + height)}px`
-      rectRef.current.innerHTML = string
-    },
-    [rect]
-  )
+  const isMobile = useMediaQuery('(max-width: 800px)')
 
   return (
-    <Layout theme="light">
-      <section className={s.home}>
-        <Marquee className={s.marquee} repeat={3}>
-          <span className={s.item}>marquee stuff that scroll continuously</span>
-        </Marquee>
-        <MarqueeScroll className={s.marquee} inverted repeat={4}>
-          <span className={s.item}>HOLA JORDAN</span>
-        </MarqueeScroll>
-        <Link href="#kinesis">scroll to kinesis</Link>
-        <Accordion.Root type="single" collapsible>
-          {Array(2)
-            .fill({ header: 'this is header', body: 'this is body' })
-            .map((item, key) => (
-              <Accordion.Item
-                key={key + 1}
-                value={key + 1}
-                className={s.accordion}
+    <Layout theme="dark">
+      {isMobile === true ? (
+        <section className={s.sliders}>
+          {projects.map((project, i) => (
+            <div key={i} className={s['slider__wrapper']}>
+              <Slider
+                emblaApi={{
+                  autoplay: {
+                    delay: 2000 * (i + 1.2),
+                  },
+                }}
               >
-                <Accordion.Header>
-                  <Accordion.Trigger>header</Accordion.Trigger>
-                </Accordion.Header>
-                <Accordion.Content className={s.accordion__content}>
-                  <div>body</div>
-                </Accordion.Content>
-              </Accordion.Item>
-            ))}
-        </Accordion.Root>
-        <Slider emblaApi={{ align: 'center', skipSnaps: false }}>
-          {({ scrollPrev, scrollNext, emblaRef }) => {
-            return (
-              <div className={s.slider}>
-                <div className={s['slider-header']}>
-                  <p>Slider Hader</p>
-                  <p>Slider Title</p>
-                </div>
-                <Slider.Slides ref={emblaRef}>
-                  {devs.map(({ image, name, position }, idx) => (
-                    <div className={s['slide']} key={`slide-item-${idx}`}>
-                      <div className={s['slide-inner']}>
-                        <Image
-                          src={image}
-                          alt=""
-                          width="300"
-                          height="300"
-                          className={s['slide-img']}
-                          size="20vw"
-                        />
-                        <p className={s['slide-title']}>{name}</p>
-                        <p className={s['slide-text']}>{position}</p>
-                      </div>
-                    </div>
-                  ))}
-                </Slider.Slides>
-                <button onClick={scrollPrev} className={s['slide-buttons']}>
-                  previous
-                </button>
-                <button onClick={scrollNext} className={s['slide-buttons']}>
-                  next
-                </button>
-              </div>
-            )
-          }}
-        </Slider>
+                {({ emblaRef }) => {
+                  return (
+                    <Slider.Slides className={s.slider} ref={emblaRef}>
+                      {project.imgs.map((img, idx) => {
+                        const aux = img.split('/')
+                        aux[aux.length - 1] = `mobile-${aux[aux.length - 1]}`
+                        const source = aux.join('/')
 
-        <div id="kinesis">
-          <Kinesis className={s.kinesis}>
-            <div className={s.item}>kinesis</div>
-          </Kinesis>
-        </div>
-
-        <div style={{ height: '100vh', padding: '50vw 0' }}>
-          <Select.Root defaultValue="2">
-            <Select.Item value="1">Item 1</Select.Item>
-            <Select.Item value="2">Item 2</Select.Item>
-            <Select.Item value="3">Item 3</Select.Item>
-          </Select.Root>
-        </div>
-
-        <div style={{ height: '100vh' }} id="rect">
-          <div
-            ref={(node) => {
-              setRef(node)
-              rectRef.current = node
-            }}
-            style={{
-              width: '250px',
-              height: '250px',
-              backgroundColor: 'cyan',
-              margin: '0 auto',
-            }}
-          ></div>
-        </div>
-      </section>
+                        return (
+                          <div className={s['slide']} key={`slide-item-${idx}`}>
+                            <div className={s['slide-inner']}>
+                              <Image
+                                className={s['slide-image']}
+                                src={source}
+                                alt=""
+                                layout="fill"
+                                priority
+                                sizes="(min-width: 75em) 33vw,
+                                    (min-width: 48em) 50vw,
+                                    100vw"
+                              />
+                            </div>
+                          </div>
+                        )
+                      })}
+                    </Slider.Slides>
+                  )
+                }}
+              </Slider>
+              <Link href={project.url}>
+                <h2 className={cn('p-l', s.title)}>{project.title}</h2>
+                <h3 className={cn('p-l', s.link)}>
+                  Visit Site <Arrow />
+                </h3>
+              </Link>
+            </div>
+          ))}
+        </section>
+      ) : (
+        <section className={cn(s.content, 'layout-grid')}>
+          <ul className={s.list}>
+            <li className="p-l">
+              <p className={s.title}>Fresh Prince</p>
+              <Link
+                className={cn(s.link, 'decorate')}
+                href="https://lenis.studiofreight.com"
+              >
+                Visit Site <Arrow />
+              </Link>
+            </li>
+            <li className="p-l">
+              <p className={s.title}>Fresh Prince</p>
+              <Link
+                className={cn(s.link, 'decorate')}
+                href="https://lenis.studiofreight.com"
+              >
+                Visit Site <Arrow />
+              </Link>
+            </li>
+            <li className="p-l">
+              <p className={s.title}>Fresh Prince</p>
+              <Link
+                className={cn(s.link, 'decorate')}
+                href="https://lenis.studiofreight.com"
+              >
+                Visit Site <Arrow />
+              </Link>
+            </li>
+            <li className="p-l">
+              <p className={s.title}>Fresh Prince</p>
+              <Link
+                className={cn(s.link, 'decorate')}
+                href="https://lenis.studiofreight.com"
+              >
+                Visit Site <Arrow />
+              </Link>
+            </li>
+          </ul>
+          <ul className={s.list}>
+            <li className="p-l">
+              <p className={s.title}>Fresh Prince</p>
+              <Link
+                className={cn(s.link, 'decorate')}
+                href="https://lenis.studiofreight.com"
+              >
+                Visit Site <Arrow />
+              </Link>
+            </li>
+            <li className="p-l">
+              <p className={s.title}>Fresh Prince</p>
+              <Link
+                className={cn(s.link, 'decorate')}
+                href="https://lenis.studiofreight.com"
+              >
+                Visit Site <Arrow />
+              </Link>
+            </li>
+            <li className="p-l">
+              <p className={s.title}>Fresh Prince</p>
+              <Link
+                className={cn(s.link, 'decorate')}
+                href="https://lenis.studiofreight.com"
+              >
+                Visit Site <Arrow />
+              </Link>
+            </li>
+            <li className="p-l">
+              <p className={s.title}>Fresh Prince</p>
+              <Link
+                className={cn(s.link, 'decorate')}
+                href="https://lenis.studiofreight.com"
+              >
+                Visit Site <Arrow />
+              </Link>
+            </li>
+          </ul>
+          <div className={s.image}>
+            <Image src="/img/bad-boys/1.jpg" layout="fill" alt="BBoys" />
+          </div>
+        </section>
+      )}
     </Layout>
   )
 }

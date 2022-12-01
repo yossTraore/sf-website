@@ -1,21 +1,41 @@
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
-  z-index: 100;
-  // color: var(--white);
-  color: var(--theme-secondary);
-  padding: mobile-vw(20px) 0;
 
-  @include desktop {
-    padding: desktop-vw(40px) 0;
+  .title {
+    grid-column: 1/-1;
+
+    @include mobile {
+      margin: mobile-vw(10px) 0;
+    }
   }
 
-  .head {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    z-index: 2;
+  .description {
+    margin: mobile-vw(10px) 0;
+    grid-column: 1/-1;
+
+    @include desktop {
+      margin: 0;
+      grid-column: 1/13;
+    }
+
+    .spacer {
+      display: inline-block;
+      width: mobile-vw(50px);
+    }
+  }
+
+  .gif {
+    width: 100%;
+    height: auto;
+
+    &_wrapper {
+      grid-column: 1/-1;
+      margin: mobile-vw(20px) 0;
+
+      @include desktop {
+        margin: 0;
+        grid-column: 14/-1;
+      }
+    }
   }
 }
