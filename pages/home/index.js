@@ -114,6 +114,7 @@ export default function Home() {
                 key={i}
                 src={project.url}
                 allowfullscreen
+                frameBorder="0"
                 className={cn(selectedProject === i && s.visible)}
               />
             ))}

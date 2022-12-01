@@ -66,6 +66,7 @@
     position: relative;
     width: 100%;
     aspect-ratio: 1013 / 568;
+    border: desktop-vw(5px) solid var(--theme-contrast);
     border-radius: desktop-vw(10px);
     overflow: hidden;
 
