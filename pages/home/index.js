@@ -114,6 +114,7 @@ export default function Home() {
           <div className={cn(s.image, portrait && s.portrait)}>
             {projects.map((project, i) => (
               <iframe
+                loading={i !== 0 || isMobile === true ? 'lazy' : 'eager'}
                 key={i}
                 src={project.url}
                 allowfullscreen
