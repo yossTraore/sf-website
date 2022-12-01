@@ -21,10 +21,6 @@ export default function Home() {
     setPortrait(rect.width < 800)
   }, [rect])
 
-  useEffect(() => {
-    console.log({ selectedProject })
-  }, [selectedProject])
-
   return (
     <Layout theme="dark">
       {isMobile === true ? (
