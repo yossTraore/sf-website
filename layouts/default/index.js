@@ -67,7 +67,7 @@ export function Layout({
       smoothTouch: false,
       touchMultiplier: 2,
     })
-    // setLenis(lenis)
+    setLenis(lenis)
 
     return () => {
       lenis.destroy()
