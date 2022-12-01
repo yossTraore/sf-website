@@ -18,7 +18,7 @@
     }
 
     .title {
-      transition: color 0.2s ease-in;
+      transition: color 0.3s ease-in;
       font-weight: 700;
     }
 
@@ -42,6 +42,12 @@
     }
 
     li {
+      &.active {
+        .title {
+          color: var(--theme-contrast);
+        }
+      }
+
       @include hover {
         &:hover {
           .title {

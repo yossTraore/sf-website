@@ -1,5 +1,8 @@
-import { useDocumentReadyState, useLayoutEffect } from '@studio-freight/hamo'
-import { useIsVisible } from 'hooks/use-is-visible'
+import {
+  useDocumentReadyState,
+  useIsVisible,
+  useLayoutEffect,
+} from '@studio-freight/hamo'
 import { useEffect, useRef, useState } from 'react'
 
 export function Lottie({
@@ -20,7 +23,7 @@ export function Lottie({
 
   useEffect(() => {
     if (readyState === 'complete') {
-      import('lottie-web/build/player/lottie_canvas.min').then((Lottie) =>
+      import('lottie-web/build/player/lottie_svg.min').then((Lottie) =>
         setLottie(Lottie.default)
       )
     }
@@ -32,8 +35,7 @@ export function Lottie({
     animator.current = lottie?.loadAnimation({
       container: lottieRef.current,
       animationData: animation,
-      // renderer: 'svg', // "canvas", "html"
-      renderer: 'canvas',
+      renderer: 'svg',
       loop,
       autoplay,
     })

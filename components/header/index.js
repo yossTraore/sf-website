@@ -1,7 +1,9 @@
+import Warp from 'assets/warp.json'
+
 import { useMediaQuery } from '@studio-freight/hamo'
 import cn from 'clsx'
-import { Image } from 'components/image'
 import { Link } from 'components/link'
+import { Lottie } from 'components/lottie'
 import s from './header.module.scss'
 
 export const Header = ({ title, description }) => {
@@ -21,13 +23,7 @@ export const Header = ({ title, description }) => {
       </h2>
       <div className={s.gif_wrapper}>
         <Link href="https://darkroom.studiofreight.com" aria-label="Darkroom">
-          <Image
-            className={s.gif}
-            src="/warp.gif"
-            alt=""
-            width={438}
-            height={73}
-          />
+          <Lottie className={s.lottie} animation={Warp} speed={0.7} loop />
         </Link>
       </div>
     </header>

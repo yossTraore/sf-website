@@ -45,6 +45,7 @@ specifiers:
   sass: ^1.56.1
   size-limit: ^8.1.0
   stats.js: ^0.17.0
+  throttle-debounce: 5.0.0
   zustand: 4.1.4
 
 dependencies:
@@ -74,6 +75,7 @@ dependencies:
   react-use: 17.4.0_biqbaboplfbrettd7655fr4n2y
   react-use-measure: 2.1.1_biqbaboplfbrettd7655fr4n2y
   sass: 1.56.1
+  throttle-debounce: 5.0.0
   zustand: 4.1.4_react@18.2.0
 
 devDependencies:

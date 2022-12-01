@@ -3,6 +3,7 @@ import cn from 'clsx'
 import { Image } from 'components/image'
 import { Link } from 'components/link'
 import { Slider } from 'components/slider'
+
 import { fetchCmsQuery } from 'contentful/api'
 import { homePageQuery } from 'contentful/queries/home.graphql'
 import { Layout } from 'layouts/default'
@@ -17,6 +18,18 @@ export default function Home({ data }) {
   const [portrait, setPortrait] = useState(false)
   const [selectedProject, setSelectedProject] = useState(0)
   const [setRef, rect] = useRect()
+  let timer = 0
+  const TIMEOUT = 500
+
+  const mouseEnter = (projectId) => {
+    timer = setTimeout(() => {
+      setSelectedProject(projectId)
+    }, TIMEOUT)
+  }
+
+  const mouseLeave = () => {
+    clearTimeout(timer)
+  }
 
   useEffect(() => {
     setPortrait(rect.width < 800)
@@ -29,11 +42,6 @@ export default function Home({ data }) {
           {data.projects.items.map((project, i) => (
             <div key={i} className={s['slider__wrapper']}>
               <Slider
-                // emblaApi={{
-                //   autoplay: {
-                //     delay: 2000 * (i + 1.2),
-                //   },
-                // }}
                 emblaApi={{
                   slidesInView: 1.5,
                   containScroll: 'keepSnaps',
@@ -79,9 +87,10 @@ export default function Home({ data }) {
               .slice(0, data.projects.items.length / 2)
               .map((project, i) => (
                 <li
-                  className="p-l"
+                  className={cn('p-l', selectedProject === i && s.active)}
                   key={i}
-                  onPointerEnter={() => setSelectedProject(i)}
+                  onPointerEnter={() => mouseEnter(i)}
+                  onPointerLeave={() => mouseLeave()}
                 >
                   <p className={s.title}>{project.title}</p>
                   <Link className={cn(s.link, 'decorate')} href={project.url}>
@@ -95,9 +104,10 @@ export default function Home({ data }) {
               .slice(-(data.projects.items.length / 2))
               .map((project, i) => (
                 <li
-                  className="p-l"
+                  className={cn('p-l', selectedProject === i + 4 && s.active)}
                   key={i}
-                  onPointerEnter={() => setSelectedProject(i + 4)}
+                  onPointerEnter={() => mouseEnter(i + 4)}
+                  onPointerLeave={() => mouseLeave()}
                 >
                   <p className={s.title}>{project.title}</p>
                   <Link className={cn(s.link, 'decorate')} href={project.url}>
