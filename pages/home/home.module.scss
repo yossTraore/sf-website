@@ -105,15 +105,22 @@
     }
 
     .slide {
-      height: mobile-vw(190px);
-      min-width: 100%;
-      margin-left: mobile-vw(20px);
+      height: mobile-vw(165px);
       position: relative;
 
+      &:not(:first-child) {
+        margin-left: mobile-vw(20px);
+      }
+
+      &-inner {
+        height: mobile-vw(165px);
+        width: mobile-vw(294px);
+        aspect-ratio: 294 / 165;
+      }
+
       .slide-image {
-        height: mobile-vw(190px);
-        width: mobile-vw(355px);
-        aspect-ratio: 1080 / 608;
+        width: 100%;
+        height: 100%;
       }
     }
   }

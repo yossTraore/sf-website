@@ -28,10 +28,14 @@ export default function Home() {
           {projects.map((project, i) => (
             <div key={i} className={s['slider__wrapper']}>
               <Slider
+                // emblaApi={{
+                //   autoplay: {
+                //     delay: 2000 * (i + 1.2),
+                //   },
+                // }}
                 emblaApi={{
-                  autoplay: {
-                    delay: 2000 * (i + 1.2),
-                  },
+                  slidesInView: 1.5,
+                  containScroll: 'keepSnaps',
                 }}
               >
                 {({ emblaRef }) => {
@@ -49,8 +53,9 @@ export default function Home() {
                                 className={s['slide-image']}
                                 src={source}
                                 alt=""
-                                layout="fill"
                                 priority
+                                height={294}
+                                width={165}
                                 sizes="(min-width: 75em) 33vw,
                                     (min-width: 48em) 50vw,
                                     100vw"
