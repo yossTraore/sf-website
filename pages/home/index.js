@@ -143,7 +143,11 @@ export default function Home() {
             </li>
           </ul>
           <div className={s.image}>
-            <Image src="/img/bad-boys/1.jpg" layout="fill" alt="BBoys" />
+            {/* <Image src="/img/bad-boys/1.jpg" layout="fill" alt="BBoys" /> */}
+            <iframe
+              src="https://repeat.studiofreight.com"
+              frameborder="0"
+            ></iframe>
           </div>
         </section>
       )}
