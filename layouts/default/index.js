@@ -41,6 +41,7 @@ export function Layout({
   children,
   theme = 'light',
   className,
+  data,
 }) {
   const isTouchDevice = useIsTouchDevice()
 
@@ -49,7 +50,7 @@ export function Layout({
       <CustomHead {...seo} />
       <div className={cn(`theme-${theme}`, s.layout, className)}>
         {isTouchDevice === false && <Cursor />}
-        <Header />
+        <Header title={data.title} description={data.heroDescription} />
         <main className={s.main}>{children}</main>
         <Footer />
       </div>

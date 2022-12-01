@@ -1,0 +1,20 @@
+query homePageQuery($id: String!, $preview: Boolean!) {
+  studioFreightHome(id: $id, preview: $preview) {
+    title
+    heroDescription
+    projects: projectsCollection {
+      items {
+        title
+        work: text
+        description
+        imgs: thumbnailsCollection {
+          items {
+            url
+            description
+          }
+        }
+        url: link
+      }
+    }
+  }
+}
