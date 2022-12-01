@@ -1,4 +1,4 @@
-import { useMediaQuery } from '@studio-freight/hamo'
+import { useMediaQuery, useRect } from '@studio-freight/hamo'
 import cn from 'clsx'
 import { Image } from 'components/image'
 import { Link } from 'components/link'
@@ -6,12 +6,19 @@ import { Slider } from 'components/slider'
 import { Layout } from 'layouts/default'
 import { projects } from 'lib/data'
 import dynamic from 'next/dynamic'
+import { useEffect, useState } from 'react'
 import s from './home.module.scss'
 
 const Arrow = dynamic(() => import('icons/arrow.svg'), { ssr: false })
 
 export default function Home() {
   const isMobile = useMediaQuery('(max-width: 800px)')
+  const [portrait, setPortrait] = useState(false)
+  const [setRef, rect] = useRect()
+
+  useEffect(() => {
+    setPortrait(rect.width < 800)
+  }, [rect])
 
   return (
     <Layout theme="dark">
@@ -142,12 +149,14 @@ export default function Home() {
               </Link>
             </li>
           </ul>
-          <div className={s.image}>
-            {/* <Image src="/img/bad-boys/1.jpg" layout="fill" alt="BBoys" /> */}
-            <iframe
-              src="https://repeat.studiofreight.com"
-              frameborder="0"
-            ></iframe>
+          <div
+            className={s.wrapper}
+            ref={(node) => {
+              setRef(node)
+            }}
+          />
+          <div className={cn(s.image, portrait && s.portrait)}>
+            <iframe src="https://bad-boys.studiofreight.com" allowfullscreen />
           </div>
         </section>
       )}
