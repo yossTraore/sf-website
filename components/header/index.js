@@ -15,7 +15,7 @@ export const Header = () => {
         BUILT ON PRINCIPLE in Columbus OH, AND NEW YORK, NY.
       </h2>
       <div className={s.gif_wrapper}>
-        <Link href="https://darkroom.studiofreight.com" name="Darkroom">
+        <Link href="https://darkroom.studiofreight.com" aria-label="Darkroom">
           <Image
             className={s.gif}
             src="/warp.gif"

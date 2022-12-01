@@ -13,9 +13,10 @@ export const Clock = () => {
 
   return (
     <time className={cn('p', s.clock)}>
-      {h === 12 ? 12 : h % 12}
+      {h}
       <span className={s.separator}>:</span>
-      {m < 10 ? '0' + m : m} {h < 12 ? 'am' : 'pm'}
+      {m < 10 ? '0' + m : m}
+      {h < 12 ? 'am' : 'pm'}
     </time>
   )
 }

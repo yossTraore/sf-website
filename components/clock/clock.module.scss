@@ -1,9 +1,5 @@
 .clock {
   font-feature-settings: 'tnum';
-
-  @include mobile {
-    font-size: 95%;
-  }
 }
 
 .separator {

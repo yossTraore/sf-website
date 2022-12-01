@@ -98,6 +98,7 @@
   padding-left: var(--layout-columns-gap);
 
   .slider {
+    height: mobile-vw(165px);
     margin-bottom: mobile-vw(12px);
 
     &__wrapper {
