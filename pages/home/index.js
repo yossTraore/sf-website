@@ -2,7 +2,6 @@ import { useMediaQuery, useRect } from '@studio-freight/hamo'
 import cn from 'clsx'
 import { Image } from 'components/image'
 import { Link } from 'components/link'
-import { Slider } from 'components/slider'
 
 import { fetchCmsQuery } from 'contentful/api'
 import { homePageQuery } from 'contentful/queries/home.graphql'
@@ -12,6 +11,7 @@ import { useEffect, useState } from 'react'
 import s from './home.module.scss'
 
 const Arrow = dynamic(() => import('icons/arrow.svg'), { ssr: false })
+const Slider = dynamic(() => import('components/slider'), { ssr: false })
 
 export default function Home({ data }) {
   const isMobile = useMediaQuery('(max-width: 800px)')
@@ -41,35 +41,24 @@ export default function Home({ data }) {
         <section className={s.sliders}>
           {data.projects.items.map((project, i) => (
             <div key={i} className={s['slider__wrapper']}>
-              <Slider
-                emblaApi={{
-                  slidesInView: 1.5,
-                  containScroll: 'keepSnaps',
-                }}
-              >
-                {({ emblaRef }) => {
+              <Slider>
+                {project.imgs.items.map((img, idx) => {
                   return (
-                    <Slider.Slides className={s.slider} ref={emblaRef}>
-                      {project.imgs.items.map((img, idx) => {
-                        return (
-                          <div className={s['slide']} key={`slide-item-${idx}`}>
-                            <div className={s['slide-inner']}>
-                              <Image
-                                className={s['slide-image']}
-                                src={img.url}
-                                alt=""
-                                priority
-                                height={294}
-                                width={165}
-                                sizes="(max-width: 800px) 50vw"
-                              />
-                            </div>
-                          </div>
-                        )
-                      })}
-                    </Slider.Slides>
+                    <div className={s['slide']} key={`slide-item-${idx}`}>
+                      <div className={s['slide-inner']}>
+                        <Image
+                          className={s['slide-image']}
+                          src={img.url}
+                          alt=""
+                          priority={i === 0}
+                          height={294}
+                          width={165}
+                          sizes="(max-width: 800px) 50vw"
+                        />
+                      </div>
+                    </div>
                   )
-                }}
+                })}
               </Slider>
               <Link href={project.url}>
                 <h2 className={cn('p-l', s.title)}>{project.title}</h2>
@@ -128,7 +117,7 @@ export default function Home({ data }) {
                 loading={i !== 0 || isMobile === true ? 'lazy' : 'eager'}
                 key={i}
                 src={project.url}
-                allowfullscreen
+                allowFullScreen
                 frameBorder="0"
                 className={cn(selectedProject === i && s.visible)}
               />
