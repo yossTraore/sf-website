@@ -44,18 +44,15 @@ export default function Home({ data }) {
               <Slider>
                 {project.imgs.items.map((img, idx) => {
                   return (
-                    <div className={s['slide']} key={`slide-item-${idx}`}>
-                      <div className={s['slide-inner']}>
-                        <Image
-                          className={s['slide-image']}
-                          src={img.url}
-                          alt=""
-                          priority={i === 0}
-                          height={294}
-                          width={165}
-                          sizes="(max-width: 800px) 50vw"
-                        />
-                      </div>
+                    <div className={s['slide__image']} key={idx}>
+                      <Image
+                        src={img.url}
+                        alt=""
+                        priority={i === 0}
+                        height={294}
+                        width={165}
+                        sizes="(max-width: 800px) 50vw"
+                      />
                     </div>
                   )
                 })}

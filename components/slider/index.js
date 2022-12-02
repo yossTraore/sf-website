@@ -3,7 +3,9 @@ import { useBlazeSlider } from 'hooks/use-blaze-slider'
 export default function Slider({ children }) {
   const elRef = useBlazeSlider({
     all: {
-      slidesToShow: 1.5,
+      slidesToShow: 1.2,
+      draggable: true,
+      slideGap: '10px',
     },
   })
 
