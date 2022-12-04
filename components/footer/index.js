@@ -3,13 +3,14 @@ import cn from 'clsx'
 import { Clock } from 'components/clock'
 import { Link } from 'components/link'
 import { Marquee } from 'components/marquee'
+
 import s from './footer.module.scss'
 
-export function Footer() {
+export function Footer({ className, style }) {
   const isMobile = useMediaQuery('(max-width: 800px)')
 
   return (
-    <footer className={cn(s.footer, 'layout-grid')}>
+    <footer className={cn(s.footer, 'layout-grid', className)} style={style}>
       <Marquee className={s.column}>
         <p className="p">Built on Principle — ANTI-AGENCY &nbsp;</p>
       </Marquee>
