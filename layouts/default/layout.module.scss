@@ -19,7 +19,7 @@
   .footer {
     transform: translate3d(0, 100%, 0);
     transition: 800ms transform var(--ease-out-expo);
-    transition-delay: var(--footer-delay);
+    transition-delay: 1500ms;
 
     &.show {
       transform: translate3d(0, 0, 0);

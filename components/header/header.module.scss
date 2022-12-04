@@ -31,11 +31,25 @@
     &_wrapper {
       grid-column: 1/-1;
       margin: mobile-vw(20px) 0;
-
+      transition: 800ms opacity var(--ease-out-expo);
+      transition-delay: 1700ms;
+      opacity: 0;
       @include desktop {
         margin: 0;
         grid-column: 14/-1;
       }
+    }
+  }
+
+  transform: translate3d(0, -100%, 0);
+  transition: 800ms transform var(--ease-out-expo);
+  transition-delay: 500ms;
+
+  &.show {
+    transform: translate3d(0, 0, 0);
+
+    .gif_wrapper {
+      opacity: 1;
     }
   }
 }

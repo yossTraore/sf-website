@@ -55,10 +55,7 @@ export function Layout({
         <Header title={data.title} description={data.heroDescription} />
         <main className={s.main}>{children}</main>
 
-        <Footer
-          className={cn(s.footer, visible && s.show)}
-          style={{ '--footer-delay': '1500ms' }}
-        />
+        <Footer className={cn(s.footer, visible && s.show)} />
       </div>
     </>
   )
