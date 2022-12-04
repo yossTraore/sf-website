@@ -1,10 +1,11 @@
 import { useMediaQuery, useRect } from '@studio-freight/hamo'
 import cn from 'clsx'
+import { AppearText } from 'components/appear-text'
 import { Image } from 'components/image'
 import { Link } from 'components/link'
-
 import { fetchCmsQuery } from 'contentful/api'
 import { homePageQuery } from 'contentful/queries/home.graphql'
+import { usePageAppear } from 'hooks/use-page-appear'
 import { Layout } from 'layouts/default'
 import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
@@ -14,6 +15,7 @@ const Arrow = dynamic(() => import('icons/arrow.svg'), { ssr: false })
 const Slider = dynamic(() => import('components/slider'), { ssr: false })
 
 export default function Home({ data }) {
+  const visible = usePageAppear()
   const isMobile = useMediaQuery('(max-width: 800px)')
   const [portrait, setPortrait] = useState(false)
   const [selectedProject, setSelectedProject] = useState(0)
@@ -73,15 +75,17 @@ export default function Home({ data }) {
               .slice(0, data.projects.items.length / 2)
               .map((project, i) => (
                 <li
-                  className={cn('p-l', selectedProject === i && s.active)}
                   key={i}
+                  className={cn('p-l', selectedProject === i && s.active)}
                   onPointerEnter={() => mouseEnter(i)}
                   onPointerLeave={() => mouseLeave()}
                 >
-                  <p className={s.title}>{project.title}</p>
-                  <Link className={cn(s.link, 'decorate')} href={project.url}>
-                    Visit Site <Arrow />
-                  </Link>
+                  <AppearText visible={visible}>
+                    <p className={s.title}>{project.title}</p>
+                    <Link className={cn(s.link, 'decorate')} href={project.url}>
+                      Visit Site <Arrow />
+                    </Link>
+                  </AppearText>
                 </li>
               ))}
           </ul>
@@ -90,15 +94,17 @@ export default function Home({ data }) {
               .slice(-(data.projects.items.length / 2))
               .map((project, i) => (
                 <li
-                  className={cn('p-l', selectedProject === i + 4 && s.active)}
                   key={i}
+                  className={cn('p-l', selectedProject === i + 4 && s.active)}
                   onPointerEnter={() => mouseEnter(i + 4)}
                   onPointerLeave={() => mouseLeave()}
                 >
-                  <p className={s.title}>{project.title}</p>
-                  <Link className={cn(s.link, 'decorate')} href={project.url}>
-                    Visit Site <Arrow />
-                  </Link>
+                  <AppearText visible={visible}>
+                    <p className={s.title}>{project.title}</p>
+                    <Link className={cn(s.link, 'decorate')} href={project.url}>
+                      Visit Site <Arrow />
+                    </Link>
+                  </AppearText>
                 </li>
               ))}
           </ul>
@@ -108,7 +114,10 @@ export default function Home({ data }) {
               setRef(node)
             }}
           />
-          <div className={cn(s.image, portrait && s.portrait)}>
+          <div
+            style={{ '--iframe-delay': '500ms' }}
+            className={cn(s.image, portrait && s.portrai, visible && s.show)}
+          >
             {data.projects.items.map((project, i) => (
               <iframe
                 loading={i !== 0 || isMobile === true ? 'lazy' : 'eager'}
@@ -136,8 +145,9 @@ export async function getStaticProps({ preview = false }) {
 
   return {
     props: {
-      id: 'home',
       data: studioFreightHome,
-    }, // will be passed to the page component as props
+      id: 'home',
+    },
+    revalidate: 30,
   }
 }

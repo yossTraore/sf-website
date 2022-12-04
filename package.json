@@ -29,7 +29,7 @@
     "graphql": "^16.6.0",
     "graphql-request": "^5.0.0",
     "graphql-tag": "^2.12.6",
-    "gsap": "^3.11.3",
+    "gsap": "npm:@gsap/business@^3.11.3",
     "lint-staged": "^13.0.4",
     "lottie-web": "^5.10.0",
     "next": "13.0.6",

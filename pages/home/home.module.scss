@@ -2,6 +2,7 @@
   position: relative;
   width: 100%;
   align-items: center;
+  overflow: hidden;
 
   .list {
     text-transform: uppercase;
@@ -93,6 +94,13 @@
         opacity: 0;
         pointer-events: none;
       }
+    }
+    transform: translate3d(0, 100%, 0);
+    transition: 700ms transform var(--ease-out-expo);
+    transition-delay: var(--iframe-delay);
+
+    &.show {
+      transform: translate3d(0, 0, 0);
     }
   }
 }
