@@ -80,12 +80,13 @@ export default function Home({ data }) {
                   onPointerEnter={() => mouseEnter(i)}
                   onPointerLeave={() => mouseLeave()}
                 >
-                  <AppearText visible={visible}>
-                    <p className={s.title}>{project.title}</p>
-                    <Link className={cn(s.link, 'decorate')} href={project.url}>
-                      Visit Site <Arrow />
-                    </Link>
-                  </AppearText>
+                  <p className={s.title}>
+                    <AppearText visible={visible}>{project.title} </AppearText>
+                  </p>
+                  <Link className={cn(s.link, 'decorate')} href={project.url}>
+                    <AppearText visible={visible}> Visit Site </AppearText>
+                    <Arrow />
+                  </Link>
                 </li>
               ))}
           </ul>
@@ -99,12 +100,13 @@ export default function Home({ data }) {
                   onPointerEnter={() => mouseEnter(i + 4)}
                   onPointerLeave={() => mouseLeave()}
                 >
-                  <AppearText visible={visible}>
-                    <p className={s.title}>{project.title}</p>
-                    <Link className={cn(s.link, 'decorate')} href={project.url}>
-                      Visit Site <Arrow />
-                    </Link>
-                  </AppearText>
+                  <p className={s.title}>
+                    <AppearText visible={visible}>{project.title} </AppearText>
+                  </p>
+                  <Link className={cn(s.link, 'decorate')} href={project.url}>
+                    <AppearText visible={visible}> Visit Site </AppearText>
+                    <Arrow />
+                  </Link>
                 </li>
               ))}
           </ul>

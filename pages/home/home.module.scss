@@ -24,6 +24,9 @@
     }
 
     .link {
+      display: flex;
+      width: fit-content;
+      align-items: center;
       svg {
         vertical-align: baseline;
         aspect-ratio: 1;
@@ -39,6 +42,11 @@
             transform: translateX(-5px) rotate(-20deg);
           }
         }
+      }
+
+      span {
+        display: block;
+        margin-right: desktop-vw(5px);
       }
     }
 

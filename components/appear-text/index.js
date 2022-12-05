@@ -43,13 +43,13 @@ export function AppearText({ children, visible = true, className }) {
   )
 
   return (
-    <div
+    <span
       ref={(node) => {
         el.current = node
       }}
       className={cn(s.title, visible && s.visible, className)}
     >
       {children}
-    </div>
+    </span>
   )
 }
