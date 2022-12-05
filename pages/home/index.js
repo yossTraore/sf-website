@@ -116,7 +116,7 @@ export default function Home({ data }) {
           />
           <div
             style={{ '--iframe-delay': '500ms' }}
-            className={cn(s.image, portrait && s.portrai, visible && s.show)}
+            className={cn(s.image, portrait && s.portrait, visible && s.show)}
           >
             {data.projects.items.map((project, i) => (
               <iframe
