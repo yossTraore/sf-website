@@ -1,7 +1,6 @@
+import * as Accordion from '@radix-ui/react-accordion'
 import { useMediaQuery, useRect } from '@studio-freight/hamo'
 import cn from 'clsx'
-// import { Accordion } from 'components/accordion'
-import * as Accordion from '@radix-ui/react-accordion'
 import { AppearText } from 'components/appear-text'
 import { Image } from 'components/image'
 import { Link } from 'components/link'
@@ -47,6 +46,7 @@ export default function Home({ data }) {
           <Accordion.Root collapsible>
             {data.projects.items.map((project, i) => (
               <div className={s['slider__wrapper']} key={i}>
+                {console.log(project)}
                 <Accordion.Item value={slugify(project.title)}>
                   <Slider>
                     {project.imgs.items.map((img, idx) => {
@@ -80,15 +80,7 @@ export default function Home({ data }) {
                     {project.description && (
                       <p className={s.description}>{project.description}</p>
                     )}
-                    {project.tags && (
-                      <ul className={s['tags-list']}>
-                        {project?.tags.map((tag, i) => (
-                          <li key={i} className={s.tags}>
-                            {tag}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
+                    {project.work && <p className={s.work}>{project.work}</p>}
                   </Accordion.Content>
                 </Accordion.Item>
               </div>

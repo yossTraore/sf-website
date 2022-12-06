@@ -183,17 +183,12 @@
     letter-spacing: -0.01em;
   }
 
-  .tags-list {
+  .work {
+    font-size: mobile-vw(16px);
     margin-top: mobile-vw(36px);
     font-weight: 400;
-
-    li {
-      display: inline;
-
-      & + li:before {
-        content: ', ';
-      }
-    }
+    line-height: 125%;
+    letter-spacing: -0.01em;
   }
 
   &[data-state='open'] {
