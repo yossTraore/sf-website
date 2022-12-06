@@ -165,7 +165,8 @@
   width: 100%;
   text-align: center;
   overflow: hidden;
-  padding: mobile-vw(60px) mobile-vw(40px);
+  padding-left: mobile-vw(40px);
+  padding-right: mobile-vw(40px);
 
   .title {
     font-size: mobile-vw(28px);
@@ -192,26 +193,34 @@
   }
 
   &[data-state='open'] {
-    animation: slideDown 300ms ease-out;
+    animation: slideDown 300ms ease-out forwards;
   }
   &[data-state='closed'] {
-    animation: slideUp 300ms ease-out;
+    animation: slideUp 300ms ease-out forwards;
   }
 
   @keyframes slideDown {
     from {
       height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
     }
     to {
+      padding-top: mobile-vw(60px);
+      padding-bottom: mobile-vw(60px);
       height: var(--radix-accordion-content-height);
     }
   }
 
   @keyframes slideUp {
     from {
+      padding-top: mobile-vw(60px);
+      padding-bottom: mobile-vw(60px);
       height: var(--radix-accordion-content-height);
     }
     to {
+      padding-top: 0;
+      padding-bottom: 0;
       height: 0;
     }
   }
