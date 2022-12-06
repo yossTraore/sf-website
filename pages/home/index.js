@@ -1,5 +1,7 @@
 import { useMediaQuery, useRect } from '@studio-freight/hamo'
 import cn from 'clsx'
+// import { Accordion } from 'components/accordion'
+import * as Accordion from '@radix-ui/react-accordion'
 import { AppearText } from 'components/appear-text'
 import { Image } from 'components/image'
 import { Link } from 'components/link'
@@ -7,6 +9,7 @@ import { fetchCmsQuery } from 'contentful/api'
 import { homePageQuery } from 'contentful/queries/home.graphql'
 import { usePageAppear } from 'hooks/use-page-appear'
 import { Layout } from 'layouts/default'
+import { slugify } from 'lib/slugify'
 import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
 import s from './home.module.scss'
@@ -41,32 +44,56 @@ export default function Home({ data }) {
     <Layout theme="dark" data={data}>
       {isMobile === true ? (
         <section className={s.sliders}>
-          {data.projects.items.map((project, i) => (
-            <div key={i} className={s['slider__wrapper']}>
-              <Slider>
-                {project.imgs.items.map((img, idx) => {
-                  return (
-                    <div className={s['slide__image']} key={idx}>
-                      <Image
-                        src={img.url}
-                        alt=""
-                        priority={i === 0}
-                        height={294}
-                        width={165}
-                        sizes="(max-width: 800px) 50vw"
-                      />
-                    </div>
-                  )
-                })}
-              </Slider>
-              <Link href={project.url}>
-                <h2 className={cn('p-l', s.title)}>{project.title}</h2>
-                <h3 className={cn('p-l', s.link)}>
-                  Visit Site <Arrow />
-                </h3>
-              </Link>
-            </div>
-          ))}
+          <Accordion.Root collapsible>
+            {data.projects.items.map((project, i) => (
+              <div className={s['slider__wrapper']} key={i}>
+                <Accordion.Item value={slugify(project.title)}>
+                  <Slider>
+                    {project.imgs.items.map((img, idx) => {
+                      return (
+                        <div className={s['slide__image']} key={idx}>
+                          <Image
+                            src={img.url}
+                            alt=""
+                            priority={i === 0}
+                            height={294}
+                            width={165}
+                            sizes="(max-width: 800px) 50vw"
+                          />
+                        </div>
+                      )
+                    })}
+                  </Slider>
+                  <Accordion.Header className={s.details}>
+                    <Link href={project.url}>
+                      <h2 className={cn('p-l', s.title)}>{project.title}</h2>
+                      <h3 className={cn('p-l', s.link)}>
+                        Visit Site <Arrow />
+                      </h3>
+                    </Link>
+                    <Accordion.Trigger>
+                      <p className="p">Read More +</p>
+                    </Accordion.Trigger>
+                  </Accordion.Header>
+                  <Accordion.Content className={s.content}>
+                    <p className={s.title}>{project.title}</p>
+                    {project.description && (
+                      <p className={s.description}>{project.description}</p>
+                    )}
+                    {project.tags && (
+                      <ul className={s['tags-list']}>
+                        {project?.tags.map((tag, i) => (
+                          <li key={i} className={s.tags}>
+                            {tag}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </Accordion.Content>
+                </Accordion.Item>
+              </div>
+            ))}
+          </Accordion.Root>
         </section>
       ) : (
         <section className={cn(s.content, 'layout-grid')}>
@@ -101,10 +128,10 @@ export default function Home({ data }) {
                   onPointerLeave={() => mouseLeave()}
                 >
                   <p className={s.title}>
-                    <AppearText visible={visible}>{project.title} </AppearText>
+                    <AppearText visible={visible}>{project.title}</AppearText>
                   </p>
                   <Link className={cn(s.link, 'decorate')} href={project.url}>
-                    <AppearText visible={visible}> Visit Site </AppearText>
+                    <AppearText visible={visible}>Visit Site</AppearText>
                     <Arrow />
                   </Link>
                 </li>
