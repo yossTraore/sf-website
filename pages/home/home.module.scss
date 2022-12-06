@@ -121,6 +121,85 @@
 
   .slider__wrapper {
     margin: mobile-vw(50px) 0;
+
+    .details {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-right: var(--layout-columns-gap);
+      position: relative;
+
+      .trigger {
+        position: absolute;
+        bottom: 0;
+        right: var(--layout-columns-gap);
+      }
+    }
+
+    .content {
+      width: 100%;
+      text-align: center;
+      overflow: hidden;
+      padding-left: mobile-vw(40px);
+      padding-right: mobile-vw(40px);
+
+      .title {
+        font-size: mobile-vw(28px);
+        margin-bottom: mobile-vw(36px);
+        font-weight: 700;
+      }
+
+      .description {
+        font-weight: 250;
+        font-family: var(--font-secondary);
+        text-transform: none;
+        font-style: italic;
+        font-size: mobile-vw(16px);
+        line-height: 125%;
+        letter-spacing: -0.01em;
+      }
+
+      .work {
+        font-size: mobile-vw(16px);
+        margin-top: mobile-vw(36px);
+        font-weight: 400;
+        line-height: 125%;
+        letter-spacing: -0.01em;
+      }
+
+      &[data-state='open'] {
+        animation: slideDown 300ms ease-out forwards;
+      }
+      &[data-state='closed'] {
+        animation: slideUp 300ms ease-out forwards;
+      }
+
+      @keyframes slideDown {
+        from {
+          height: 0;
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+        to {
+          padding-top: mobile-vw(60px);
+          padding-bottom: mobile-vw(60px);
+          height: var(--radix-accordion-content-height);
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          padding-top: mobile-vw(60px);
+          padding-bottom: mobile-vw(60px);
+          height: var(--radix-accordion-content-height);
+        }
+        to {
+          padding-top: 0;
+          padding-bottom: 0;
+          height: 0;
+        }
+      }
+    }
   }
 
   .slide__image {
@@ -143,85 +222,6 @@
       aspect-ratio: 1;
       width: mobile-vw(8px);
       height: mobile-vw(8px);
-    }
-  }
-}
-
-.details {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding-right: var(--layout-columns-gap);
-  position: relative;
-
-  .trigger {
-    position: absolute;
-    bottom: 0;
-    right: var(--layout-columns-gap);
-  }
-}
-
-.content {
-  width: 100%;
-  text-align: center;
-  overflow: hidden;
-  padding-left: mobile-vw(40px);
-  padding-right: mobile-vw(40px);
-
-  .title {
-    font-size: mobile-vw(28px);
-    margin-bottom: mobile-vw(36px);
-    font-weight: 700;
-  }
-
-  .description {
-    font-weight: 250;
-    font-family: var(--font-secondary);
-    text-transform: none;
-    font-style: italic;
-    font-size: mobile-vw(16px);
-    line-height: 125%;
-    letter-spacing: -0.01em;
-  }
-
-  .work {
-    font-size: mobile-vw(16px);
-    margin-top: mobile-vw(36px);
-    font-weight: 400;
-    line-height: 125%;
-    letter-spacing: -0.01em;
-  }
-
-  &[data-state='open'] {
-    animation: slideDown 300ms ease-out forwards;
-  }
-  &[data-state='closed'] {
-    animation: slideUp 300ms ease-out forwards;
-  }
-
-  @keyframes slideDown {
-    from {
-      height: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-    }
-    to {
-      padding-top: mobile-vw(60px);
-      padding-bottom: mobile-vw(60px);
-      height: var(--radix-accordion-content-height);
-    }
-  }
-
-  @keyframes slideUp {
-    from {
-      padding-top: mobile-vw(60px);
-      padding-bottom: mobile-vw(60px);
-      height: var(--radix-accordion-content-height);
-    }
-    to {
-      padding-top: 0;
-      padding-bottom: 0;
-      height: 0;
     }
   }
 }

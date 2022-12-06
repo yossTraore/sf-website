@@ -24,20 +24,16 @@
     }
   }
 
-  .gif {
-    width: 100%;
-    height: auto;
+  .gif_wrapper {
+    grid-column: 1/-1;
+    margin: mobile-vw(20px) 0;
+    transition: 800ms opacity var(--ease-out-expo);
+    transition-delay: 1700ms;
+    opacity: 0;
 
-    &_wrapper {
-      grid-column: 1/-1;
-      margin: mobile-vw(20px) 0;
-      transition: 800ms opacity var(--ease-out-expo);
-      transition-delay: 1700ms;
-      opacity: 0;
-      @include desktop {
-        margin: 0;
-        grid-column: 14/-1;
-      }
+    @include desktop {
+      margin: 0;
+      grid-column: 14/-1;
     }
   }
 
