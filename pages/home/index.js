@@ -46,7 +46,6 @@ export default function Home({ data }) {
           <Accordion.Root collapsible>
             {data.projects.items.map((project, i) => (
               <div className={s['slider__wrapper']} key={i}>
-                {console.log(project)}
                 <Accordion.Item value={slugify(project.title)}>
                   <Slider>
                     {project.imgs.items.map((img, idx) => {
