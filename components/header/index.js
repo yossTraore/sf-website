@@ -1,33 +1,31 @@
-import Warp from 'assets/warp.json'
-
-import { useMediaQuery } from '@studio-freight/hamo'
 import cn from 'clsx'
-import { Link } from 'components/link'
-import { Lottie } from 'components/lottie'
+import { Marquee } from 'components/marquee'
 import { usePageAppear } from 'hooks/use-page-appear'
+import { pad } from 'lib/maths'
+import dynamic from 'next/dynamic'
 import s from './header.module.scss'
 
-export const Header = ({ title, description }) => {
+const Separator = dynamic(() => import('icons/separator.svg'), { ssr: false })
+
+export const Header = ({ title, principles = [] }) => {
   const visible = usePageAppear()
-  const isMobile = useMediaQuery('(max-width: 800px)')
   return (
-    <header className={cn(s.header, visible && s.show, 'layout-grid')}>
-      <h1 className={cn('h1', s.title)}>{title}</h1>
-      <h2 className={cn('h2', s.description)}>
-        {!isMobile ? (
-          description
-        ) : (
-          <>
-            <span className={s.spacer} />
-            {description}
-          </>
-        )}
-      </h2>
-      <div className={s.gif_wrapper}>
-        <Link href="https://darkroom.studiofreight.com" aria-label="Darkroom">
-          <Lottie className={s.lottie} animation={Warp} speed={0.7} loop />
-        </Link>
+    <header className={cn(s.container, 'layout-block')}>
+      <div className={cn(s.top, 'layout-grid')}>
+        <Marquee className={s.marquee} duration={20}>
+          {principles.map((principle, i) => (
+            <p key={i} className={cn('p', s.principle)}>
+              &nbsp;<span>{pad(i + 1)}</span>
+              &nbsp;{principle}&nbsp;//
+            </p>
+          ))}
+        </Marquee>
       </div>
+      <Separator />
+      <div className={cn(s.header, visible && s.show, 'layout-grid')}>
+        <h1 className={cn('h1', s.title)}>{title}</h1>
+      </div>
+      <Separator />
     </header>
   )
 }

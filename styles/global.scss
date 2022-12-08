@@ -27,10 +27,6 @@ html {
   &.nav {
     overflow: hidden;
   }
-
-  @include desktop {
-    overflow: hidden;
-  }
 }
 
 html,

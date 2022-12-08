@@ -21,6 +21,14 @@
     }
   }
 
+  @include hover {
+    &:hover {
+      .inner {
+        animation-play-state: paused;
+      }
+    }
+  }
+
   @keyframes marquee {
     0% {
       transform: translate3d(calc(var(--offset) * -1), 0, 0);

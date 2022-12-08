@@ -37,18 +37,6 @@ function MyApp({ Component, pageProps }) {
   const lenis = useStore(({ lenis }) => lenis)
   const overflow = useStore(({ overflow }) => overflow)
 
-  // const setHeaderData = useStore((state) => state.setHeaderData)
-  // const setFooterData = useStore((state) => state.setFooterData)
-
-  // const [isFetched, setIsFetched] = useState(false)
-
-  // avoid infinite loop
-  // if (!isFetched) {
-  //   setHeaderData(headerData)
-  //   setFooterData(footerData)
-  //   setIsFetched(true)
-  // }
-
   useEffect(() => {
     if (overflow) {
       lenis?.start()

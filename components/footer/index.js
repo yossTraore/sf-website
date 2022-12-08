@@ -1,82 +1,63 @@
 import { useMediaQuery } from '@studio-freight/hamo'
 import cn from 'clsx'
-import { Clock } from 'components/clock'
 import { Link } from 'components/link'
-import { Marquee } from 'components/marquee'
 
+import dynamic from 'next/dynamic'
 import s from './footer.module.scss'
 
-export function Footer({ className, style }) {
+const Separator = dynamic(() => import('icons/separator.svg'), { ssr: false })
+
+export function Footer({ className, style, links, studioInfo }) {
   const isMobile = useMediaQuery('(max-width: 800px)')
 
   return (
-    <footer className={cn(s.footer, 'layout-grid', className)} style={style}>
-      <Marquee className={s.column}>
-        <p className="p">Built on Principle — ANTI-AGENCY &nbsp;</p>
-      </Marquee>
-      <ul className={s.column}>
-        <li>
-          <Link
-            className="p decorate"
-            href="https://www.instagram.com/studio.freight/"
-          >
-            Instagram
-          </Link>
-        </li>
-        <li>
-          <Link className="p decorate" href="https://twitter.com/studiofreight">
-            Twitter
-          </Link>
-        </li>
-      </ul>
-      <ul className={s.column}>
-        <li>
-          <Link className="p decorate" href="https://vimeo.com/studiofreight">
-            Vimeo
-          </Link>
-        </li>
-        <li>
-          <Link
-            className="p decorate"
-            href="https://www.awwwards.com/studiofreight/"
-          >
-            Awwwards
-          </Link>
-        </li>
-      </ul>
-      <ul className={s.column}>
-        <li>
-          <Link className="p decorate" href="https://lenis.studiofreight.com">
-            Lenis
-          </Link>
-        </li>
-        <li>
-          <Link
-            className="p decorate"
-            href="https://www.linkedin.com/company/studio-freight/"
-          >
-            LinkedIn
-          </Link>
-        </li>
-      </ul>
-      <ul className={s.column}>
-        <li>
-          <Link className="p decorate" href="tel:+13802389363">
-            {isMobile === false && 'P:'} +1.380.238.9363
-          </Link>
-        </li>
-        <li>
-          <Link className="p decorate" href="mailto:hello@studiofreight.com">
-            {isMobile === false && 'E:'} HELLO@STUDIOFREIGHT.COM
-          </Link>
-        </li>
-      </ul>
-      <ul className={s.column}>
-        <li>
-          <Clock />
-        </li>
-        <li className="p">&copy; {new Date().getFullYear()}</li>
-      </ul>
+    <footer className={cn(s.container, 'layout-block')}>
+      <Separator />
+      <div className={cn(s.footer, 'layout-grid', className)} style={style}>
+        <p className={cn(s.column, 'p')}>Built on Principle</p>
+        <ul className={s.column}>
+          {links.slice(0, 3).map((link, i) => (
+            <li key={i}>
+              <Link className="p decorate" href={link.url}>
+                {link.text}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <ul className={s.column}>
+          {links.slice(3, 6).map((link, i) => (
+            <li key={i}>
+              <Link className="p decorate" href={link.url}>
+                {link.text}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <ul className={s.column}>
+          {links.slice(6, links.length).map((link, i) => (
+            <li key={i}>
+              <Link className="p decorate" href={link.url}>
+                {link.text}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <ul className={s.column}>
+          <li>
+            <Link className="p decorate" href={`tel:${studioInfo.phone}`}>
+              {isMobile === false && 'P:'} &nbsp; {studioInfo.phone}
+            </Link>
+          </li>
+          <li>
+            <Link className="p decorate" href={`mailto:${studioInfo.email}`}>
+              {isMobile === false && 'E:'} &nbsp; {studioInfo.email}
+            </Link>
+          </li>
+        </ul>
+        <ul className={s.column}>
+          <li className="p">&copy; {new Date().getFullYear()}</li>
+        </ul>
+      </div>
     </footer>
   )
 }

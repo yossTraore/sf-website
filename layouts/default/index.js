@@ -43,7 +43,9 @@ export function Layout({
   children,
   theme = 'light',
   className,
-  data,
+  principles,
+  footerLinks,
+  studioInfo,
 }) {
   const isTouchDevice = useIsTouchDevice()
   const visible = usePageAppear()
@@ -52,10 +54,14 @@ export function Layout({
       <CustomHead {...seo} />
       <div className={cn(`theme-${theme}`, s.layout, className)}>
         {isTouchDevice === false && <Cursor />}
-        <Header title={data.title} description={data.heroDescription} />
+        <Header title="STUDIO FREIGHT" principles={principles} />
         <main className={s.main}>{children}</main>
 
-        <Footer className={cn(s.footer, visible && s.show)} />
+        <Footer
+          className={cn(s.footer, visible && s.show)}
+          links={footerLinks}
+          studioInfo={studioInfo}
+        />
       </div>
     </>
   )
