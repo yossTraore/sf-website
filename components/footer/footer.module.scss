@@ -24,7 +24,12 @@
       grid-column: span 2;
     }
     &:nth-child(6) {
+      text-align: end;
       grid-column: span 1;
+    }
+
+    li + li {
+      margin-top: desktop-vw(4px);
     }
   }
 }

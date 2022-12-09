@@ -55,7 +55,7 @@ export function Footer({ className, style, links, studioInfo }) {
           </li>
         </ul>
         <ul className={s.column}>
-          <li className="p">&copy; {new Date().getFullYear()}</li>
+          <li className="p muted">&copy; {new Date().getFullYear()}</li>
         </ul>
       </div>
     </footer>

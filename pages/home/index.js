@@ -1,3 +1,5 @@
+import cn from 'clsx'
+import { ScrollableBox } from 'components/scrollable-box'
 import { fetchCmsQuery } from 'contentful/api'
 import {
   contactEntryQuery,
@@ -6,8 +8,11 @@ import {
   studioFreightEntryQuery,
 } from 'contentful/queries/home.graphql'
 import { Layout } from 'layouts/default'
+import s from './home.module.scss'
 
 export default function Home({ studioFreight, footer, contact, projects }) {
+  console.log(contact)
+  console.log(projects)
   return (
     <Layout
       theme="dark"
@@ -18,11 +23,276 @@ export default function Home({ studioFreight, footer, contact, projects }) {
       }}
       footerLinks={footer.linksCollection.items}
     >
-      {console.log(studioFreight)}
-      {console.log(footer)}
-      {console.log(contact)}
-      {console.log(projects)}
-      <p>hi</p>
+      <section className={cn(s.content, 'layout-grid')}>
+        <ScrollableBox className={s.about}>
+          <ul>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+          </ul>
+        </ScrollableBox>
+        <ScrollableBox className={s.projects}>
+          <ul>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+          </ul>
+        </ScrollableBox>
+        <ScrollableBox className={s['project-details']}>
+          <ul>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+            <li>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
+                facilis delectus animi. Laudantium magnam ducimus accusamus?
+                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
+                fugit cupiditate enim dolorum nam architecto!
+              </p>
+            </li>
+          </ul>
+        </ScrollableBox>
+      </section>
     </Layout>
   )
 }
