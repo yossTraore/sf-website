@@ -1,4 +1,6 @@
 import cn from 'clsx'
+import { Button } from 'components/button'
+import { Link } from 'components/link'
 import { Marquee } from 'components/marquee'
 import { usePageAppear } from 'hooks/use-page-appear'
 import { pad } from 'lib/maths'
@@ -7,11 +9,32 @@ import s from './header.module.scss'
 
 const Separator = dynamic(() => import('icons/separator.svg'), { ssr: false })
 
+const SFDR = dynamic(() => import('icons/sfdr.svg'), { ssr: false })
+const Stard = dynamic(() => import('icons/stard.svg'), { ssr: false })
+const Monogram = dynamic(() => import('icons/sf-monogram.svg'), { ssr: false })
+const StarDuotone = dynamic(() => import('icons/star-duotone.svg'), {
+  ssr: false,
+})
+
 export const Header = ({ title, principles = [] }) => {
   const visible = usePageAppear()
   return (
     <header className={cn(s.container, 'layout-block')}>
       <div className={cn(s.top, 'layout-grid')}>
+        <div className={s.eggs}>
+          <Link href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+            <SFDR className={s.egg} />
+          </Link>
+          <Link href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+            <Stard className={s.egg} />
+          </Link>
+          <Link href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+            <Monogram className={s.egg} />
+          </Link>
+          <Link href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+            <StarDuotone className={s.egg} />
+          </Link>
+        </div>
         <Marquee className={s.marquee} duration={20}>
           {principles.map((principle, i) => (
             <p key={i} className={cn('p', s.principle)}>
@@ -20,6 +43,7 @@ export const Header = ({ title, principles = [] }) => {
             </p>
           ))}
         </Marquee>
+        <Button className={s.cta}>Contact</Button>
       </div>
       <Separator />
       <div className={cn(s.header, visible && s.show, 'layout-grid')}>

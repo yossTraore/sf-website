@@ -81,6 +81,8 @@ svg.icon {
 
 .decorate {
   position: relative;
+  color: var(--green);
+  transition: color 0.95s cubic-bezier(0.19, 1, 0.22, 1);
 
   &:before {
     content: '';
@@ -97,9 +99,13 @@ svg.icon {
   }
 
   @include hover {
-    &:not(:hover):before {
-      transform-origin: right;
-      transform: scaleX(0);
+    &:not(:hover) {
+      color: currentColor;
+
+      &:before {
+        transform-origin: right;
+        transform: scaleX(0);
+      }
     }
   }
 }

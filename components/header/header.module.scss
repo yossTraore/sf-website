@@ -4,12 +4,27 @@
 
 .top {
   padding: desktop-vw(28px) 0 desktop-vw(20px) 0;
+
+  .eggs {
+    grid-column: span 1;
+
+    .egg {
+      width: desktop-vw(24px);
+      aspect-ratio: 1;
+
+      + .egg {
+        margin-left: desktop-vw(9px);
+      }
+    }
+  }
+
   .marquee {
     grid-column: 5/7;
+    color: var(--grey);
 
     .principle {
       font-weight: 700;
-      filter: blur(1px);
+      filter: blur(1.5px);
       transition: filter 300ms ease-in-out;
 
       @include hover {
@@ -18,6 +33,12 @@
         }
       }
     }
+  }
+
+  .cta {
+    text-align: end;
+    grid-column: 8/-1;
+    margin-left: auto;
   }
 }
 
