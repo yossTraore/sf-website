@@ -2,6 +2,14 @@
   margin-bottom: desktop-vw(24px);
 
   i {
+    vertical-align: top;
+    font-size: desktop-vw(12px);
     font-style: italic;
+  }
+}
+
+.item {
+  .row {
+    margin-bottom: 0;
   }
 }

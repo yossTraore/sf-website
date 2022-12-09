@@ -19,6 +19,12 @@ export const renderer = ({ json }) => {
       [BLOCKS.PARAGRAPH]: function p(node, children) {
         return <p className={cn('p', s.row)}>{children}</p>
       },
+      [BLOCKS.UL_LIST]: function ul(node, children) {
+        return <ul className={cn('p', s.row)}>{children}</ul>
+      },
+      [BLOCKS.LIST_ITEM]: function li(node, children) {
+        return <li className={cn('p', s.item)}>{children}</li>
+      },
       [INLINES.HYPERLINK]: function hyperlink(node, children) {
         return (
           <Link href={node.data.uri} className={cn(s.link, 'link')}>
