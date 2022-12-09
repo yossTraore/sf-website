@@ -45,12 +45,12 @@ export function Footer({ className, style, links, studioInfo }) {
         <ul className={s.column}>
           <li>
             <Link className="p decorate" href={`tel:${studioInfo.phone}`}>
-              {isMobile === false && 'P:'} &nbsp; {studioInfo.phone}
+              {isMobile === false && 'P:'} {studioInfo.phone}
             </Link>
           </li>
           <li>
             <Link className="p decorate" href={`mailto:${studioInfo.email}`}>
-              {isMobile === false && 'E:'} &nbsp; {studioInfo.email}
+              {isMobile === false && 'E:'} {studioInfo.email}
             </Link>
           </li>
         </ul>
