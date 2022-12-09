@@ -2,7 +2,7 @@ import cn from 'clsx'
 import { Button } from 'components/button'
 import { Link } from 'components/link'
 import { Marquee } from 'components/marquee'
-import { usePageAppear } from 'hooks/use-page-appear'
+// import { usePageAppear } from 'hooks/use-page-appear'
 import { pad } from 'lib/maths'
 import dynamic from 'next/dynamic'
 import s from './header.module.scss'
@@ -17,7 +17,8 @@ const StarDuotone = dynamic(() => import('icons/star-duotone.svg'), {
 })
 
 export const Header = ({ title, principles = [] }) => {
-  const visible = usePageAppear()
+  // const visible = usePageAppear()
+
   return (
     <header className={cn(s.container, 'layout-block')}>
       <div className={cn(s.top, 'layout-grid')}>
@@ -58,7 +59,7 @@ export const Header = ({ title, principles = [] }) => {
         <Button className={s.cta}>Contact</Button>
       </div>
       <Separator />
-      <div className={cn(s.header, visible && s.show, 'layout-grid')}>
+      <div className={cn(s.header, 'layout-grid')}>
         <h1 className={cn('h1', s.title)}>{title}</h1>
       </div>
       <Separator />

@@ -6,8 +6,6 @@ import { Footer } from 'components/footer'
 import { Header } from 'components/header'
 import s from './layout.module.scss'
 
-import { usePageAppear } from 'hooks/use-page-appear'
-
 export function Layout({
   seo = {
     title: 'Studio Freight - Built on Principle',
@@ -48,7 +46,6 @@ export function Layout({
   studioInfo,
 }) {
   const isTouchDevice = useIsTouchDevice()
-  const visible = usePageAppear()
   return (
     <>
       <CustomHead {...seo} />
@@ -56,12 +53,7 @@ export function Layout({
         {isTouchDevice === false && <Cursor />}
         <Header title="STUDIO FREIGHT" principles={principles} />
         <main className={s.main}>{children}</main>
-
-        <Footer
-          className={cn(s.footer, visible && s.show)}
-          links={footerLinks}
-          studioInfo={studioInfo}
-        />
+        <Footer links={footerLinks} studioInfo={studioInfo} />
       </div>
     </>
   )

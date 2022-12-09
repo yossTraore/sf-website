@@ -34,6 +34,20 @@ export default function Document() {
           type="font/woff2"
           crossOrigin="anonymous"
         />
+        <link
+          href="/fonts/MessinaSansMono-Regular.woff2"
+          as="font"
+          rel="preload prefetch"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="/fonts/MessinaSansMono-SemiBold.woff2"
+          as="font"
+          rel="preload prefetch"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
       </Head>
       <body>
         {/* // https://github.com/donavon/use-dark-mode */}

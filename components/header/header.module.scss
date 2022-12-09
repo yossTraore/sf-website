@@ -62,11 +62,11 @@
     }
   }
 
-  transform: translate3d(0, -100%, 0);
-  transition: 800ms transform var(--ease-out-expo);
-  transition-delay: 500ms;
+  // transform: translate3d(0, -100%, 0);
+  // transition: 800ms transform var(--ease-out-expo);
+  // transition-delay: 500ms;
 
-  &.show {
-    transform: translate3d(0, 0, 0);
-  }
+  // &.show {
+  //   transform: translate3d(0, 0, 0);
+  // }
 }
