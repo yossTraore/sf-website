@@ -12,9 +12,16 @@
       display: inline-block;
       width: desktop-vw(24px);
       aspect-ratio: 1;
+      transition: color 300ms var(--ease-out-expo);
 
       + .egg {
         margin-left: desktop-vw(9px);
+      }
+
+      @include hover {
+        &:hover {
+          color: var(--green);
+        }
       }
     }
   }
