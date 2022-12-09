@@ -104,7 +104,6 @@
   font-style: normal;
   font-weight: 400;
   line-height: 125%;
-  text-transform: uppercase;
 
   @include desktop {
     line-height: 125%;
@@ -147,7 +146,7 @@
   }
 }
 
-.uppercase {
+.text-uppercase {
   text-transform: uppercase;
 }
 
@@ -159,6 +158,10 @@
   text-align: end;
 }
 
-.muted {
+.text-muted {
   color: var(--grey);
+}
+
+.text-bold {
+  font-weight: 700;
 }

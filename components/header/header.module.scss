@@ -30,6 +30,7 @@
   .marquee {
     grid-column: 5/7;
     color: var(--grey);
+    text-transform: uppercase;
 
     .principle {
       font-weight: 700;

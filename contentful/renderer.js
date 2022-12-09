@@ -10,10 +10,14 @@ export const renderer = ({ json }) => {
   const options = {
     renderNode: {
       [BLOCKS.HEADING_1]: function p(node, children) {
-        return <h2 className="h3">{children}</h2>
+        return (
+          <h2 className={cn('p text-uppercase text-muted text-bold', s.row)}>
+            {children}
+          </h2>
+        )
       },
       [BLOCKS.PARAGRAPH]: function p(node, children) {
-        return <p className="p-l">{children}</p>
+        return <p className={cn('p', s.row)}>{children}</p>
       },
       [INLINES.HYPERLINK]: function hyperlink(node, children) {
         return (

@@ -7,6 +7,7 @@ import {
   projectCollectionQuery,
   studioFreightEntryQuery,
 } from 'contentful/queries/home.graphql'
+import { renderer } from 'contentful/renderer'
 import { Layout } from 'layouts/default'
 import s from './home.module.scss'
 
@@ -25,72 +26,7 @@ export default function Home({ studioFreight, footer, contact, projects }) {
     >
       <section className={cn(s.content, 'layout-grid')}>
         <ScrollableBox className={s.about}>
-          <ul>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-          </ul>
+          {renderer(studioFreight.about)}
         </ScrollableBox>
         <ScrollableBox className={s.projects}>
           <ul>
