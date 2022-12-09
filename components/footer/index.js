@@ -14,7 +14,7 @@ export function Footer({ className, style, links, studioInfo }) {
     <footer className={cn(s.container, 'layout-block')}>
       <Separator />
       <div className={cn(s.footer, 'layout-grid', className)} style={style}>
-        <p className={cn(s.column, 'p')}>Built on Principle</p>
+        <p className={cn(s.column, 'p muted')}>Built on Principle</p>
         <ul className={s.column}>
           {links.slice(0, 3).map((link, i) => (
             <li key={i}>

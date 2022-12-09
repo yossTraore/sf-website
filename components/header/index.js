@@ -22,17 +22,29 @@ export const Header = ({ title, principles = [] }) => {
     <header className={cn(s.container, 'layout-block')}>
       <div className={cn(s.top, 'layout-grid')}>
         <div className={s.eggs}>
-          <Link href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-            <SFDR className={s.egg} />
+          <Link
+            className={s.egg}
+            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          >
+            <SFDR />
           </Link>
-          <Link href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-            <Stard className={s.egg} />
+          <Link
+            className={s.egg}
+            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          >
+            <Stard />
           </Link>
-          <Link href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-            <Monogram className={s.egg} />
+          <Link
+            className={s.egg}
+            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          >
+            <Monogram />
           </Link>
-          <Link href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-            <StarDuotone className={s.egg} />
+          <Link
+            className={s.egg}
+            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          >
+            <StarDuotone />
           </Link>
         </div>
         <Marquee className={s.marquee} duration={20}>
