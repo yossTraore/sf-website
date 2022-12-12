@@ -1,4 +1,11 @@
 .hi {
   overflow-y: scroll;
   max-height: desktop-vh(650px);
+  scrollbar-width: none !important;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
+  }
 }

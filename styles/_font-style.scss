@@ -125,6 +125,17 @@
   }
 }
 
+.p-xs {
+  font-size: mobile-vw(8px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 125%;
+
+  @include desktop {
+    font-size: desktop-vw(12px);
+  }
+}
+
 .cta {
   font-size: mobile-vw(16px);
   font-style: normal;

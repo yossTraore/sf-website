@@ -8,6 +8,29 @@
 
   .projects {
     grid-column: span 2;
+
+    .list {
+      padding: desktop-vw(24px) 0;
+      height: 100%;
+
+      .list-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: desktop-vw(16px) 0;
+        border-top: 1px solid var(--grey);
+
+        p:last-child {
+          text-align: end;
+          font-family: var(--font-secondary);
+        }
+
+        &.active {
+          color: var(--green);
+        }
+      }
+    }
   }
 
   .project-details {

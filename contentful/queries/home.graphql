@@ -47,6 +47,7 @@ query projectCollectionQuery($preview: Boolean!) {
         id
       }
       name
+      industry
       description
       testimonial
       assetsCollection(limit: 20) {
@@ -59,6 +60,8 @@ query projectCollectionQuery($preview: Boolean!) {
           }
         }
       }
+      services
+      stack
       link
       publishedDate
     }

@@ -9,11 +9,17 @@ import {
 } from 'contentful/queries/home.graphql'
 import { renderer } from 'contentful/renderer'
 import { Layout } from 'layouts/default'
+import { useStore } from 'lib/store'
 import s from './home.module.scss'
 
 export default function Home({ studioFreight, footer, contact, projects }) {
-  console.log(contact)
-  console.log(projects)
+  const [selectedProject, setSelectedProject] = useStore((state) => [
+    state.selectedProject,
+    state.setSelectedProject,
+  ])
+
+  console.log({ contact })
+
   return (
     <Layout
       theme="dark"
@@ -28,205 +34,42 @@ export default function Home({ studioFreight, footer, contact, projects }) {
         <ScrollableBox className={s.about}>
           {renderer(studioFreight.about)}
         </ScrollableBox>
-        <ScrollableBox className={s.projects}>
-          <ul>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
+        <div className={s.projects}>
+          <p className="p text-bold text-uppercase text-muted">Projects</p>
+          <ScrollableBox className={s.list} infinite>
+            <ul>
+              {projects.items.map((project) => (
+                <li key={project.sys.id}>
+                  <button
+                    onClick={() => setSelectedProject(project.sys.id)}
+                    className={cn(
+                      selectedProject === project.sys.id && s.active,
+                      s['list-item']
+                    )}
+                  >
+                    <p className="p text-bold text-uppercase">{project.name}</p>
+                    <p className="p-xs text-uppercase">{project.industry}</p>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </ScrollableBox>
+        </div>
+        <ScrollableBox className={s['project-details']} infinite>
+          {/* {projects.items.filter((project) => project.sys.id === selectedProject).map((project) => (
+                // <div key={`${project.sys.id}-details`}>{project.name}</p>
+                console.log(project)
+                // project.assetsCollection.items.map((asset) => (
+                //   <Image key={project.sys.id} src={asset.url} />
+                // )
+              ))} */}
+          {projects.items
+            .filter((project) => project.sys.id === selectedProject)
+            .map((project) => (
+              <p key={`${project.sys.id}-details`} className="p text-uppercase">
+                {project.name}
               </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-          </ul>
-        </ScrollableBox>
-        <ScrollableBox className={s['project-details']}>
-          <ul>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-            <li>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et eum
-                facilis delectus animi. Laudantium magnam ducimus accusamus?
-                Quam explicabo eveniet ratione ipsum voluptate dignissimos,
-                fugit cupiditate enim dolorum nam architecto!
-              </p>
-            </li>
-          </ul>
+            ))}
         </ScrollableBox>
       </section>
     </Layout>

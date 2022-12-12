@@ -1,14 +1,15 @@
-import { useFrame, useRect } from '@studio-freight/hamo'
+// import { useFrame, useRect } from '@studio-freight/hamo'
+import { useFrame } from '@studio-freight/hamo'
 import Lenis from '@studio-freight/lenis'
 import cn from 'clsx'
 import { useEffect, useRef, useState } from 'react'
 import s from './scrollable-box.module.scss'
 
-export function ScrollableBox({ children, className }) {
+export function ScrollableBox({ children, className, infinite }) {
   const [lenis, setLenis] = useState()
   const wrapperRef = useRef()
   const contentRef = useRef()
-  const [setRef, rect] = useRect()
+  // const [setRef, rect] = useRect()
 
   useEffect(() => {
     // window.scrollTo(0, 0)
@@ -20,7 +21,8 @@ export function ScrollableBox({ children, className }) {
       direction: 'vertical',
       gestureDirection: 'vertical',
       smooth: true,
-      infinite: true,
+      infinite,
+      // infinite: true,
     })
 
     lenis.start()
@@ -35,15 +37,15 @@ export function ScrollableBox({ children, className }) {
     lenis?.raf(time)
   }, [])
 
-  useEffect(() => {
-    console.log(rect)
-  }, [rect])
+  // useEffect(() => {
+  //   console.log(rect)
+  // }, [rect])
 
   return (
     <div
       className={cn(s.hi, className)}
       ref={(node) => {
-        setRef(node)
+        // setRef(node)
         wrapperRef.current = node
       }}
       style={{ '--max-height': '100px' }}
