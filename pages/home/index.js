@@ -66,7 +66,7 @@ export default function Home({ studioFreight, footer, contact, projects }) {
         </div>
         <div className={s['project-details']}>
           <div className={s.heading}>
-            <p className="p text-bold text-uppercase text-muted">
+            <p className={cn(s.title, 'p text-bold text-uppercase text-muted')}>
               Project detail
             </p>
             <div className={s.actions}>
