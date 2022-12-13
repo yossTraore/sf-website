@@ -4,7 +4,8 @@
 
 .top {
   align-items: center;
-  padding: desktop-vw(28px) 0 desktop-vw(20px) 0;
+  height: desktop-vw(66px);
+  overflow: hidden;
 
   .eggs {
     grid-column: span 1;

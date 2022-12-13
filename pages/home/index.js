@@ -12,15 +12,21 @@ import {
 import { renderer } from 'contentful/renderer'
 import { Layout } from 'layouts/default'
 import { useStore } from 'lib/store'
+import { useEffect, useState } from 'react'
 import s from './home.module.scss'
 
 export default function Home({ studioFreight, footer, contact, projects }) {
+  const [showInfoModal, setShowInfoModal] = useState(false)
   const [selectedProject, setSelectedProject] = useStore((state) => [
     state.selectedProject,
     state.setSelectedProject,
   ])
 
   console.log({ contact })
+
+  useEffect(() => {
+    setSelectedProject(projects.items[0])
+  }, [])
 
   return (
     <Layout
@@ -32,16 +38,16 @@ export default function Home({ studioFreight, footer, contact, projects }) {
       }}
       footerLinks={footer.linksCollection.items}
     >
-      <section className={cn(s.content, 'layout-grid')}>
-        <div className={s.about}>
+      <div className={cn(s.content, 'layout-grid')}>
+        <section className={s.about}>
           <p className={cn(s.title, 'p text-bold text-uppercase text-muted')}>
             About
           </p>
           <ScrollableBox className={s.description}>
             {renderer(studioFreight.about)}
           </ScrollableBox>
-        </div>
-        <div className={s.projects}>
+        </section>
+        <section className={s.projects}>
           <p className={cn(s.title, 'p text-bold text-uppercase text-muted')}>
             Projects
           </p>
@@ -63,32 +69,84 @@ export default function Home({ studioFreight, footer, contact, projects }) {
               ))}
             </ul>
           </ScrollableBox>
-        </div>
-        <div className={s['project-details']}>
+        </section>
+        <section className={s['project-details']}>
           <div className={s.heading}>
             <p className={cn(s.title, 'p text-bold text-uppercase text-muted')}>
               Project detail
             </p>
             <div className={s.actions}>
-              <button className="p decorate">info</button>
+              <button
+                className="p decorate"
+                onClick={() => setShowInfoModal(!showInfoModal)}
+              >
+                info
+              </button>
               <Link href={selectedProject?.link} className="p decorate">
                 site
               </Link>
             </div>
           </div>
-          <ScrollableBox infinite>
-            {projects.items
-              .filter((project) => project.sys.id === selectedProject?.sys?.id)
-              .map((project) => (
-                <div key={`${project.sys.id}-details`} className={s.images}>
-                  {project.assetsCollection.items.map((asset, i) => (
-                    <ComposableImage key={i} sources={asset.imagesCollection} />
-                  ))}
-                </div>
+          <div className={s['details-content']}>
+            <ScrollableBox
+              infinite
+              className={cn(s.images, !showInfoModal && s.visible)}
+            >
+              {selectedProject?.assetsCollection?.items.map((asset, i) => (
+                <ComposableImage key={i} sources={asset.imagesCollection} />
               ))}
-          </ScrollableBox>
-        </div>
-      </section>
+            </ScrollableBox>
+            <ScrollableBox className={cn(s.info, showInfoModal && s.visible)}>
+              <p className={cn(s.description, 'p')}>
+                {selectedProject.description}
+              </p>
+              <div className={s.testimonial}>
+                <p
+                  className={cn(
+                    s.title,
+                    'p text-muted text-uppercase text-bold'
+                  )}
+                >
+                  Testimonial
+                </p>
+                <p className="p">{selectedProject.testimonial}</p>
+              </div>
+              <div className={s.services}>
+                <p
+                  className={cn(
+                    s.title,
+                    'p text-muted text-uppercase text-bold'
+                  )}
+                >
+                  Services
+                </p>
+                <p className="p text-uppercase">
+                  {selectedProject?.services?.map((service, i) =>
+                    i === selectedProject.services.length - 1
+                      ? service
+                      : `${service}, `
+                  )}
+                </p>
+              </div>
+              <div className={s.stack}>
+                <p
+                  className={cn(
+                    s.title,
+                    'p text-muted text-uppercase text-bold'
+                  )}
+                >
+                  Stack
+                </p>
+                <p className="p text-uppercase">
+                  {selectedProject?.stack?.map((item, i) =>
+                    i === selectedProject.stack.length - 1 ? item : `${item}, `
+                  )}
+                </p>
+              </div>
+            </ScrollableBox>
+          </div>
+        </section>
+      </div>
     </Layout>
   )
 }

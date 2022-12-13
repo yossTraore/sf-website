@@ -1,11 +1,13 @@
 .container {
   width: 100%;
+  height: desktop-vw(113px);
+  overflow: hidden;
 }
 
 .footer {
   font-family: var(--font-secondary);
   text-transform: uppercase;
-  padding: desktop-vw(24px) 0;
+  padding: desktop-vw(16px) 0 desktop-vw(24px) 0;
   width: 100%;
 
   .column {
@@ -29,8 +31,8 @@
       grid-column: span 1;
     }
 
-    li + li {
-      margin-top: desktop-vw(4px);
-    }
+    // li + li {
+    //   margin-top: desktop-vw(4px);
+    // }
   }
 }

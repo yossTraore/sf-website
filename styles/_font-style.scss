@@ -8,14 +8,14 @@
   font-style: normal;
   font-style: normal;
   font-weight: 700;
-  line-height: 100%;
+  line-height: 92%;
   text-transform: uppercase;
   letter-spacing: -0.02em;
 
   text-transform: uppercase;
 
   @include desktop {
-    font-size: desktop-vw(240px);
+    font-size: desktop-vw(178px);
   }
 }
 
@@ -121,7 +121,7 @@
   text-transform: uppercase;
 
   @include desktop {
-    font-size: desktop-vw(16px);
+    font-size: desktop-vw(12px);
   }
 }
 

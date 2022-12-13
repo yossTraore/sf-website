@@ -1,7 +1,7 @@
 .hi {
   overflow-y: scroll;
-  min-height: desktop-vh(607px);
-  max-height: desktop-vh(607px);
+  min-height: desktop-vh(430px);
+  max-height: desktop-vh(430px);
   scrollbar-width: none !important;
   -ms-overflow-style: none;
 
@@ -9,4 +9,7 @@
     width: 0 !important;
     height: 0 !important;
   }
+
+  // fix bottom gradient
+  padding-bottom: desktop-vw(40px);
 }
