@@ -1,6 +1,7 @@
 .hi {
   overflow-y: scroll;
-  max-height: desktop-vh(650px);
+  min-height: desktop-vh(607px);
+  max-height: desktop-vh(607px);
   scrollbar-width: none !important;
   -ms-overflow-style: none;
 

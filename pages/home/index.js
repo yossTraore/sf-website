@@ -33,11 +33,18 @@ export default function Home({ studioFreight, footer, contact, projects }) {
       footerLinks={footer.linksCollection.items}
     >
       <section className={cn(s.content, 'layout-grid')}>
-        <ScrollableBox className={s.about}>
-          {renderer(studioFreight.about)}
-        </ScrollableBox>
+        <div className={s.about}>
+          <p className={cn(s.title, 'p text-bold text-uppercase text-muted')}>
+            About
+          </p>
+          <ScrollableBox className={s.description}>
+            {renderer(studioFreight.about)}
+          </ScrollableBox>
+        </div>
         <div className={s.projects}>
-          <p className="p text-bold text-uppercase text-muted">Projects</p>
+          <p className={cn(s.title, 'p text-bold text-uppercase text-muted')}>
+            Projects
+          </p>
           <ScrollableBox className={s.list} infinite>
             <ul>
               {projects.items.map((project) => (

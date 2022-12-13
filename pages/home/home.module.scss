@@ -5,13 +5,25 @@
   .about {
     grid-column: span 2;
     height: 100%;
+    padding-top: desktop-vw(-36px);
+
+    .title {
+      padding-bottom: desktop-vw(24px);
+    }
+
+    .description {
+      height: 100%;
+    }
   }
 
   .projects {
     grid-column: span 2;
 
+    .title {
+      padding-bottom: desktop-vw(24px);
+    }
+
     .list {
-      padding: desktop-vw(24px) 0;
       height: 100%;
 
       .list-item {
@@ -36,12 +48,13 @@
 
   .project-details {
     grid-column: span 4;
+    overflow: hidden;
 
     .heading {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: desktop-vw(24px);
+      padding-bottom: desktop-vw(24px);
 
       .actions {
         text-transform: uppercase;
