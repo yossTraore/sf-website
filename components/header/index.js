@@ -2,8 +2,12 @@ import cn from 'clsx'
 import { Button } from 'components/button'
 import { Link } from 'components/link'
 import { Marquee } from 'components/marquee'
+import { useStore } from 'lib/store'
 // import { usePageAppear } from 'hooks/use-page-appear'
+import { ContactForm } from 'components/header/contact-form'
 import { pad } from 'lib/maths'
+import shallow from 'zustand/shallow'
+
 import dynamic from 'next/dynamic'
 import s from './header.module.scss'
 
@@ -16,8 +20,12 @@ const StarDuotone = dynamic(() => import('icons/star-duotone.svg'), {
   ssr: false,
 })
 
-export const Header = ({ title, principles = [] }) => {
+export const Header = ({ title, principles = [], contact }) => {
   // const visible = usePageAppear()
+  const [contactIsOpen, setContactIsOpen] = useStore(
+    (state) => [state.contactIsOpen, state.setContactIsOpen],
+    shallow
+  )
 
   return (
     <header className={cn(s.container, 'layout-block')}>
@@ -56,13 +64,22 @@ export const Header = ({ title, principles = [] }) => {
             </p>
           ))}
         </Marquee>
-        <Button className={s.cta}>Contact</Button>
+        <Button
+          className={s.cta}
+          aria-hidden={!contactIsOpen}
+          onClick={() => {
+            setContactIsOpen(!contactIsOpen)
+          }}
+        >
+          Contact
+        </Button>
       </div>
       <Separator />
       <div className={cn(s.header, 'layout-grid')}>
         <h1 className={cn('h1', s.title)}>{title}</h1>
       </div>
       <Separator />
+      <ContactForm data={contact} />
     </header>
   )
 }

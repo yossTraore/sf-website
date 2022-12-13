@@ -1,0 +1,30 @@
+.wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: desktop-vh(900px);
+  width: desktop-vw(732px);
+  background-color: var(--black);
+  z-index: 1;
+  transition: transform 1s var(--ease-out-expo);
+  padding: var(--layout-columns-gap);
+
+  &:not(.open) {
+    transform: translateX(100%);
+  }
+
+  .heading {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+
+    .cta {
+      margin-bottom: desktop-vw(19px);
+    }
+  }
+
+  .content {
+    padding: desktop-vw(24px) 0;
+  }
+}

@@ -11,18 +11,18 @@ import {
 } from 'contentful/queries/home.graphql'
 import { renderer } from 'contentful/renderer'
 import { Layout } from 'layouts/default'
+import { getForm } from 'lib/hubspot'
 import { useStore } from 'lib/store'
 import { useEffect, useState } from 'react'
+import shallow from 'zustand/shallow'
 import s from './home.module.scss'
 
 export default function Home({ studioFreight, footer, contact, projects }) {
   const [showInfoModal, setShowInfoModal] = useState(false)
-  const [selectedProject, setSelectedProject] = useStore((state) => [
-    state.selectedProject,
-    state.setSelectedProject,
-  ])
-
-  console.log({ contact })
+  const [selectedProject, setSelectedProject] = useStore(
+    (state) => [state.selectedProject, state.setSelectedProject],
+    shallow
+  )
 
   useEffect(() => {
     setSelectedProject(projects.items[0])
@@ -36,6 +36,7 @@ export default function Home({ studioFreight, footer, contact, projects }) {
         phone: studioFreight.phoneNumber,
         email: studioFreight.email,
       }}
+      contactData={contact}
       footerLinks={footer.linksCollection.items}
     >
       <div className={cn(s.content, 'layout-grid')}>
@@ -167,6 +168,8 @@ export async function getStaticProps({ preview = false }) {
         preview,
       }),
     ])
+
+  contact.form = await getForm(contact.form)
 
   return {
     props: {

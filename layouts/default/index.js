@@ -44,6 +44,7 @@ export function Layout({
   principles,
   footerLinks,
   studioInfo,
+  contactData,
 }) {
   const isTouchDevice = useIsTouchDevice()
   return (
@@ -51,7 +52,11 @@ export function Layout({
       <CustomHead {...seo} />
       <div className={cn(`theme-${theme}`, s.layout, className)}>
         {isTouchDevice === false && <Cursor />}
-        <Header title="STUDIO FREIGHT" principles={principles} />
+        <Header
+          title="STUDIO FREIGHT"
+          principles={principles}
+          contact={contactData}
+        />
         <main className={s.main}>{children}</main>
         <Footer links={footerLinks} studioInfo={studioInfo} />
       </div>

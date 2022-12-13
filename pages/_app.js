@@ -85,6 +85,16 @@ function MyApp({ Component, pageProps }) {
           />
         </>
       )}
+
+      {/* <!-- Hubspot script loader --> */}
+      <Script
+        strategy="worker"
+        type="text/javascript"
+        id="hs-script-loader"
+        src="//js.hsforms.net/forms/embed/v2.js"
+      />
+      {/* <!-- End Hubspot script loader --> */}
+
       <PageTransition />
       <RealViewport />
       <Component {...pageProps} />
