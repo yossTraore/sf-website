@@ -5,7 +5,7 @@
 .top {
   align-items: center;
   height: desktop-vw(66px);
-  overflow: hidden;
+  padding-top: desktop-vw(8px);
 
   .eggs {
     grid-column: span 1;
