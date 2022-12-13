@@ -1,4 +1,6 @@
 import cn from 'clsx'
+import { ComposableImage } from 'components/composable-image'
+import { Link } from 'components/link'
 import { ScrollableBox } from 'components/scrollable-box'
 import { fetchCmsQuery } from 'contentful/api'
 import {
@@ -41,9 +43,9 @@ export default function Home({ studioFreight, footer, contact, projects }) {
               {projects.items.map((project) => (
                 <li key={project.sys.id}>
                   <button
-                    onClick={() => setSelectedProject(project.sys.id)}
+                    onClick={() => setSelectedProject(project)}
                     className={cn(
-                      selectedProject === project.sys.id && s.active,
+                      selectedProject?.sys?.id === project.sys.id && s.active,
                       s['list-item']
                     )}
                   >
@@ -55,22 +57,30 @@ export default function Home({ studioFreight, footer, contact, projects }) {
             </ul>
           </ScrollableBox>
         </div>
-        <ScrollableBox className={s['project-details']} infinite>
-          {/* {projects.items.filter((project) => project.sys.id === selectedProject).map((project) => (
-                // <div key={`${project.sys.id}-details`}>{project.name}</p>
-                console.log(project)
-                // project.assetsCollection.items.map((asset) => (
-                //   <Image key={project.sys.id} src={asset.url} />
-                // )
-              ))} */}
-          {projects.items
-            .filter((project) => project.sys.id === selectedProject)
-            .map((project) => (
-              <p key={`${project.sys.id}-details`} className="p text-uppercase">
-                {project.name}
-              </p>
-            ))}
-        </ScrollableBox>
+        <div className={s['project-details']}>
+          <div className={s.heading}>
+            <p className="p text-bold text-uppercase text-muted">
+              Project detail
+            </p>
+            <div className={s.actions}>
+              <button className="p decorate">info</button>
+              <Link href={selectedProject?.link} className="p decorate">
+                site
+              </Link>
+            </div>
+          </div>
+          <ScrollableBox infinite>
+            {projects.items
+              .filter((project) => project.sys.id === selectedProject?.sys?.id)
+              .map((project) => (
+                <div key={`${project.sys.id}-details`} className={s.images}>
+                  {project.assetsCollection.items.map((asset, i) => (
+                    <ComposableImage key={i} sources={asset.imagesCollection} />
+                  ))}
+                </div>
+              ))}
+          </ScrollableBox>
+        </div>
       </section>
     </Layout>
   )

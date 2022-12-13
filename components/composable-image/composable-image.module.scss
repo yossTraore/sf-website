@@ -1,0 +1,17 @@
+.images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  grid-gap: desktop-vw(8px);
+  margin-bottom: desktop-vw(8px);
+
+  .image {
+    grid-column: span 1;
+    border-radius: desktop-vw(8px);
+
+    &:only-child {
+      grid-column: span 2;
+      width: 100%;
+    }
+  }
+}

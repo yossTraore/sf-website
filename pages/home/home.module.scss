@@ -35,5 +35,26 @@
 
   .project-details {
     grid-column: span 4;
+
+    .heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: desktop-vw(24px);
+
+      .actions {
+        text-transform: uppercase;
+        font-family: var(--font-secondary);
+
+        *:first-child {
+          margin-right: desktop-vw(16px);
+        }
+      }
+    }
+
+    .images {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
