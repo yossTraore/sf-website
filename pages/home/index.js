@@ -78,12 +78,12 @@ export default function Home({ studioFreight, footer, contact, projects }) {
             </p>
             <div className={s.actions}>
               <button
-                className="p decorate"
+                className="p-s decorate"
                 onClick={() => setShowInfoModal(!showInfoModal)}
               >
                 info
               </button>
-              <Link href={selectedProject?.link} className="p decorate">
+              <Link href={selectedProject?.link} className="p-s decorate">
                 site
               </Link>
             </div>
