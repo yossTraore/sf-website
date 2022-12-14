@@ -137,9 +137,8 @@ export const Hubspot = ({ children, form }) => {
   return children(helpers)
 }
 
-const FieldTypeSwitcher = (field, input, handlers) => {
-  console.log({ handlers })
-  // const { errors, InputField, SelectField, register } = handlers
+const fieldTypeSwitcher = (field, input, handlers) => {
+  const { errors, InputField, SelectField, register } = handlers
 
   switch (input.hubspotType) {
     case 'single_line_text':
@@ -215,11 +214,7 @@ const Form = ({
           if (input.type.includes('multiple')) {
             return (
               <Fragment key={`form-input-${key}`}>
-                <FieldTypeSwitcher
-                  field={{}}
-                  input={input}
-                  handlers={handlers}
-                />
+                {fieldTypeSwitcher({}, input, handlers)}
               </Fragment>
             )
           }
@@ -229,13 +224,7 @@ const Form = ({
               name={input.name}
               control={handlers.control}
               rules={{ required: input.required }}
-              render={({ field }) => (
-                <FieldTypeSwitcher
-                  field={field}
-                  input={input}
-                  handlers={handlers}
-                />
-              )}
+              render={({ field }) => fieldTypeSwitcher(field, input, handlers)}
             />
           )
         })}
