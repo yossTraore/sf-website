@@ -65,92 +65,26 @@
   }
 }
 
-// .dropdown {
-//   height: mobile-vw(50px);
-//   position: relative;
-//   width: 100%;
+.textarea {
+  @extend .inputs-basic;
+  height: desktop-vw(177px);
+  text-transform: capitalize;
 
-//   .required {
-//     position: absolute;
-//     opacity: 0;
-//   }
+  &::placeholder {
+    font-size: mobile-vw(16px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 125%;
+    letter-spacing: 0.01em;
+    text-transform: capitalize;
+    color: var(--grey);
 
-//   &.opened {
-//     svg {
-//       transform: rotate(180deg);
-//     }
-//   }
-
-//   svg {
-//     height: mobile-vw(25px);
-//     width: mobile-vw(25px);
-//     transition: 600ms transform var(--ease-out-expo);
-//     position: absolute;
-
-//     @include mobile {
-//       left: 89%;
-//       top: 20%;
-//     }
-
-//     @include desktop {
-//       left: 93%;
-//       top: 25%;
-//       height: desktop-vw(30px);
-//       width: desktop-vw(30px);
-//     }
-//   }
-
-//   .button {
-//     @extend .inputs-basic;
-//     position: relative;
-//     z-index: 1;
-
-//     .selected {
-//       color: var(--grey);
-//       font-weight: 700;
-//       color: var(--grey);
-
-//       @include mobile {
-//         font-size: mobile-vw(20px);
-//       }
-//     }
-//   }
-
-//   .options {
-//     width: 100%;
-//     position: absolute;
-//     z-index: 2;
-//     display: flex;
-//     flex-direction: column;
-//     background-color: var(--black);
-//     color: var(--white);
-//     border: 1px solid var(--white);
-//     border-top: 0;
-//     border-radius: 0 0 mobile-vw(10px) mobile-vw(10px);
-//     // max-height: mobile-vw(180px);
-//     left: 0;
-//     font-weight: 700;
-//     cursor: pointer;
-
-//     @include desktop {
-//       bottom: -1.5%;
-//       border-radius: 0 0 desktop-vw(10px) desktop-vw(10px);
-//       padding: desktop-vw(15px) desktop-vw(16px);
-//       // max-height: desktop-vw(310px);
-//     }
-
-//     > * {
-//       transition: 100ms color var(--ease-out-expo);
-
-//       @media screen and (hover: hover) {
-//         &:hover {
-//           color: var(--black);
-//           background-color: var(--white);
-//         }
-//       }
-//     }
-//   }
-// }
+    @include desktop {
+      line-height: 140%;
+      font-size: desktop-vw(16px);
+    }
+  }
+}
 
 .multiple-checkboxes {
   display: flex;

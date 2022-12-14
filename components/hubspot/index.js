@@ -2,7 +2,12 @@ import { Button } from 'components/button'
 import { useRouter } from 'next/router'
 import { Fragment, useEffect, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { InputField, MultipleCheckboxField, SelectField } from './input-fields'
+import {
+  InputField,
+  MultipleCheckboxField,
+  SelectField,
+  TextArea,
+} from './input-fields'
 
 const removeHTMLFromStrings = (data) => {
   const actionForEachType = (item) => {
@@ -146,7 +151,6 @@ const fieldTypeSwitcher = (field, input, handlers) => {
         <InputField
           error={errors[input.name]}
           label={input.label}
-          do
           placeholder={input.placeholder}
           required={input.required}
           type={input.type}
@@ -182,6 +186,17 @@ const fieldTypeSwitcher = (field, input, handlers) => {
           required={input.required}
           options={input.options}
           register={register}
+        />
+      )
+    case 'multi_line_text':
+      return (
+        <TextArea
+          error={errors[input.name]}
+          label={input.label}
+          placeholder={input.placeholder}
+          required={input.required}
+          type={input.type}
+          {...field}
         />
       )
     default:

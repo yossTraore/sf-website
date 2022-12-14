@@ -62,6 +62,7 @@
   border-radius: desktop-vw(5px);
   width: calc(100% - desktop-vw(50px));
   text-transform: uppercase;
+  padding: desktop-vw(15px) 0;
 }
 
 .item {
@@ -69,8 +70,8 @@
   color: var(--white);
   display: flex;
   align-items: center;
-  height: desktop-vw(30px);
-  padding: desktop-vw(5px) desktop-vw(10px);
+  height: desktop-vw(31px);
+  padding: desktop-vw(15px) desktop-vw(16px);
   position: relative;
   user-select: none;
 

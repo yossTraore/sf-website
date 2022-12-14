@@ -26,7 +26,48 @@ export function InputField({
       <input
         type={type}
         id={name}
-        className={cn(s.input, 'forms-fonts')}
+        className={cn(s.input)}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        onBlur={onBlur}
+      />
+      {error?.type === 'required' && (
+        <strong className={cn('p-s', s.error)}>{label} is required</strong>
+      )}
+      {error?.type === 'validate' && (
+        <>
+          <strong className={cn('p-s', s.error)}>{label} is invalid.</strong>
+          {pattern && <strong className={cn('p-s', s.error)}>{pattern}</strong>}
+        </>
+      )}
+    </div>
+  )
+}
+
+export function TextArea({
+  name,
+  label,
+  type,
+  error,
+  pattern = undefined,
+  placeholder,
+  value,
+  onChange,
+  onBlur,
+}) {
+  return (
+    <div className={s.wrapper}>
+      <label
+        htmlFor={name}
+        className={cn(s.label, 'p-xs text-uppercase text-muted')}
+      >
+        {label}
+      </label>
+      <textarea
+        type={type}
+        id={name}
+        className={s.textarea}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
