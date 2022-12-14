@@ -1,9 +1,11 @@
 .hi {
   overflow-y: scroll;
-  //todo review
-  // max-height: desktop-vh(468px);
   scrollbar-width: none !important;
   -ms-overflow-style: none;
+
+  //todo review
+  max-height: desktop-vh(449px);
+  //
 
   &::-webkit-scrollbar {
     width: 0 !important;

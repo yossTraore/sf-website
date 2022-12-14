@@ -1,10 +1,11 @@
 .content {
-  padding: desktop-vw(30px) 0 desktop-vw(18px) 0;
+  align-items: start;
+  height: 100%;
+  padding: desktop-vw(18px) 0 desktop-vw(24px) 0;
 }
 
 .about {
   grid-column: span 2;
-  height: 100%;
 
   .title {
     display: flex;
@@ -12,7 +13,6 @@
   }
 
   .description {
-    height: 100%;
   }
 }
 
@@ -25,8 +25,6 @@
   }
 
   .list {
-    height: 100%;
-
     .list-item {
       display: flex;
       justify-content: space-between;
@@ -152,7 +150,7 @@
   &:before {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -1px;
     width: 100%;
     height: desktop-vh(40px);
     background: linear-gradient(
