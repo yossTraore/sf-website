@@ -1,6 +1,7 @@
 import cn from 'clsx'
 import { Button } from 'components/button'
 import { Hubspot } from 'components/hubspot'
+import { ScrollableBox } from 'components/scrollable-box'
 import { renderer } from 'contentful/renderer'
 import { useStore } from 'lib/store'
 import dynamic from 'next/dynamic'
@@ -23,16 +24,18 @@ export function ContactForm({ data }) {
         </Button>
         <Separator />
       </div>
-      <div className={s.content}>{renderer(data.description)}</div>
-      <Hubspot {...data.form}>
-        {({ ...helpers }) => (
-          <Hubspot.Form className={s.form} {...helpers}>
-            {helpers.form.message && (
-              <p className={cn('p-xs', s.thanks)}>{helpers.form.message}</p>
-            )}
-          </Hubspot.Form>
-        )}
-      </Hubspot>
+      <ScrollableBox className={s.scrollable} shadow={false}>
+        <div className={s.content}>{renderer(data.description)}</div>
+        <Hubspot {...data.form}>
+          {({ ...helpers }) => (
+            <Hubspot.Form className={s.form} {...helpers}>
+              {helpers.form.message && (
+                <p className={cn('p-xs', s.thanks)}>{helpers.form.message}</p>
+              )}
+            </Hubspot.Form>
+          )}
+        </Hubspot>
+      </ScrollableBox>
     </div>
   )
 }

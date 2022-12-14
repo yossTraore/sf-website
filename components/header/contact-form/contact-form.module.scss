@@ -5,7 +5,7 @@
   height: desktop-vh(900px);
   width: desktop-vw(732px);
   background-color: var(--black);
-  z-index: 1;
+  z-index: 2;
   transition: transform 1s var(--ease-out-expo);
   padding: var(--layout-columns-gap);
 
@@ -27,4 +27,9 @@
   .content {
     padding: desktop-vw(24px) 0;
   }
+}
+
+.scrollable {
+  max-height: 100%;
+  padding-bottom: desktop-vw(100px);
 }
