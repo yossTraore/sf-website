@@ -1,4 +1,6 @@
 import cn from 'clsx'
+import { Select, SelectItem } from 'components/forms/select'
+import { slugify } from 'lib/slugify'
 import { useEffect, useState } from 'react'
 import s from './input-fields.module.scss'
 
@@ -85,8 +87,8 @@ export function SelectField({
   options,
   error,
   placeholder,
-  onChange,
-  onBlur,
+  // onChange,
+  // onBlur,
   required = false,
 }) {
   return (
@@ -97,13 +99,21 @@ export function SelectField({
       >
         {label} {required && '*'}
       </label>
-      <RawDropdown
+      <Select placeholder={placeholder}>
+        {options.map((option, i) => (
+          <SelectItem key={i} value={slugify(option)}>
+            {option}
+          </SelectItem>
+        ))}
+      </Select>
+      {/* <RawDropdown
         options={options}
         placeholder={placeholder}
         onChange={onChange}
         onBlur={onBlur}
         required={required}
-      />
+      /> */}
+
       {error?.type === 'required' && (
         <p className={cn('p-s', s.error)}>'{label}' field is required</p>
       )}

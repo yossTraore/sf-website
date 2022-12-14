@@ -6,9 +6,10 @@
   color: var(--white);
   border: 1px solid var(--white);
   border-radius: desktop-vw(10px);
-  margin-bottom: desktop-vw(15px);
   display: flex;
   justify-content: space-between;
+  text-transform: uppercase;
+
   -webkit-box-shadow: 0 0 0px 1000px transparent inset;
 
   &::placeholder {
@@ -32,6 +33,7 @@
   flex-direction: column;
   align-items: flex-start;
   margin-bottom: mobile-vw(15px);
+  position: relative;
 
   @include desktop {
     margin-bottom: desktop-vw(24px);
@@ -63,104 +65,92 @@
   }
 }
 
-.dropdown {
-  height: mobile-vw(50px);
-  position: relative;
-  width: 100%;
+// .dropdown {
+//   height: mobile-vw(50px);
+//   position: relative;
+//   width: 100%;
 
-  .required {
-    position: absolute;
-    opacity: 0;
-  }
+//   .required {
+//     position: absolute;
+//     opacity: 0;
+//   }
 
-  &.opened {
-    svg {
-      transform: rotate(180deg);
-    }
-  }
+//   &.opened {
+//     svg {
+//       transform: rotate(180deg);
+//     }
+//   }
 
-  svg {
-    height: mobile-vw(25px);
-    width: mobile-vw(25px);
-    transition: 600ms transform var(--ease-out-expo);
-    position: absolute;
+//   svg {
+//     height: mobile-vw(25px);
+//     width: mobile-vw(25px);
+//     transition: 600ms transform var(--ease-out-expo);
+//     position: absolute;
 
-    @include mobile {
-      left: 89%;
-      top: 20%;
-    }
+//     @include mobile {
+//       left: 89%;
+//       top: 20%;
+//     }
 
-    @include desktop {
-      left: 93%;
-      top: 25%;
-      height: desktop-vw(30px);
-      width: desktop-vw(30px);
-    }
-  }
+//     @include desktop {
+//       left: 93%;
+//       top: 25%;
+//       height: desktop-vw(30px);
+//       width: desktop-vw(30px);
+//     }
+//   }
 
-  .button {
-    position: relative;
-    z-index: 10;
-    @extend .inputs-basic;
-    padding: mobile-vw(10px) mobile-vw(15px);
+//   .button {
+//     @extend .inputs-basic;
+//     position: relative;
+//     z-index: 1;
 
-    @include desktop {
-      padding: desktop-vw(15px) desktop-vw(20px);
-    }
+//     .selected {
+//       color: var(--grey);
+//       font-weight: 700;
+//       color: var(--grey);
 
-    .selected {
-      color: #e0e0e0;
+//       @include mobile {
+//         font-size: mobile-vw(20px);
+//       }
+//     }
+//   }
 
-      @include mobile {
-        font-size: mobile-vw(20px);
-      }
-    }
-  }
+//   .options {
+//     width: 100%;
+//     position: absolute;
+//     z-index: 2;
+//     display: flex;
+//     flex-direction: column;
+//     background-color: var(--black);
+//     color: var(--white);
+//     border: 1px solid var(--white);
+//     border-top: 0;
+//     border-radius: 0 0 mobile-vw(10px) mobile-vw(10px);
+//     // max-height: mobile-vw(180px);
+//     left: 0;
+//     font-weight: 700;
+//     cursor: pointer;
 
-  .options {
-    z-index: 20;
-    width: 100%;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--white);
-    color: var(--black);
-    overflow-y: scroll;
-    border: 2px solid var(--black);
-    border-top: 0;
-    border-radius: 0 0 mobile-vw(10px) mobile-vw(10px);
-    max-height: mobile-vw(180px);
-    top: 74%;
-    left: 0;
-    font-weight: 700;
+//     @include desktop {
+//       bottom: -1.5%;
+//       border-radius: 0 0 desktop-vw(10px) desktop-vw(10px);
+//       padding: desktop-vw(15px) desktop-vw(16px);
+//       // max-height: desktop-vw(310px);
+//     }
 
-    @include desktop {
-      top: 68%;
-      border-radius: 0 0 desktop-vw(10px) desktop-vw(10px);
-      max-height: desktop-vw(310px);
-    }
+//     > * {
+//       transition: 100ms color var(--ease-out-expo);
 
-    > * {
-      padding: mobile-vw(8px) mobile-vw(28px);
-      transition: 100ms color var(--ease-out-expo);
-
-      @include desktop {
-        padding: desktop-vw(8px) desktop-vw(25px);
-      }
-
-      &:not(:first-child) {
-        border-top: 1px solid var(--theme-text);
-      }
-
-      @media screen and (hover: hover) {
-        &:hover {
-          color: var(--white);
-          background-color: var(--black);
-        }
-      }
-    }
-  }
-}
+//       @media screen and (hover: hover) {
+//         &:hover {
+//           color: var(--black);
+//           background-color: var(--white);
+//         }
+//       }
+//     }
+//   }
+// }
 
 .multiple-checkboxes {
   display: flex;
