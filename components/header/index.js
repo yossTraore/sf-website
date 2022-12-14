@@ -74,11 +74,11 @@ export const Header = ({ title, principles = [], contact }) => {
           Contact
         </Button>
       </div>
-      <Separator />
+      <Separator className={cn(s.separator, s['separator-top'])} />
       <div className={cn(s.header, 'layout-grid')}>
         <h1 className={cn('h1', s.title)}>{title}</h1>
       </div>
-      <Separator />
+      <Separator className={cn(s.separator, s['separator-bottom'])} />
       <ContactForm data={contact} />
     </header>
   )

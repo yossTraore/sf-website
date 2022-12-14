@@ -12,7 +12,7 @@ export function Footer({ className, style, links, studioInfo }) {
 
   return (
     <footer className={cn(s.container, 'layout-block')}>
-      <Separator />
+      <Separator className={s.separator} />
       <div className={cn(s.footer, 'layout-grid', className)} style={style}>
         <p className={cn(s.column, 'p-s text-muted')}>Built on Principle</p>
         <ul className={s.column}>
