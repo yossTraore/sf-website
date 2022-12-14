@@ -4,7 +4,7 @@
 
   .title {
     display: flex;
-    padding-bottom: desktop-vw(24px);
+    padding-bottom: desktop-vh(24px);
   }
 
   .description {
@@ -17,7 +17,7 @@
 
   .title {
     display: flex;
-    padding-bottom: desktop-vw(24px);
+    padding-bottom: desktop-vh(24px);
   }
 
   .list {
@@ -28,7 +28,7 @@
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      padding: desktop-vw(16px) 0;
+      padding: desktop-vh(16px) 0;
       border-top: 1px solid var(--grey);
       transition: color 500ms var(--ease-out-expo),
         padding 500ms var(--ease-out-expo);
@@ -41,8 +41,8 @@
 
       &:before {
         content: '';
-        height: desktop-vw(12px);
-        width: desktop-vw(12px);
+        height: desktop-vh(12px);
+        width: desktop-vh(12px);
         position: absolute;
         left: 1%;
         top: 50%;
@@ -56,7 +56,7 @@
 
       &.active {
         color: var(--green);
-        padding-left: desktop-vw(24px);
+        padding-left: desktop-vh(24px);
 
         &::before {
           opacity: 1;
@@ -70,7 +70,7 @@
   grid-column: span 4;
 
   .title {
-    padding-bottom: desktop-vw(24px);
+    padding-bottom: desktop-vh(24px);
   }
 
   .heading {
@@ -83,7 +83,7 @@
       font-family: var(--font-secondary);
 
       *:first-child {
-        margin-right: desktop-vw(16px);
+        margin-right: desktop-vh(16px);
       }
     }
   }
@@ -107,8 +107,8 @@
       > div {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-gap: desktop-vw(24px);
-        max-width: desktop-vw(508px);
+        grid-gap: desktop-vh(24px);
+        max-width: desktop-vh(508px);
       }
 
       &:not(.visible) {
@@ -124,7 +124,7 @@
       .testimonial {
         p:last-child {
           font-style: italic;
-          font-size: desktop-vw(18px);
+          font-size: desktop-vh(18px);
           line-height: 130%;
           font-family: var(--font-tertiary);
         }
@@ -150,7 +150,7 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: desktop-vw(40px);
+    height: desktop-vh(40px);
     background: linear-gradient(
       180deg,
       rgba(255, 255, 255, 0) 0%,

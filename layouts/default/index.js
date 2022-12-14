@@ -1,6 +1,6 @@
-import { useIsTouchDevice } from '@studio-freight/hamo'
 import cn from 'clsx'
-import { Cursor } from 'components/cursor'
+// import { useIsTouchDevice } from '@studio-freight/hamo'
+// import { Cursor } from 'components/cursor'
 import { CustomHead } from 'components/custom-head'
 import { Footer } from 'components/footer'
 import { Header } from 'components/header'
@@ -46,12 +46,12 @@ export function Layout({
   studioInfo,
   contactData,
 }) {
-  const isTouchDevice = useIsTouchDevice()
+  // const isTouchDevice = useIsTouchDevice()
   return (
     <>
       <CustomHead {...seo} />
       <div className={cn(`theme-${theme}`, s.layout, className)}>
-        {isTouchDevice === false && <Cursor />}
+        {/* {isTouchDevice === false && <Cursor />} */}
         <Header
           title="STUDIO FREIGHT"
           principles={principles}
