@@ -11,9 +11,6 @@
     display: flex;
     padding-bottom: desktop-vh(24px);
   }
-
-  .description {
-  }
 }
 
 .projects {
@@ -91,7 +88,11 @@
   }
 
   .details-content {
+    overflow: hidden;
+    height: 100%;
     position: relative;
+    display: flex;
+    flex-direction: column;
 
     .images {
       &:not(.visible) {
@@ -104,6 +105,7 @@
       position: absolute;
       left: 0;
       top: 0;
+      max-height: 100%;
       transition: opacity 1s var(--ease-out-expo);
 
       > div {
@@ -145,19 +147,9 @@
 }
 
 .content > section {
+  display: flex;
+  flex-direction: column;
   position: relative;
-
-  &:before {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    width: 100%;
-    height: desktop-vh(40px);
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(0, 0, 0, 1) 100%
-    );
-    z-index: 1;
-  }
+  max-height: 100%;
+  overflow: hidden;
 }
