@@ -2,7 +2,6 @@
   overflow-y: scroll;
   //todo review
   // max-height: desktop-vh(468px);
-  height: 100%;
   scrollbar-width: none !important;
   -ms-overflow-style: none;
 
@@ -13,4 +12,8 @@
 
   // fix bottom gradient
   padding-bottom: desktop-vh(40px);
+
+  > div {
+    height: 100%;
+  }
 }
