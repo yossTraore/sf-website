@@ -15,7 +15,10 @@ export function InputField({
 }) {
   return (
     <div className={s.wrapper}>
-      <label htmlFor={name} className={cn(s.label, 'p-xs')}>
+      <label
+        htmlFor={name}
+        className={cn(s.label, 'p-xs text-uppercase text-muted')}
+      >
         {label}
       </label>
       <input
@@ -49,7 +52,10 @@ export function MultipleCheckboxField({
 }) {
   return (
     <div className={s['multiple-checkboxes']}>
-      <label htmlFor={name} className={cn('p-s text-decorative', s.label)}>
+      <label
+        htmlFor={name}
+        className={cn('p-xs text-muted text-uppercase', s.label)}
+      >
         {label} {required && '*'}
       </label>
       {options.map((option) => (
@@ -85,7 +91,10 @@ export function SelectField({
 }) {
   return (
     <div className={s.wrapper}>
-      <label htmlFor={name} className={cn(s.label, 'text-decorative')}>
+      <label
+        htmlFor={name}
+        className={cn(s.label, 'p-xs text-uppercase text-muted')}
+      >
         {label} {required && '*'}
       </label>
       <RawDropdown

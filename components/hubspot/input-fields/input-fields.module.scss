@@ -1,28 +1,29 @@
 .inputs-basic {
   width: 100%;
-  padding: desktop-vw(20px) desktop-vw(20px);
-  height: desktop-vw(60px);
-  background: var(--white);
-  color: var(--black);
-  border: desktop-vw(2px) solid var(--black);
+  padding: desktop-vw(15px) desktop-vw(16px);
+  height: desktop-vw(48px);
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--white);
   border-radius: desktop-vw(10px);
   margin-bottom: desktop-vw(15px);
   display: flex;
   justify-content: space-between;
-  -webkit-box-shadow: 0 0 0px 1000px white inset;
-
-  @include mobile {
-    padding: mobile-vw(15px);
-    height: mobile-vw(45px);
-    background: var(--white);
-    border: 2px solid var(--black);
-    border-radius: mobile-vw(10px);
-    margin-bottom: mobile-vw(15px);
-    font-size: mobile-vw(20px);
-  }
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
 
   &::placeholder {
-    color: #e0e0e0;
+    font-size: mobile-vw(16px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 125%;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--grey);
+
+    @include desktop {
+      line-height: 140%;
+      font-size: desktop-vw(16px);
+    }
   }
 }
 
@@ -30,12 +31,10 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  height: mobile-vw(69px);
   margin-bottom: mobile-vw(15px);
 
   @include desktop {
-    height: desktop-vw(91px);
-    margin-bottom: desktop-vw(20px);
+    margin-bottom: desktop-vw(24px);
   }
 
   .input {
@@ -44,6 +43,11 @@
     &:focus {
       outline: none;
     }
+  }
+
+  .label {
+    font-family: var(--font-secondary);
+    margin-bottom: desktop-vw(8px);
   }
 
   .error {
@@ -170,6 +174,8 @@
   }
 
   .label {
+    font-family: var(--font-secondary);
+    margin-bottom: desktop-vw(8px);
     display: block;
     width: 100%;
   }
@@ -187,20 +193,10 @@
 
     span {
       display: block;
-      font-family: var(--font-stabil);
-      font-style: normal;
-      font-weight: 600;
-      font-size: desktop-vw(20px);
-      line-height: 110%;
-      text-align: center;
-      letter-spacing: -0.01em;
       text-transform: uppercase;
-      background-color: var(--white);
-      color: var(--black);
-      padding: desktop-vw(13px) desktop-vw(18px);
-      border-radius: desktop-vw(40px);
-      border: desktop-vw(2px) solid var(--black);
-      cursor: pointer;
+      padding: desktop-vw(15px) desktop-vw(16px);
+      border: 1px solid var(--white);
+      border-radius: desktop-vw(24px);
       /* stylelint-disable */
       transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
       /* stylelint-enable */

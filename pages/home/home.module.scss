@@ -146,10 +146,26 @@
   }
 }
 
-.content > section {
+.about,
+.projects,
+.project-details {
   display: flex;
   flex-direction: column;
   position: relative;
-  max-height: 100%;
   overflow: hidden;
+  height: 100%;
+
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: desktop-vh(40px);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(0, 0, 0, 1) 100%
+    );
+    z-index: 1;
+  }
 }

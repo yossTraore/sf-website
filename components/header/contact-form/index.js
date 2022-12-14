@@ -1,3 +1,4 @@
+import { useLayoutEffect } from '@studio-freight/hamo'
 import cn from 'clsx'
 import { Button } from 'components/button'
 import { Hubspot } from 'components/hubspot'
@@ -8,7 +9,9 @@ import dynamic from 'next/dynamic'
 import shallow from 'zustand/shallow'
 import s from './contact-form.module.scss'
 
-const Separator = dynamic(() => import('icons/separator.svg'), { ssr: false })
+const SeparatorSmall = dynamic(() => import('icons/separator-small.svg'), {
+  ssr: false,
+})
 
 export function ContactForm({ data }) {
   const [contactIsOpen, setContactIsOpen] = useStore(
@@ -16,26 +19,39 @@ export function ContactForm({ data }) {
     shallow
   )
 
+  useLayoutEffect(() => {
+    const escFunction = (event) => {
+      if (event.keyCode === 27) {
+        setContactIsOpen(false)
+      }
+    }
+
+    document.addEventListener('keydown', escFunction, false)
+    return () => document.removeEventListener('keydown', escFunction, false)
+  }, [])
+
   return (
-    <div className={cn(s.wrapper, contactIsOpen && s.open)}>
-      <div className={s.heading}>
-        <Button className={s.cta} onClick={() => setContactIsOpen(false)}>
-          close
-        </Button>
-        <Separator />
+    <div className={cn(s.container, contactIsOpen && s.open)}>
+      <div className={cn(s.wrapper, contactIsOpen && s.open)}>
+        <div className={s.heading}>
+          <Button className={s.cta} onClick={() => setContactIsOpen(false)}>
+            close
+          </Button>
+          <SeparatorSmall className={s.separator} />
+        </div>
+        <ScrollableBox className={s.scrollable} shadow={false}>
+          <div className={s.content}>{renderer(data.description)}</div>
+          <Hubspot {...data.form} className={s.form}>
+            {({ ...helpers }) => (
+              <Hubspot.Form className={s.form} {...helpers}>
+                {helpers.form.message && (
+                  <p className={cn('p-xs', s.thanks)}>{helpers.form.message}</p>
+                )}
+              </Hubspot.Form>
+            )}
+          </Hubspot>
+        </ScrollableBox>
       </div>
-      <ScrollableBox className={s.scrollable} shadow={false}>
-        <div className={s.content}>{renderer(data.description)}</div>
-        <Hubspot {...data.form}>
-          {({ ...helpers }) => (
-            <Hubspot.Form className={s.form} {...helpers}>
-              {helpers.form.message && (
-                <p className={cn('p-xs', s.thanks)}>{helpers.form.message}</p>
-              )}
-            </Hubspot.Form>
-          )}
-        </Hubspot>
-      </ScrollableBox>
     </div>
   )
 }
