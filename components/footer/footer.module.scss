@@ -6,7 +6,7 @@
 .footer {
   font-family: var(--font-secondary);
   text-transform: uppercase;
-  padding: desktop-vh(30px) 0 desktop-vh(24px) 0;
+  padding: desktop-vh(16px) 0 desktop-vh(24px) 0;
   width: 100%;
 
   .column {
@@ -29,14 +29,9 @@
       text-align: end;
       grid-column: span 1;
     }
-
-    // li + li {
-    //   margin-top: desktop-vw(4px);
-    // }
   }
 }
 
 .separator {
   display: block;
-  position: absolute;
 }
