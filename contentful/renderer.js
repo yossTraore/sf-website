@@ -27,7 +27,7 @@ export const renderer = ({ json }) => {
       },
       [INLINES.HYPERLINK]: function hyperlink(node, children) {
         return (
-          <Link href={node.data.uri} className={cn(s.link, 'link')}>
+          <Link href={node.data.uri} className={cn(s.link, 'decorate')}>
             {children}
           </Link>
         )

@@ -63,3 +63,28 @@
   max-height: 100%;
   padding-bottom: desktop-vw(100px);
 }
+
+.accordion {
+  padding: desktop-vw(24px) 0;
+
+  .title {
+    padding-bottom: desktop-vw(24px);
+  }
+
+  &-root {
+    padding: desktop-vw(24px) 0;
+
+    .item {
+      border-top: 1px solid;
+      padding: desktop-vw(16px) 0;
+
+      &:last-child {
+        border-bottom: 1px solid;
+      }
+    }
+
+    .trigger {
+      text-transform: uppercase;
+    }
+  }
+}

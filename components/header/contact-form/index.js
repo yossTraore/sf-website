@@ -1,9 +1,12 @@
+import * as Accordion from '@radix-ui/react-accordion'
 import { useLayoutEffect } from '@studio-freight/hamo'
 import cn from 'clsx'
+
 import { Button } from 'components/button'
 import { Hubspot } from 'components/hubspot'
 import { ScrollableBox } from 'components/scrollable-box'
 import { renderer } from 'contentful/renderer'
+import { slugify } from 'lib/slugify'
 import { useStore } from 'lib/store'
 import dynamic from 'next/dynamic'
 import shallow from 'zustand/shallow'
@@ -50,6 +53,27 @@ export function ContactForm({ data }) {
               </Hubspot.Form>
             )}
           </Hubspot>
+          <div className={s.accordion}>
+            <p className="p text-uppercase text-bold text-muted">FAQ</p>
+            <Accordion.Root type="single" className={s['accordion-root']}>
+              {data.faqsCollection.items.map((faq, i) => (
+                <Accordion.Item
+                  value={slugify(faq.title)}
+                  key={i}
+                  className={s.item}
+                >
+                  <Accordion.Header>
+                    <Accordion.Trigger className={s.trigger}>
+                      {faq.title}
+                    </Accordion.Trigger>
+                  </Accordion.Header>
+                  <Accordion.Content className={s.content}>
+                    {renderer(faq.content)}
+                  </Accordion.Content>
+                </Accordion.Item>
+              ))}
+            </Accordion.Root>
+          </div>
         </ScrollableBox>
       </div>
     </div>
