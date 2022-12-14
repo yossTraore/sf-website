@@ -73,18 +73,72 @@
 
   &-root {
     padding: desktop-vw(24px) 0;
+    padding-bottom: 0;
 
     .item {
-      border-top: 1px solid;
+      border-top: 1px solid var(--grey);
       padding: desktop-vw(16px) 0;
 
       &:last-child {
-        border-bottom: 1px solid;
+        border-bottom: 1px solid var(--grey);
       }
     }
 
     .trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       text-transform: uppercase;
+      width: 100%;
+
+      .icon {
+        width: desktop-vw(26px);
+        height: desktop-vw(26px);
+        aspect-ratio: 1;
+
+        .x {
+          transform-origin: center center;
+          transform: rotate(45deg);
+          transition: transform 0.5s var(--ease-out-expo);
+        }
+      }
+
+      &[data-state='open'] > .icon > .x {
+        transform: rotate(0);
+      }
+    }
+
+    .content {
+      overflow: hidden;
+
+      &[data-state='open'] {
+        animation: slideDown 300ms ease-out;
+      }
+      &[data-state='closed'] {
+        animation: slideUp 300ms ease-out;
+      }
+
+      @keyframes slideDown {
+        from {
+          padding: 0;
+          height: 0;
+        }
+        to {
+          padding: desktop-vw(16px) 0;
+          height: var(--radix-accordion-content-height);
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          padding: desktop-vw(16px) 0;
+          height: var(--radix-accordion-content-height);
+        }
+        to {
+          padding: 0;
+          height: 0;
+        }
+      }
     }
   }
 }
