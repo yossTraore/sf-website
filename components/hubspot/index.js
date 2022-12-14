@@ -9,6 +9,8 @@ import {
   TextArea,
 } from './input-fields'
 
+import s from './hubspot.module.scss'
+
 const removeHTMLFromStrings = (data) => {
   const actionForEachType = (item) => {
     switch (typeof item) {
@@ -208,14 +210,7 @@ const fieldTypeSwitcher = (field, input, handlers) => {
   }
 }
 
-const Form = ({
-  handlers,
-  form,
-  className,
-  children,
-  ctaStyle = { color: 'black', size: 'normal' },
-  style,
-}) => {
+const Form = ({ handlers, form, className, children, style }) => {
   return (
     <form
       className={className}
@@ -246,8 +241,8 @@ const Form = ({
       <Button
         type="submit"
         icon={true}
-        styling={ctaStyle}
         disabled={!!form.message}
+        className={s.button}
       >
         <p className="cta-s uppercase font-medium ">{form.submitButton.text}</p>
       </Button>

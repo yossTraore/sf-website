@@ -1,7 +1,6 @@
 import cn from 'clsx'
 import { Select, SelectItem } from 'components/forms/select'
 import { slugify } from 'lib/slugify'
-import { useEffect, useState } from 'react'
 import s from './input-fields.module.scss'
 
 export function InputField({
@@ -147,82 +146,9 @@ export function SelectField({
           </SelectItem>
         ))}
       </Select>
-      {/* <RawDropdown
-        options={options}
-        placeholder={placeholder}
-        onChange={onChange}
-        onBlur={onBlur}
-        required={required}
-      /> */}
 
       {error?.type === 'required' && (
         <p className={cn('p-s', s.error)}>'{label}' field is required</p>
-      )}
-    </div>
-  )
-}
-
-export const RawDropdown = ({
-  placeholder = 'all',
-  options = [],
-  onChange = () => {},
-  onBlur = () => {},
-  required = false,
-}) => {
-  const [currentValue, setCurrentValue] = useState(undefined)
-  const [opened, setOpened] = useState(false)
-
-  useEffect(() => {
-    onChange(currentValue)
-    onBlur(currentValue)
-  }, [onBlur, onChange, currentValue])
-
-  useEffect(() => {
-    const onClick = () => {
-      setOpened(false)
-    }
-    window.addEventListener('click', onClick)
-
-    return () => {
-      window.removeEventListener('click', onClick)
-    }
-  }, [])
-
-  return (
-    <div className={cn('p', s.dropdown, opened && s.opened)}>
-      <input required={required} value={currentValue} className={s.required} />
-      <div
-        className={s.button}
-        onClick={(e) => {
-          e.stopPropagation()
-          setOpened(!opened)
-        }}
-      >
-        {typeof currentValue === 'undefined' ? (
-          <span className={cn('p text-uppercase forms-fonts', s.selected)}>
-            {placeholder}
-          </span>
-        ) : (
-          <span className={'p text-uppercase forms-fonts'}>{currentValue}</span>
-        )}
-        v
-      </div>
-      {opened && (
-        <div className={s.options} data-lenis-prevent>
-          {options.map((option, key) => (
-            <div
-              key={key}
-              onClick={(e) => {
-                e.stopPropagation()
-                setCurrentValue(option)
-                setOpened(false)
-              }}
-              className="text-uppercase"
-            >
-              {option}
-            </div>
-          ))}
-        </div>
       )}
     </div>
   )
