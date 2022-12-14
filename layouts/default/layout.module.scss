@@ -1,11 +1,10 @@
 .layout {
   background-color: var(--theme-primary);
   color: var(--theme-secondary);
-  // min-height: 100vh;
+  min-height: 100vh;
   // max-height: 100vh;
   display: flex;
   flex-direction: column;
-  height: 100%;
 
   .main {
     // display: flex;
