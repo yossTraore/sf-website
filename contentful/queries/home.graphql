@@ -37,6 +37,14 @@ query contactEntryQuery($preview: Boolean!) {
       json
     }
     form
+    faqsCollection {
+      items {
+        title
+        content {
+          json
+        }
+      }
+    }
   }
 }
 
