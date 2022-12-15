@@ -68,7 +68,7 @@ export function ContactForm({ data }) {
                 >
                   <Accordion.Header>
                     <Accordion.Trigger className={s.trigger}>
-                      {faq.title}
+                      <p className="p text-bold text-uppercase">{faq.title}</p>
                       <svg
                         className={s.icon}
                         viewBox="0 0 26 26"
