@@ -26,6 +26,10 @@ export default function Home({ studioFreight, footer, contact, projects }) {
     (state) => [state.selectedProject, state.setSelectedProject],
     shallow
   )
+  const [galleryVisible, setGalleryVisible] = useStore(
+    (state) => [state.galleryVisible, state.setGalleryVisible],
+    shallow
+  )
 
   useEffect(() => {
     setSelectedProject(projects.items[0])
@@ -96,13 +100,28 @@ export default function Home({ studioFreight, footer, contact, projects }) {
             </div>
           </div>
           <div className={s['details-content']}>
-            <ScrollableBox
-              className={cn(s.images, !showInfoModal && s.visible)}
-            >
-              {selectedProject?.assetsCollection?.items.map((asset, i) => (
-                <ComposableImage key={i} sources={asset.imagesCollection} />
-              ))}
-            </ScrollableBox>
+            <div className={cn(s.images, !showInfoModal && s.visible)}>
+              <button
+                className={s['modal-trigger']}
+                onClick={() => setGalleryVisible(true)}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 26 26"
+                >
+                  <path
+                    stroke="var(--green)"
+                    d="M11 1H1v10M15 1h10v10M15 25h10V15M11 25H1V15m12-8v12m6-6H7"
+                  />
+                </svg>
+              </button>
+              <ScrollableBox>
+                {selectedProject?.assetsCollection?.items.map((asset, i) => (
+                  <ComposableImage key={i} sources={asset.imagesCollection} />
+                ))}
+              </ScrollableBox>
+            </div>
             <ScrollableBox className={cn(s.info, showInfoModal && s.visible)}>
               {selectedProject.description && (
                 <p className={cn(s.description, 'p')}>
@@ -163,6 +182,25 @@ export default function Home({ studioFreight, footer, contact, projects }) {
             </ScrollableBox>
           </div>
         </section>
+      </div>
+      <div className={cn(s.gallery, galleryVisible && s.visible)}>
+        <button className={s.close} onClick={() => setGalleryVisible(false)}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 26 26"
+          >
+            <path
+              stroke="var(--green)"
+              d="M11 1H1v10M15 1h10v10M15 25h10V15M11 25H1V15m7.8-6.2 8.4 8.4m0-8.4-8.4 8.4"
+            />
+          </svg>
+        </button>
+        <ScrollableBox className={s.scroller}>
+          {selectedProject?.assetsCollection?.items.map((asset, i) => (
+            <ComposableImage key={i} sources={asset.imagesCollection} />
+          ))}
+        </ScrollableBox>
       </div>
     </Layout>
   )

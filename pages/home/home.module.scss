@@ -112,6 +112,19 @@
     flex-direction: column;
 
     .images {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      position: relative;
+
+      .modal-trigger {
+        aspect-ratio: 1;
+        width: desktop-vw(24px);
+        position: absolute;
+        bottom: 0;
+        z-index: 1;
+      }
+
       &:not(.visible) {
         pointer-events: none;
         opacity: 0;
@@ -192,4 +205,28 @@
 .projects {
   border-right: 1px solid var(--grey);
   padding-right: desktop-vw(24px);
+}
+
+.gallery {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  padding: desktop-vw(110px) desktop-vw(201px);
+  height: 100%;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: opacity 500ms var(--ease-out-expo);
+
+  .close {
+    position: absolute;
+    left: desktop-vw(154px);
+    top: desktop-vw(110px);
+    width: desktop-vw(24px);
+    height: desktop-vw(24px);
+  }
+
+  &:not(.visible) {
+    opacity: 0;
+    pointer-events: none;
+  }
 }

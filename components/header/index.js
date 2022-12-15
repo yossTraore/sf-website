@@ -31,10 +31,7 @@ export const Header = ({ title, principles = [], contact }) => {
     <header className={cn(s.container, 'layout-block')}>
       <div className={cn(s.top, 'layout-grid')}>
         <div className={s.eggs}>
-          <Link
-            className={s.egg}
-            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-          >
+          <Link className={s.egg} href="https://darkroom.studiofreight.com">
             <SFDR />
           </Link>
           <Link
