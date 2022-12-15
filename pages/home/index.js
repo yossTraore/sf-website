@@ -97,7 +97,6 @@ export default function Home({ studioFreight, footer, contact, projects }) {
           </div>
           <div className={s['details-content']}>
             <ScrollableBox
-              infinite
               className={cn(s.images, !showInfoModal && s.visible)}
             >
               {selectedProject?.assetsCollection?.items.map((asset, i) => (
