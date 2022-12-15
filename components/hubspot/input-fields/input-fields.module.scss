@@ -96,7 +96,8 @@
 .textarea {
   @extend .inputs-basic;
   height: desktop-vw(177px);
-  text-transform: capitalize;
+  font-weight: 400;
+  text-transform: unset;
 
   &::placeholder {
     font-size: mobile-vw(16px);
