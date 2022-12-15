@@ -6,10 +6,11 @@
   margin-bottom: desktop-vw(8px);
 
   .image {
-    width: 100%;
     grid-column: span 1;
+    aspect-ratio: 684 / 403;
+    width: 100%;
+    height: desktop-vw(403px);
     border-radius: desktop-vw(8px);
-    object-fit: cover;
 
     &:only-child {
       grid-column: span 2;
