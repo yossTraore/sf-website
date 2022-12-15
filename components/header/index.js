@@ -1,3 +1,4 @@
+import { useMediaQuery } from '@studio-freight/hamo'
 import cn from 'clsx'
 import { Button } from 'components/button'
 import { Link } from 'components/link'
@@ -21,6 +22,7 @@ const StarDuotone = dynamic(() => import('icons/star-duotone.svg'), {
 })
 
 export const Header = ({ title, principles = [], contact }) => {
+  const isMobile = useMediaQuery('(max-width: 800px)')
   // const visible = usePageAppear()
   const [contactIsOpen, setContactIsOpen] = useStore(
     (state) => [state.contactIsOpen, state.setContactIsOpen],

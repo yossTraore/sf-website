@@ -1,5 +1,7 @@
+import { useMediaQuery } from '@studio-freight/hamo'
 import cn from 'clsx'
 import { ComposableImage } from 'components/composable-image'
+import { Image } from 'components/image'
 import { Link } from 'components/link'
 import { ScrollableBox } from 'components/scrollable-box'
 import { fetchCmsQuery } from 'contentful/api'
@@ -21,6 +23,7 @@ import s from './home.module.scss'
 const Arrow = dynamic(() => import('icons/arrow.svg'), { ssr: false })
 
 export default function Home({ studioFreight, footer, contact, projects }) {
+  const isMobile = useMediaQuery('(max-width: 800px)')
   const [showInfoModal, setShowInfoModal] = useState(false)
   const [selectedProject, setSelectedProject] = useStore(
     (state) => [state.selectedProject, state.setSelectedProject],
@@ -47,6 +50,15 @@ export default function Home({ studioFreight, footer, contact, projects }) {
       footerLinks={footer.linksCollection.items}
     >
       <div className={cn(s.content, 'layout-grid')}>
+        {isMobile === true && (
+          <Image
+            src={'/mobile-temp-images/Screen Shot 2022-08-02 at 11.40 1.jpg'}
+            alt={'Description'}
+            width={375}
+            height={340}
+            className={s.image}
+          />
+        )}
         <section className={s.about}>
           <p className={cn(s.title, 'p text-bold text-uppercase text-muted')}>
             About
