@@ -4,17 +4,30 @@
 
   .top {
     align-items: center;
-    padding-top: desktop-vh(16px);
-    padding-bottom: desktop-vh(8px);
+    padding-top: mobile-vh(16px);
+    padding-bottom: mobile-vh(8px);
+
+    @include desktop {
+      padding-top: desktop-vh(16px);
+      padding-bottom: desktop-vh(8px);
+    }
 
     .eggs {
-      grid-column: span 1;
+      grid-column: span 2;
+
+      @include desktop {
+        grid-column: span 1;
+      }
 
       .egg {
         display: inline-block;
-        width: desktop-vh(24px);
         aspect-ratio: 1;
+        width: mobile-vh(24px);
         transition: color 300ms var(--ease-out-expo);
+
+        @include desktop {
+          width: desktop-vh(24px);
+        }
 
         + .egg {
           margin-left: desktop-vh(9px);
@@ -44,12 +57,20 @@
           }
         }
       }
+
+      @include mobile {
+        display: none;
+      }
     }
 
     .cta {
+      grid-column: 3/-1;
       text-align: end;
-      grid-column: 8/-1;
       margin-left: auto;
+
+      @include desktop {
+        grid-column: 8/-1;
+      }
     }
   }
 

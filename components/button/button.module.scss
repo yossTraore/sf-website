@@ -1,12 +1,18 @@
 .button {
   color: var(--green);
-  font-size: desktop-vw(16px);
-  padding: desktop-vw(4px) desktop-vw(8px);
+  font-size: mobile-vw(14px);
+  padding: mobile-vw(4px) mobile-vw(8px);
+  border-radius: mobile-vw(8px);
   border: 1px solid;
-  border-radius: desktop-vw(8px);
   text-transform: uppercase;
   transition: color 300ms var(--ease-out-expo),
     background-color 300ms var(--ease-out-expo);
+
+  @include desktop {
+    font-size: desktop-vw(16px);
+    padding: desktop-vw(4px) desktop-vw(8px);
+    border-radius: desktop-vw(8px);
+  }
 
   @include hover {
     &:hover {

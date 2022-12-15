@@ -1,9 +1,12 @@
 .layout {
   background-color: var(--theme-primary);
   color: var(--theme-secondary);
-  height: 100vh;
   display: flex;
   flex-direction: column;
+
+  @include desktop {
+    height: 100vh;
+  }
 
   .main {
     display: flex;

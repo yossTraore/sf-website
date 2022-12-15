@@ -1,10 +1,18 @@
 .row {
-  margin-bottom: desktop-vw(24px);
+  margin-bottom: mobile-vw(24px);
+
+  @include desktop {
+    margin-bottom: desktop-vw(24px);
+  }
 
   i {
     vertical-align: top;
-    font-size: desktop-vw(12px);
     font-style: italic;
+    font-size: mobile-vw(12px);
+
+    @include desktop {
+      font-size: desktop-vw(12px);
+    }
   }
 }
 
