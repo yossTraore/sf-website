@@ -84,7 +84,7 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                 className="p-s decorate"
                 onClick={() => setShowInfoModal(!showInfoModal)}
               >
-                info
+                {showInfoModal ? 'close' : 'info'}
               </button>
               <Link
                 href={selectedProject?.link}
