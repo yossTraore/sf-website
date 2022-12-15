@@ -1,0 +1,28 @@
+.separator {
+  color: var(--grey);
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  .icon {
+    aspect-ratio: 1;
+    width: mobile-vw(12px);
+    height: mobile-vw(12px);
+
+    @include desktop {
+      width: desktop-vw(12px);
+      height: desktop-vw(12px);
+    }
+  }
+
+  .line {
+    flex: 1;
+    height: 1px;
+    background-color: var(--grey);
+    margin: 0 mobile-vw(8px);
+
+    @include desktop {
+      margin: 0 desktop-vw(8px);
+    }
+  }
+}

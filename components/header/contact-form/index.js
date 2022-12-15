@@ -1,21 +1,20 @@
 import * as Accordion from '@radix-ui/react-accordion'
 import { useLayoutEffect } from '@studio-freight/hamo'
 import cn from 'clsx'
-
 import { Button } from 'components/button'
 import { Hubspot } from 'components/hubspot'
 import { ScrollableBox } from 'components/scrollable-box'
+import { Separator } from 'components/separator'
 import { renderer } from 'contentful/faq-renderer'
 import { renderer as globalRenderer } from 'contentful/renderer'
 import { slugify } from 'lib/slugify'
 import { useStore } from 'lib/store'
-import dynamic from 'next/dynamic'
 import shallow from 'zustand/shallow'
 import s from './contact-form.module.scss'
 
-const SeparatorSmall = dynamic(() => import('icons/separator-small.svg'), {
-  ssr: false,
-})
+// const SeparatorSmall = dynamic(() => import('icons/separator-small.svg'), {
+//   ssr: false,
+// })
 
 export function ContactForm({ data }) {
   const [contactIsOpen, setContactIsOpen] = useStore(
@@ -41,7 +40,7 @@ export function ContactForm({ data }) {
           <Button className={s.cta} onClick={() => setContactIsOpen(false)}>
             close
           </Button>
-          <SeparatorSmall className={s.separator} />
+          <Separator className={s.separator} />
         </div>
         <ScrollableBox className={s.scrollable} shadow={false}>
           <div className={s.content}>{globalRenderer(data.description)}</div>

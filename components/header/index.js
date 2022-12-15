@@ -5,13 +5,13 @@ import { Marquee } from 'components/marquee'
 import { useStore } from 'lib/store'
 // import { usePageAppear } from 'hooks/use-page-appear'
 import { ContactForm } from 'components/header/contact-form'
+import { Separator } from 'components/separator'
 import { pad } from 'lib/maths'
-import shallow from 'zustand/shallow'
-
 import dynamic from 'next/dynamic'
+import shallow from 'zustand/shallow'
 import s from './header.module.scss'
 
-const Separator = dynamic(() => import('icons/separator.svg'), { ssr: false })
+// const Separator = dynamic(() => import('icons/separator.svg'), { ssr: false })
 
 const SFDR = dynamic(() => import('icons/sfdr.svg'), { ssr: false })
 const Stard = dynamic(() => import('icons/stard.svg'), { ssr: false })
@@ -74,11 +74,11 @@ export const Header = ({ title, principles = [], contact }) => {
           Contact
         </Button>
       </div>
-      <Separator className={cn(s.separator, s['separator-top'])} />
+      <Separator />
       <div className={cn(s.header, 'layout-grid')}>
         <h1 className={cn('h1', s.title)}>{title}</h1>
       </div>
-      <Separator className={cn(s.separator, s['separator-bottom'])} />
+      <Separator />
       <ContactForm data={contact} />
     </header>
   )

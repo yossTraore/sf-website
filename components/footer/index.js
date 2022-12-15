@@ -1,18 +1,15 @@
 import { useMediaQuery } from '@studio-freight/hamo'
 import cn from 'clsx'
 import { Link } from 'components/link'
-
-import dynamic from 'next/dynamic'
+import { Separator } from 'components/separator'
 import s from './footer.module.scss'
-
-const Separator = dynamic(() => import('icons/separator.svg'), { ssr: false })
 
 export function Footer({ className, style, links, studioInfo }) {
   const isMobile = useMediaQuery('(max-width: 800px)')
 
   return (
     <footer className={cn(s.container, 'layout-block')}>
-      <Separator className={s.separator} />
+      <Separator />
       <div className={cn(s.footer, 'layout-grid', className)} style={style}>
         <p className={cn(s.column, 'p-s text-muted')}>Built on Principle</p>
         <ul className={s.column}>
