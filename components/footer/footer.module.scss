@@ -29,6 +29,10 @@
       text-align: end;
       grid-column: span 1;
     }
+
+    li + li {
+      margin-top: desktop-vw(4px);
+    }
   }
 }
 
