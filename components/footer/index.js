@@ -16,7 +16,7 @@ export function Footer({ className, style, links, studioInfo }) {
       <div className={cn(s.footer, 'layout-grid', className)} style={style}>
         <p className={cn(s.column, 'p-s text-muted')}>Built on Principle</p>
         <ul className={s.column}>
-          {links.slice(0, 3).map((link, i) => (
+          {links.slice(0, 2).map((link, i) => (
             <li key={i}>
               <Link className="p-s decorate" href={link.url}>
                 {link.text}
@@ -25,7 +25,7 @@ export function Footer({ className, style, links, studioInfo }) {
           ))}
         </ul>
         <ul className={s.column}>
-          {links.slice(3, 6).map((link, i) => (
+          {links.slice(2, 4).map((link, i) => (
             <li key={i}>
               <Link className="p-s decorate" href={link.url}>
                 {link.text}
@@ -34,7 +34,7 @@ export function Footer({ className, style, links, studioInfo }) {
           ))}
         </ul>
         <ul className={s.column}>
-          {links.slice(6, links.length).map((link, i) => (
+          {links.slice(4, 6).map((link, i) => (
             <li key={i}>
               <Link className="p-s decorate" href={link.url}>
                 {link.text}
