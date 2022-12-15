@@ -39,7 +39,7 @@ export function Layout({
     ],
   },
   children,
-  theme = 'light',
+  theme = 'dark',
   className,
   principles,
   footerLinks,
