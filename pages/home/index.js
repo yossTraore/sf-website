@@ -104,9 +104,11 @@ export default function Home({ studioFreight, footer, contact, projects }) {
               ))}
             </ScrollableBox>
             <ScrollableBox className={cn(s.info, showInfoModal && s.visible)}>
-              <p className={cn(s.description, 'p')}>
-                {selectedProject.description}
-              </p>
+              {selectedProject.description && (
+                <p className={cn(s.description, 'p')}>
+                  {selectedProject.description}
+                </p>
+              )}
               {selectedProject.testimonial && (
                 <div className={s.testimonial}>
                   <p
@@ -120,38 +122,44 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                   <p className="p">{selectedProject.testimonial}</p>
                 </div>
               )}
-              <div className={s.services}>
-                <p
-                  className={cn(
-                    s.title,
-                    'p text-muted text-uppercase text-bold'
-                  )}
-                >
-                  Services
-                </p>
-                <p className="p text-uppercase">
-                  {selectedProject?.services?.map((service, i) =>
-                    i === selectedProject.services.length - 1
-                      ? service
-                      : `${service}, `
-                  )}
-                </p>
-              </div>
-              <div className={s.stack}>
-                <p
-                  className={cn(
-                    s.title,
-                    'p text-muted text-uppercase text-bold'
-                  )}
-                >
-                  Stack
-                </p>
-                <p className="p text-uppercase">
-                  {selectedProject?.stack?.map((item, i) =>
-                    i === selectedProject.stack.length - 1 ? item : `${item}, `
-                  )}
-                </p>
-              </div>
+              {selectedProject?.services?.length > 0 && (
+                <div className={s.services}>
+                  <p
+                    className={cn(
+                      s.title,
+                      'p text-muted text-uppercase text-bold'
+                    )}
+                  >
+                    Services
+                  </p>
+                  <p className="p text-uppercase">
+                    {selectedProject?.services?.map((service, i) =>
+                      i === selectedProject.services.length - 1
+                        ? service
+                        : `${service}, `
+                    )}
+                  </p>
+                </div>
+              )}
+              {selectedProject?.stack?.length > 0 && (
+                <div className={s.stack}>
+                  <p
+                    className={cn(
+                      s.title,
+                      'p text-muted text-uppercase text-bold'
+                    )}
+                  >
+                    Stack
+                  </p>
+                  <p className="p text-uppercase">
+                    {selectedProject?.stack?.map((item, i) =>
+                      i === selectedProject.stack.length - 1
+                        ? item
+                        : `${item}, `
+                    )}
+                  </p>
+                </div>
+              )}
             </ScrollableBox>
           </div>
         </section>
