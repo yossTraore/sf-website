@@ -37,6 +37,21 @@
     padding-top: desktop-vh(16px);
     padding-bottom: desktop-vh(24px);
   }
+
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: desktop-vh(86px);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(0, 0, 0, 1) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
 }
 
 .container {
