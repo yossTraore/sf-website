@@ -107,17 +107,19 @@ export default function Home({ studioFreight, footer, contact, projects }) {
               <p className={cn(s.description, 'p')}>
                 {selectedProject.description}
               </p>
-              <div className={s.testimonial}>
-                <p
-                  className={cn(
-                    s.title,
-                    'p text-muted text-uppercase text-bold'
-                  )}
-                >
-                  Testimonial
-                </p>
-                <p className="p">{selectedProject.testimonial}</p>
-              </div>
+              {selectedProject.testimonial && (
+                <div className={s.testimonial}>
+                  <p
+                    className={cn(
+                      s.title,
+                      'p text-muted text-uppercase text-bold'
+                    )}
+                  >
+                    Testimonial
+                  </p>
+                  <p className="p">{selectedProject.testimonial}</p>
+                </div>
+              )}
               <div className={s.services}>
                 <p
                   className={cn(
