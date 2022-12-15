@@ -21,7 +21,7 @@ export function InputField({
         htmlFor={name}
         className={cn(s.label, 'p-xs text-uppercase text-muted')}
       >
-        {label}
+        {label} {required && '*'}
       </label>
       <input
         type={type}
@@ -34,11 +34,11 @@ export function InputField({
         required={required}
       />
       {error?.type === 'required' && (
-        <strong className={cn('p-s', s.error)}>{label} is required</strong>
+        <strong className={cn('p-s', s.error)}>'{label}'' is required</strong>
       )}
       {error?.type === 'validate' && (
         <>
-          <strong className={cn('p-s', s.error)}>{label} is invalid.</strong>
+          <strong className={cn('p-s', s.error)}>'{label}'' is invalid.</strong>
           {pattern && <strong className={cn('p-s', s.error)}>{pattern}</strong>}
         </>
       )}
