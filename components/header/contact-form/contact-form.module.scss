@@ -7,7 +7,7 @@
   background-color: var(--black);
   z-index: 3;
   transition: transform 1s var(--ease-out-expo);
-  padding: desktop-vh(16px) var(--layout-columns-gap) desktop-vh(8px)
+  padding: desktop-vw(16px) var(--layout-columns-gap) desktop-vw(8px)
     var(--layout-columns-gap);
   display: flex;
   flex-direction: column;
@@ -34,8 +34,8 @@
   }
 
   .content {
-    padding-top: desktop-vh(16px);
-    padding-bottom: desktop-vh(24px);
+    padding-top: desktop-vw(16px);
+    padding-bottom: desktop-vw(24px);
   }
 
   &:before {
@@ -43,7 +43,7 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: desktop-vh(86px);
+    height: desktop-vw(86px);
     background: linear-gradient(
       180deg,
       rgba(255, 255, 255, 0) 0%,

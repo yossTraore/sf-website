@@ -4,12 +4,12 @@
 
   .top {
     align-items: center;
-    padding-top: mobile-vh(16px);
-    padding-bottom: mobile-vh(8px);
+    padding-top: mobile-vw(16px);
+    padding-bottom: mobile-vw(8px);
 
     @include desktop {
-      padding-top: desktop-vh(16px);
-      padding-bottom: desktop-vh(8px);
+      padding-top: desktop-vw(16px);
+      padding-bottom: desktop-vw(8px);
     }
 
     .eggs {
@@ -82,7 +82,7 @@
       text-shadow: 0 0 10px;
 
       @include mobile {
-        margin: mobile-vh(10px) 0;
+        margin: mobile-vw(10px) 0;
       }
     }
   }
