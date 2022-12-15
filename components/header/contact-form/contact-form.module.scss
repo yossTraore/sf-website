@@ -35,7 +35,7 @@
 
   .content {
     padding-top: desktop-vh(16px);
-    padding-bottom: desktop-vh(8px);
+    padding-bottom: desktop-vh(24px);
   }
 }
 
@@ -64,8 +64,14 @@
   padding-bottom: desktop-vw(100px);
 }
 
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: desktop-vw(24px);
+}
+
 .accordion {
-  padding: desktop-vw(24px) 0;
+  padding: desktop-vw(48px) 0 desktop-vw(24px) 0;
 
   .title {
     padding-bottom: desktop-vw(24px);
@@ -107,37 +113,39 @@
         transform: rotate(0);
       }
     }
+  }
 
-    .content {
-      overflow: hidden;
+  &-content {
+    padding-top: desktop-vw(16px);
+    overflow: hidden;
+    max-width: 80%;
 
-      &[data-state='open'] {
-        animation: slideDown 300ms ease-out;
+    &[data-state='open'] {
+      animation: slideDown 300ms ease-out;
+    }
+    &[data-state='closed'] {
+      animation: slideUp 300ms ease-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        padding: 0;
+        height: 0;
       }
-      &[data-state='closed'] {
-        animation: slideUp 300ms ease-out;
+      to {
+        padding: desktop-vw(16px) 0;
+        height: var(--radix-accordion-content-height);
       }
+    }
 
-      @keyframes slideDown {
-        from {
-          padding: 0;
-          height: 0;
-        }
-        to {
-          padding: desktop-vw(16px) 0;
-          height: var(--radix-accordion-content-height);
-        }
+    @keyframes slideUp {
+      from {
+        padding: desktop-vw(16px) 0;
+        height: var(--radix-accordion-content-height);
       }
-
-      @keyframes slideUp {
-        from {
-          padding: desktop-vw(16px) 0;
-          height: var(--radix-accordion-content-height);
-        }
-        to {
-          padding: 0;
-          height: 0;
-        }
+      to {
+        padding: 0;
+        height: 0;
       }
     }
   }

@@ -27,6 +27,10 @@
       font-size: desktop-vw(16px);
     }
   }
+
+  &:not([data-placeholder]) {
+    border: 1px solid var(--green);
+  }
 }
 
 .icon {

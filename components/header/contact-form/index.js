@@ -5,7 +5,8 @@ import cn from 'clsx'
 import { Button } from 'components/button'
 import { Hubspot } from 'components/hubspot'
 import { ScrollableBox } from 'components/scrollable-box'
-import { renderer } from 'contentful/renderer'
+import { renderer } from 'contentful/faq-renderer'
+import { renderer as globalRenderer } from 'contentful/renderer'
 import { slugify } from 'lib/slugify'
 import { useStore } from 'lib/store'
 import dynamic from 'next/dynamic'
@@ -43,7 +44,7 @@ export function ContactForm({ data }) {
           <SeparatorSmall className={s.separator} />
         </div>
         <ScrollableBox className={s.scrollable} shadow={false}>
-          <div className={s.content}>{renderer(data.description)}</div>
+          <div className={s.content}>{globalRenderer(data.description)}</div>
           <Hubspot {...data.form} className={s.form}>
             {({ ...helpers }) => (
               <Hubspot.Form className={s.form} {...helpers}>
@@ -55,7 +56,11 @@ export function ContactForm({ data }) {
           </Hubspot>
           <div className={s.accordion}>
             <p className="p text-uppercase text-bold text-muted">FAQ</p>
-            <Accordion.Root type="single" className={s['accordion-root']}>
+            <Accordion.Root
+              type="single"
+              className={s['accordion-root']}
+              collapsible
+            >
               {data.faqsCollection.items.map((faq, i) => (
                 <Accordion.Item
                   value={slugify(faq.title)}
@@ -88,7 +93,7 @@ export function ContactForm({ data }) {
                       </svg>
                     </Accordion.Trigger>
                   </Accordion.Header>
-                  <Accordion.Content className={s.content}>
+                  <Accordion.Content className={s['accordion-content']}>
                     {renderer(faq.content)}
                   </Accordion.Content>
                 </Accordion.Item>

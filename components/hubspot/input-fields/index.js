@@ -13,6 +13,7 @@ export function InputField({
   value,
   onChange,
   onBlur,
+  required,
 }) {
   return (
     <div className={s.wrapper}>
@@ -30,6 +31,7 @@ export function InputField({
         value={value}
         onChange={onChange}
         onBlur={onBlur}
+        required={required}
       />
       {error?.type === 'required' && (
         <strong className={cn('p-s', s.error)}>{label} is required</strong>
@@ -54,6 +56,7 @@ export function TextArea({
   value,
   onChange,
   onBlur,
+  required,
 }) {
   return (
     <div className={s.wrapper}>
@@ -71,6 +74,7 @@ export function TextArea({
         value={value}
         onChange={onChange}
         onBlur={onBlur}
+        required={required}
       />
       {error?.type === 'required' && (
         <strong className={cn('p-s', s.error)}>{label} is required</strong>
@@ -112,6 +116,7 @@ export function MultipleCheckboxField({
             type="checkbox"
             value={option}
             name={label}
+            required={required}
             {...register(label.toLowerCase())}
           />
           <span>{option}</span>
@@ -139,7 +144,7 @@ export function SelectField({
       >
         {label} {required && '*'}
       </label>
-      <Select placeholder={placeholder}>
+      <Select placeholder={placeholder} className={s.select}>
         {options.map((option, i) => (
           <SelectItem key={i} value={slugify(option)}>
             {option}
