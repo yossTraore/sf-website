@@ -58,14 +58,14 @@ export default function Home({ studioFreight, footer, contact, projects }) {
           <ScrollableBox className={s.list} infinite>
             <ul>
               {projects.items.map((project) => (
-                <li key={project.sys.id}>
-                  <button
-                    onClick={() => setSelectedProject(project)}
-                    className={cn(
-                      selectedProject?.sys?.id === project.sys.id && s.active,
-                      s['list-item']
-                    )}
-                  >
+                <li
+                  key={project.sys.id}
+                  className={cn(
+                    selectedProject?.sys?.id === project.sys.id && s.active,
+                    s['list-item']
+                  )}
+                >
+                  <button onClick={() => setSelectedProject(project)}>
                     <p className="p text-bold text-uppercase">{project.name}</p>
                     <p className="p-xs text-uppercase">{project.industry}</p>
                   </button>
