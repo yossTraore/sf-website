@@ -9,6 +9,7 @@
     width: 100%;
     grid-column: span 1;
     border-radius: desktop-vw(8px);
+    object-fit: cover;
 
     &:only-child {
       grid-column: span 2;

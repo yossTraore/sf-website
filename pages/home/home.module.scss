@@ -27,7 +27,7 @@
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      padding: desktop-vh(16px) 0;
+      padding: desktop-vw(16px) 0;
       border-top: 1px solid var(--grey);
       transition: color 500ms var(--ease-out-expo),
         padding 500ms var(--ease-out-expo);
@@ -40,8 +40,8 @@
 
       &:before {
         content: '';
-        height: desktop-vh(12px);
-        width: desktop-vh(12px);
+        height: desktop-vw(12px);
+        width: desktop-vw(12px);
         position: absolute;
         left: 1%;
         top: 50%;
@@ -55,7 +55,7 @@
 
       &.active {
         color: var(--green);
-        padding-left: desktop-vh(24px);
+        padding-left: desktop-vw(24px);
 
         &::before {
           opacity: 1;

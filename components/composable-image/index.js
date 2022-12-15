@@ -11,7 +11,7 @@ export function ComposableImage({ sources }) {
           src={source.url}
           alt={source.title}
           width={684 / amount}
-          height={430}
+          height={403}
           className={s.image}
         />
       ))}
