@@ -84,6 +84,16 @@
       *:first-child {
         margin-right: desktop-vh(16px);
       }
+
+      .external {
+        .arrow {
+          display: inline;
+          margin-right: 0;
+          margin-left: desktop-vw(2px);
+          width: desktop-vw(6px);
+          aspect-ratio: 1;
+        }
+      }
     }
   }
 
@@ -167,5 +177,6 @@
       rgba(0, 0, 0, 1) 100%
     );
     z-index: 1;
+    pointer-events: none;
   }
 }

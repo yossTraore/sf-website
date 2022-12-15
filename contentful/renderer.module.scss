@@ -15,5 +15,7 @@
 }
 
 .link {
-  text-decoration: underline;
+  &::before {
+    transform: scaleX(1) !important;
+  }
 }
