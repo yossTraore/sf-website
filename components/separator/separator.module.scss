@@ -5,6 +5,8 @@
   align-items: center;
 
   .icon {
+    display: block;
+    position: relative;
     aspect-ratio: 1;
     width: mobile-vw(12px);
     height: mobile-vw(12px);
@@ -12,6 +14,22 @@
     @include desktop {
       width: desktop-vw(12px);
       height: desktop-vw(12px);
+    }
+
+    &:before,
+    &:after {
+      content: '';
+      width: 100%;
+      height: 1px;
+      background-color: currentColor;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &:before {
+      transform: translate(-50%, -50%) rotate(90deg);
     }
   }
 
