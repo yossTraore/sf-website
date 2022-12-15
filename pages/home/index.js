@@ -132,7 +132,7 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                   >
                     Services
                   </p>
-                  <p className="p text-uppercase">
+                  <p className="p-s text-uppercase">
                     {selectedProject?.services?.map((service, i) =>
                       i === selectedProject.services.length - 1
                         ? service
@@ -151,7 +151,7 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                   >
                     Stack
                   </p>
-                  <p className="p text-uppercase">
+                  <p className="p-s text-uppercase">
                     {selectedProject?.stack?.map((item, i) =>
                       i === selectedProject.stack.length - 1
                         ? item
