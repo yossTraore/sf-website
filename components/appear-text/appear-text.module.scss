@@ -9,7 +9,7 @@
 
     > * {
       position: relative;
-      white-space: nowrap;
+      theme-primary-space: nowrap;
     }
 
     .text {
@@ -70,7 +70,7 @@
       position: absolute;
       inset: var(--inset);
       display: block;
-      background-color: var(--white);
+      background-color: var(--theme-primary);
       z-index: 2;
       transform: scaleX(0);
       transform-origin: left;
@@ -83,7 +83,7 @@
         top: 0;
         width: 100%;
         height: 100%;
-        background-color: var(--black);
+        background-color: var(--theme-secondary);
         animation-delay: var(--delay) !important;
         transform-origin: left;
         transform: scaleX(0);

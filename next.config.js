@@ -54,7 +54,6 @@ const nextConfig = {
                 plugins: [
                   'removeDimensions',
                   'removeOffCanvasPaths',
-                  // 'reusePaths',
                   'removeElementsByAttr',
                   'removeStyleElement',
                   'removeScriptElement',
@@ -66,24 +65,13 @@ const nextConfig = {
                       floatPrecision: 1,
                     },
                   },
-                  // {
-                  //   name: 'convertPathData',
-                  //   params: {
-                  //     floatPrecision: 1,
-                  //   },
-                  // },
+
                   {
                     name: 'convertTransform',
                     params: {
                       floatPrecision: 1,
                     },
                   },
-                  // {
-                  //   name: 'cleanupListOfValues',
-                  //   params: {
-                  //     floatPrecision: 1,
-                  //   },
-                  // },
                 ],
               },
             },

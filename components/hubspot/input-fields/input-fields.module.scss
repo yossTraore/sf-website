@@ -3,8 +3,8 @@
   padding: desktop-vw(15px) desktop-vw(16px);
   height: desktop-vw(48px);
   background: transparent;
-  color: var(--white);
-  border: 1px solid var(--white);
+  color: var(--theme-secondary);
+  border: 1px solid currentColor;
   border-radius: desktop-vw(10px);
   display: flex;
   justify-content: space-between;
