@@ -10,7 +10,7 @@ export function Layout({
   seo = {
     title: 'Studio Freight - Built on Principle',
     description:
-      'A design studio built on principle. We grow brands by making them easy to understand and impossible to ignore. Our creative experts support with branding, art direction, strategy, web design, web development, packaging, copywriting, lettering, illustration, photography, murals, signage, video, and beyond.',
+      'Studio Freight is an independent creative studio built on principle.',
     image: { url: '/og.jpg' },
     keywords: [
       'freight',
