@@ -109,28 +109,34 @@
     }
 
     &[data-state='open'] {
-      animation: slideDown 300ms ease-out;
+      animation: open 300ms ease-out;
     }
-
     &[data-state='closed'] {
-      animation: slideUp 300ms ease-out;
+      animation: close 300ms ease-out;
     }
 
-    @keyframes slideDown {
+    @keyframes open {
       from {
         height: 0;
       }
+
       to {
-        height: var(--radix-accordion-content-height);
+        height: var(--radix-collapsible-content-height);
       }
     }
 
-    @keyframes slideUp {
+    @keyframes close {
       from {
-        height: var(--radix-accordion-content-height);
+        height: var(--radix-collapsible-content-height);
       }
+
       to {
         height: 0;
+        padding-top: 0;
+
+        @include desktop {
+          padding-top: 0;
+        }
       }
     }
   }
