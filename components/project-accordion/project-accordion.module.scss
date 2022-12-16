@@ -17,16 +17,22 @@
     }
 
     .trigger {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
       text-transform: uppercase;
       width: 100%;
+
+      span {
+        margin: auto 0;
+        margin-left: mobile-vw(15px);
+        width: fit-content;
+      }
 
       .icon {
         aspect-ratio: 1;
         width: mobile-vw(24px);
         height: mobile-vw(24px);
+        margin-left: auto;
 
         .x {
           transform-origin: center center;
@@ -64,17 +70,10 @@
       .arrow {
         display: inline;
         margin-right: 0;
-        margin-left: mobile-vw(2px);
+        margin-left: mobile-vw(5px);
         width: mobile-vw(6px);
         aspect-ratio: 1;
       }
-    }
-
-    > div {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-gap: mobile-vw(24px);
-      max-width: mobile-vw(508px);
     }
 
     .slides {
@@ -96,11 +95,18 @@
       }
     }
 
-    .stack,
-    .services {
-      p:last-child {
-        font-family: var(--font-secondary);
-        font-size: mobile-vw(10px);
+    .info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: mobile-vw(24px);
+      max-width: mobile-vw(508px);
+
+      .stack,
+      .services {
+        p:last-child {
+          font-family: var(--font-secondary);
+          font-size: mobile-vw(10px);
+        }
       }
     }
 
