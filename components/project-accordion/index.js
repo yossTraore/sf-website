@@ -64,10 +64,12 @@ export const ProjectAccordion = ({ data }) => {
                   />
                 ))}
               </Slider>
-              <Link href={item?.link} className={cn('p-s', s.external)}>
-                site
-                <Arrow className={s.arrow} />
-              </Link>
+              {item?.link && (
+                <Link href={item?.link} className={cn('p-s', s.external)}>
+                  site
+                  <Arrow className={s.arrow} />
+                </Link>
+              )}
               {item.description && (
                 <p className={cn(s.description, 'p')}>{item.description}</p>
               )}
