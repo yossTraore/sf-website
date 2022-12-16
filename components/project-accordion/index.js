@@ -53,7 +53,12 @@ export const ProjectAccordion = ({ data }) => {
               </Accordion.Trigger>
             </Accordion.Header>
             <Accordion.Content className={s['accordion-content']}>
-              <Slider enableAutoplay={!!active} className={s.slides}>
+              <Slider
+                // enableAutoplay={!!active}
+                slidesToShow={0.85}
+                enableAutoplay={false}
+                className={s.slides}
+              >
                 {item.assetsCollection.items.map((asset, i) => (
                   <ComposableImage
                     sources={asset.imagesCollection}

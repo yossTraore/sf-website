@@ -45,6 +45,7 @@ export function Gallery() {
             sources={asset.imagesCollection}
             width={1038}
             height={611}
+            large
           />
         ))}
       </ScrollableBox>

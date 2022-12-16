@@ -238,12 +238,7 @@ const Form = ({ handlers, form, className, children, style }) => {
             />
           )
         })}
-      <Button
-        type="submit"
-        icon={true}
-        disabled={!!form.message}
-        className={s.button}
-      >
+      <Button type="submit" disabled={!!form.message} className={s.button}>
         {form.submitButton.text}
       </Button>
       {children}

@@ -1,7 +1,13 @@
+import cn from 'clsx'
 import { Image } from 'components/image'
 import s from './composable-image.module.scss'
 
-export function ComposableImage({ sources, width = 684, height = 403 }) {
+export function ComposableImage({
+  sources,
+  width = 684,
+  height = 403,
+  large = false,
+}) {
   const amount = sources.items.length
   return (
     <div className={s.images}>
@@ -12,7 +18,7 @@ export function ComposableImage({ sources, width = 684, height = 403 }) {
           alt={source.title}
           width={width / amount}
           height={height}
-          className={s.image}
+          className={cn(s.image, large && s.large)}
           style={{ '--height': height, '--width': width / amount }}
         />
       ))}
