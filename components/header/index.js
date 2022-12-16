@@ -55,14 +55,16 @@ export const Header = ({ title, principles = [], contact }) => {
             <StarDuotone />
           </Link>
         </div>
-        <Marquee className={s.marquee} duration={20}>
-          {principles.map((principle, i) => (
-            <p key={i} className={cn('p', s.principle)}>
-              &nbsp;<span>{pad(i + 1)}</span>
-              &nbsp;{principle}&nbsp;//
-            </p>
-          ))}
-        </Marquee>
+        {isMobile === false && (
+          <Marquee className={s.marquee} duration={20}>
+            {principles.map((principle, i) => (
+              <p key={i} className={cn('p', s.principle)}>
+                &nbsp;<span>{pad(i + 1)}</span>
+                &nbsp;{principle}&nbsp;//
+              </p>
+            ))}
+          </Marquee>
+        )}
         <Button
           className={s.cta}
           aria-hidden={!contactIsOpen}

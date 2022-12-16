@@ -1,5 +1,6 @@
 import { useMediaQuery } from '@studio-freight/hamo'
 import cn from 'clsx'
+import { Image } from 'components/image'
 import { Link } from 'components/link'
 import { Separator } from 'components/separator'
 import s from './footer.module.scss'
@@ -55,6 +56,17 @@ export function Footer({ className, style, links, studioInfo }) {
           <li className="p-s text-muted">&copy; {new Date().getFullYear()}</li>
         </ul>
       </div>
+
+      {isMobile === true && (
+        <section className={s.image}>
+          <Image
+            src={'/mobile-temp-images/hamo-banner.png'}
+            alt={'hamo placeholder'}
+            width={375}
+            height={340}
+          />
+        </section>
+      )}
     </footer>
   )
 }

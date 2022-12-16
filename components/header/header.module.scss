@@ -5,7 +5,7 @@
   .top {
     align-items: center;
     padding-top: mobile-vw(16px);
-    padding-bottom: mobile-vw(8px);
+    padding-bottom: mobile-vw(24px);
 
     @include desktop {
       padding-top: desktop-vw(16px);
@@ -41,28 +41,6 @@
       }
     }
 
-    .marquee {
-      grid-column: 5/8;
-      color: var(--grey);
-      text-transform: uppercase;
-
-      .principle {
-        font-weight: 700;
-        filter: blur(1.5px);
-        transition: filter 300ms ease-in-out;
-
-        @include hover {
-          &:hover {
-            filter: blur(0);
-          }
-        }
-      }
-
-      @include mobile {
-        display: none;
-      }
-    }
-
     .cta {
       grid-column: 3/-1;
       text-align: end;
@@ -71,6 +49,28 @@
       @include desktop {
         grid-column: 8/-1;
       }
+    }
+  }
+
+  .marquee {
+    grid-column: 5/8;
+    color: var(--grey);
+    text-transform: uppercase;
+
+    .principle {
+      font-weight: 700;
+      filter: blur(1.5px);
+      transition: filter 300ms ease-in-out;
+
+      @include hover {
+        &:hover {
+          filter: blur(0);
+        }
+      }
+    }
+
+    @include mobile {
+      margin: mobile-vw(24px) 0;
     }
   }
 
