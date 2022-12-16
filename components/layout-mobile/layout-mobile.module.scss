@@ -3,12 +3,12 @@
   height: 100%;
   padding: desktop-vw(18px) 0 desktop-vw(24px) 0;
 
-  @include mobile {
-    display: block;
-  }
-
   .hero-image {
     margin-bottom: mobile-vw(24px);
+    position: relative;
+    aspect-ratio: 375 / 350;
+    width: 100%;
+    height: mobile-vw(350px);
   }
 }
 
@@ -166,11 +166,14 @@
 
 .image {
   position: relative;
+  aspect-ratio: 375 / 279;
+  width: 100%;
+  height: mobile-vw(279px);
 
   &:before {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -1px;
     width: 100%;
     height: mobile-vw(190px);
     background: linear-gradient(

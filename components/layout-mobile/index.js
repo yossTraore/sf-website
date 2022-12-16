@@ -11,8 +11,7 @@ const LayoutMobile = ({ projects, studioFreight }) => {
         <Image
           src="/mobile-temp-images/tetsuo.jpg"
           alt="tetsuo placeholder face"
-          width={375}
-          height={340}
+          fill
         />
       </section>
       <section className={cn(s.projects, 'layout-block')}>
@@ -22,8 +21,7 @@ const LayoutMobile = ({ projects, studioFreight }) => {
         <Image
           src={'/mobile-temp-images/sf-game-boy.png'}
           alt={'tetsuo placeholder face'}
-          width={375}
-          height={340}
+          fill
         />
       </section>
       <section className={cn(s.about, 'layout-block')}>
