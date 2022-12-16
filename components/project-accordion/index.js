@@ -5,11 +5,14 @@ import { Link } from 'components/link'
 import Slider from 'components/slider'
 import { slugify } from 'lib/slugify'
 import dynamic from 'next/dynamic'
+import { useState } from 'react'
 import s from './project-accordion.module.scss'
 
 const Arrow = dynamic(() => import('icons/arrow.svg'), { ssr: false })
 
 export const ProjectAccordion = ({ data }) => {
+  const [active, setActive] = useState(0)
+
   return (
     <div className={s.accordion}>
       <p className="p text-bold text-uppercase text-muted">Projects</p>
@@ -18,7 +21,12 @@ export const ProjectAccordion = ({ data }) => {
         {data.map((item, i) => (
           <Accordion.Item value={slugify(item.name)} key={i} className={s.item}>
             <Accordion.Header asChild>
-              <Accordion.Trigger className={s.trigger}>
+              <Accordion.Trigger
+                onClick={() => {
+                  setActive(active === i ? false : i)
+                }}
+                className={s.trigger}
+              >
                 <p>{item.name}</p>
                 <span className="p-s">{item.industry}</span>
                 <svg
@@ -45,7 +53,7 @@ export const ProjectAccordion = ({ data }) => {
               </Accordion.Trigger>
             </Accordion.Header>
             <Accordion.Content className={s['accordion-content']}>
-              <Slider className={s.slides}>
+              <Slider enableAutoplay={!!active} className={s.slides}>
                 {item.assetsCollection.items.map((asset, i) => (
                   <ComposableImage
                     sources={asset.imagesCollection}

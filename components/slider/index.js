@@ -7,14 +7,18 @@ export default function Slider({
   draggable = true,
   slideGap = '10px',
   className,
+  enableAutoplay = false,
 }) {
   const elRef = useBlazeSlider({
     all: {
       slidesToShow,
       draggable,
       slideGap,
+      enableAutoplay,
     },
   })
+
+  console.log(enableAutoplay)
 
   return (
     <div className={cn(className, 'blaze-slider')} ref={elRef}>
