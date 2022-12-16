@@ -9,8 +9,8 @@ export function Footer({ className, style, links, studioInfo }) {
   const isMobile = useMediaQuery('(max-width: 800px)')
 
   return (
-    <footer className={cn(s.container, 'layout-block')}>
-      <Separator />
+    <footer className={s.container}>
+      <Separator className="layout-block" />
       <div className={cn(s.footer, 'layout-grid', className)} style={style}>
         <p className={cn(s.column, 'p-s text-muted')}>Built on Principle</p>
         {isMobile === false && (
@@ -96,12 +96,12 @@ export function Footer({ className, style, links, studioInfo }) {
       </div>
 
       {isMobile === true && (
-        <section className={s.image}>
+        <section className={s['footer-image']}>
           <Image
             src={'/mobile-temp-images/hamo-banner.png'}
             alt={'hamo placeholder'}
-            width={375}
-            height={340}
+            fill
+            className={s.image}
           />
         </section>
       )}
