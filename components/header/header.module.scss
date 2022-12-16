@@ -70,6 +70,13 @@
           filter: blur(0);
         }
       }
+
+      .separator {
+        margin: 0 mobile-vw(16px);
+        @include desktop {
+          margin: 0 desktop-vw(16px);
+        }
+      }
     }
 
     @include mobile {

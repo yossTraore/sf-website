@@ -1,18 +1,15 @@
 import { useMediaQuery } from '@studio-freight/hamo'
 import cn from 'clsx'
 import { Button } from 'components/button'
+import { ContactForm } from 'components/header/contact-form'
 import { Link } from 'components/link'
 import { Marquee } from 'components/marquee'
-import { useStore } from 'lib/store'
-// import { usePageAppear } from 'hooks/use-page-appear'
-import { ContactForm } from 'components/header/contact-form'
 import { Separator } from 'components/separator'
 import { pad } from 'lib/maths'
+import { useStore } from 'lib/store'
 import dynamic from 'next/dynamic'
 import shallow from 'zustand/shallow'
 import s from './header.module.scss'
-
-// const Separator = dynamic(() => import('icons/separator.svg'), { ssr: false })
 
 const SFDR = dynamic(() => import('icons/sfdr.svg'), { ssr: false })
 const Stard = dynamic(() => import('icons/stard.svg'), { ssr: false })
@@ -66,8 +63,9 @@ export const Header = ({ title, principles = [], contact }) => {
           <Marquee className={s.marquee} duration={20}>
             {principles.map((principle, i) => (
               <p key={i} className={cn('p', s.principle)}>
-                &nbsp;<span>{pad(i + 1)}</span>
-                &nbsp;{principle}&nbsp;//
+                <span>{pad(i + 1)}</span>
+                &nbsp;{principle}
+                <span className={s.separator}>{'//'}</span>
               </p>
             ))}
           </Marquee>
@@ -91,8 +89,9 @@ export const Header = ({ title, principles = [], contact }) => {
         <Marquee className={s.marquee} duration={20}>
           {principles.map((principle, i) => (
             <p key={i} className={cn('p', s.principle)}>
-              &nbsp;<span>{pad(i + 1)}</span>
-              &nbsp;{principle}&nbsp;//
+              <span>{pad(i + 1)}</span>
+              &nbsp;{principle}
+              <span className={s.separator}>{'//'}</span>
             </p>
           ))}
         </Marquee>
