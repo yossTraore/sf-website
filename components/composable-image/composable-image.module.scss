@@ -30,5 +30,10 @@
         height: desktop-vw(611px);
       }
     }
+    &.small {
+      @include mobile {
+        height: mobile-vw(211px);
+      }
+    }
   }
 }
