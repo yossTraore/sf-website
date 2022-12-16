@@ -2,16 +2,6 @@
   align-items: start;
   height: 100%;
   padding: desktop-vw(18px) 0 desktop-vw(24px) 0;
-
-  @include mobile {
-    display: block;
-  }
-
-  .image {
-    @include mobile {
-      margin: mobile-vw(24px) 0;
-    }
-  }
 }
 
 .about {
