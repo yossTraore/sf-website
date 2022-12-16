@@ -1,7 +1,8 @@
 import * as RadixAccordion from '@radix-ui/react-accordion'
 import cn from 'clsx'
-import { Image } from 'components/image'
+import { ComposableImage } from 'components/composable-image'
 import { Link } from 'components/link'
+import Slider from 'components/slider'
 import { slugify } from 'lib/slugify'
 import dynamic from 'next/dynamic'
 import s from './project-accordion.module.scss'
@@ -53,7 +54,7 @@ export const ProjectAccordion = ({ data }) => {
             </RadixAccordion.Header>
             <RadixAccordion.Content className={s['accordion-content']}>
               {/* image need to be and slider */}
-              <Image
+              {/* <Image
                 src={
                   item.assetsCollection.items[0].imagesCollection.items[0].url
                 }
@@ -61,7 +62,17 @@ export const ProjectAccordion = ({ data }) => {
                 width={375}
                 height={238}
                 className={s.image}
-              />
+              /> */}
+              <Slider className={s.slides}>
+                {item.assetsCollection.items.map((asset, i) => (
+                  <ComposableImage
+                    sources={asset.imagesCollection}
+                    key={i}
+                    width={404}
+                    height={238}
+                  />
+                ))}
+              </Slider>
               <Link href={item?.link} className={cn('p-s', s.external)}>
                 site
                 <Arrow className={s.arrow} />

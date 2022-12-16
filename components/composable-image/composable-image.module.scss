@@ -2,14 +2,22 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   overflow: hidden;
-  grid-gap: desktop-vw(8px);
-  margin-bottom: desktop-vw(8px);
+  grid-gap: mobile-vw(8px);
+
+  @include desktop {
+    grid-gap: desktop-vw(8px);
+    margin-bottom: desktop-vw(8px);
+  }
 
   .image {
     grid-column: span 1;
     width: 100%;
     aspect-ratio: var(--width) / var(--height);
-    border-radius: desktop-vw(8px);
+    border-radius: mobile-vw(8px);
+
+    @include desktop {
+      border-radius: desktop-vw(8px);
+    }
 
     &:only-child {
       grid-column: span 2;

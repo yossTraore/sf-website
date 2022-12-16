@@ -81,6 +81,11 @@
       max-width: mobile-vw(508px);
     }
 
+    .slides {
+      grid-template-columns: 1fr;
+      padding: mobile-vw(16px) 0;
+    }
+
     .description,
     .testimonial {
       margin-bottom: mobile-vw(24px);
