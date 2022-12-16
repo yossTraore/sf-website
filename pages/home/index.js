@@ -68,7 +68,7 @@ export default function Home({ studioFreight, footer, contact, projects }) {
             <p className={cn(s.title, 'p text-bold text-uppercase text-muted')}>
               Projects
             </p>
-            <ScrollableBox className={s.list} infinite>
+            <ScrollableBox className={s.list}>
               <ul>
                 {projects.items.map((project) => (
                   <li
