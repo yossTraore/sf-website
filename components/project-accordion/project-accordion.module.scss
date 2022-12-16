@@ -50,8 +50,6 @@
     overflow: hidden;
     height: 100%;
     position: relative;
-    display: flex;
-    flex-direction: column;
 
     .image {
       aspect-ratio: 343 / 238;
@@ -62,14 +60,12 @@
 
     .external {
       color: var(--green);
-      margin-bottom: mobile-vw(24px);
 
       .arrow {
         display: inline;
         margin-right: 0;
         margin-left: mobile-vw(2px);
         width: mobile-vw(6px);
-
         aspect-ratio: 1;
       }
     }
@@ -88,7 +84,7 @@
 
     .description,
     .testimonial {
-      margin-bottom: mobile-vw(24px);
+      margin: mobile-vw(24px) 0;
     }
 
     .testimonial {

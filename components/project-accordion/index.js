@@ -1,4 +1,4 @@
-import * as RadixAccordion from '@radix-ui/react-accordion'
+import * as Accordion from '@radix-ui/react-accordion'
 import cn from 'clsx'
 import { ComposableImage } from 'components/composable-image'
 import { Link } from 'components/link'
@@ -14,15 +14,11 @@ export const ProjectAccordion = ({ data }) => {
     <div className={s.accordion}>
       <p className="p text-bold text-uppercase text-muted">Projects</p>
 
-      <RadixAccordion.Root className={s['accordion-root']} collapsible>
+      <Accordion.Root type="single" className={s['accordion-root']} collapsible>
         {data.map((item, i) => (
-          <RadixAccordion.Item
-            value={slugify(item.name)}
-            key={i}
-            className={s.item}
-          >
-            <RadixAccordion.Header>
-              <RadixAccordion.Trigger className={s.trigger}>
+          <Accordion.Item value={slugify(item.name)} key={i} className={s.item}>
+            <Accordion.Header asChild>
+              <Accordion.Trigger className={s.trigger}>
                 <p>{item.name}</p>
                 <span className="p-s">{item.industry}</span>
                 <svg
@@ -46,9 +42,9 @@ export const ProjectAccordion = ({ data }) => {
                     />
                   </g>
                 </svg>
-              </RadixAccordion.Trigger>
-            </RadixAccordion.Header>
-            <RadixAccordion.Content className={s['accordion-content']}>
+              </Accordion.Trigger>
+            </Accordion.Header>
+            <Accordion.Content className={s['accordion-content']}>
               <Slider className={s.slides}>
                 {item.assetsCollection.items.map((asset, i) => (
                   <ComposableImage
@@ -118,10 +114,10 @@ export const ProjectAccordion = ({ data }) => {
                   </div>
                 )}
               </div>
-            </RadixAccordion.Content>
-          </RadixAccordion.Item>
+            </Accordion.Content>
+          </Accordion.Item>
         ))}
-      </RadixAccordion.Root>
+      </Accordion.Root>
     </div>
   )
 }
