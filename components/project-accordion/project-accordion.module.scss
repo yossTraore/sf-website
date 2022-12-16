@@ -19,6 +19,7 @@
     .trigger {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
       text-transform: uppercase;
       width: 100%;
 
