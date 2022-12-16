@@ -103,13 +103,15 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                 >
                   {showInfoModal ? 'close' : 'info'}
                 </button>
-                <Link
-                  href={selectedProject?.link}
-                  className={cn('p-s decorate', s.external)}
-                >
-                  site
-                  <Arrow className={s.arrow} />
-                </Link>
+                {selectedProject?.link && (
+                  <Link
+                    href={selectedProject?.link}
+                    className={cn('p-s decorate', s.external)}
+                  >
+                    site
+                    <Arrow className={s.arrow} />
+                  </Link>
+                )}
               </div>
             </div>
             <div className={s['details-content']}>

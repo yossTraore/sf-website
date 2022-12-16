@@ -88,7 +88,7 @@
       text-transform: uppercase;
       font-family: var(--font-secondary);
 
-      *:first-child {
+      *:first-child:not(:last-child) {
         margin-right: desktop-vh(16px);
       }
 
