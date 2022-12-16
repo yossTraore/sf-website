@@ -21,7 +21,6 @@ export function ScrollableBox({ children, className, infinite }) {
       smooth: true,
       infinite,
     })
-
     lenis.start()
     setLenis(lenis)
 

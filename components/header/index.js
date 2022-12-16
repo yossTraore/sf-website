@@ -34,6 +34,20 @@ export const Header = ({ title, principles = [], contact }) => {
       <div className={cn(s.top, 'layout-grid')}>
         <div className={s.eggs}>
           <Link
+            name="easter egg"
+            className={s.egg}
+            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          >
+            <Stard />
+          </Link>
+          <Link
+            name="easter egg - soundboard"
+            className={s.egg}
+            href="https://soundboard.studiofreight.com"
+          >
+            <Monogram />
+          </Link>
+          <Link
             name="darkroom website"
             className={s.egg}
             href="https://darkroom.studiofreight.com"
@@ -41,23 +55,9 @@ export const Header = ({ title, principles = [], contact }) => {
             <SFDR />
           </Link>
           <Link
-            name="easter egg links"
+            name="easter egg - pale blue dot"
             className={s.egg}
-            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-          >
-            <Stard />
-          </Link>
-          <Link
-            name="easter egg links"
-            className={s.egg}
-            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-          >
-            <Monogram />
-          </Link>
-          <Link
-            name="easter egg links"
-            className={s.egg}
-            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            href="https://youtube.com/watch?v=go5fwsblpt8"
           >
             <StarDuotone />
           </Link>
