@@ -7,6 +7,7 @@
   text-transform: uppercase;
   transition: color 300ms var(--ease-out-expo),
     background-color 300ms var(--ease-out-expo);
+  user-select: none;
 
   @include desktop {
     font-size: desktop-vw(16px);
