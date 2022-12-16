@@ -2,14 +2,16 @@
   position: fixed;
   inset: 0;
   z-index: 1;
-  padding: desktop-vh(110px) desktop-vw(201px);
   height: 100%;
+  padding: desktop-vh(110px) desktop-vw(201px);
   display: flex;
   background-color: rgba(0, 0, 0, 0.8);
-  transition: opacity 500ms var(--ease-out-expo);
+  transition: opacity 500ms var(--ease-out-expo),
+    transform 500ms var(--ease-out-expo);
 
   .scroller {
-    border-radius: desktop-vw(8px);
+    border-top-right-radius: desktop-vw(8px);
+    border-top-left-radius: desktop-vw(8px);
   }
 
   .close {
@@ -27,5 +29,6 @@
   &:not(.visible) {
     opacity: 0;
     pointer-events: none;
+    transform: translateY(2%);
   }
 }

@@ -33,22 +33,29 @@ export const Header = ({ title, principles = [], contact }) => {
     <header className={cn(s.container, 'layout-block')}>
       <div className={cn(s.top, 'layout-grid')}>
         <div className={s.eggs}>
-          <Link className={s.egg} href="https://darkroom.studiofreight.com">
+          <Link
+            name="darkroom website"
+            className={s.egg}
+            href="https://darkroom.studiofreight.com"
+          >
             <SFDR />
           </Link>
           <Link
+            name="easter egg links"
             className={s.egg}
             href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
           >
             <Stard />
           </Link>
           <Link
+            name="easter egg links"
             className={s.egg}
             href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
           >
             <Monogram />
           </Link>
           <Link
+            name="easter egg links"
             className={s.egg}
             href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
           >
@@ -67,7 +74,6 @@ export const Header = ({ title, principles = [], contact }) => {
         )}
         <Button
           className={s.cta}
-          aria-hidden={!contactIsOpen}
           onClick={() => {
             setContactIsOpen(!contactIsOpen)
           }}

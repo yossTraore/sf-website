@@ -144,7 +144,7 @@ export function SelectField({
       >
         {label} {required && '*'}
       </label>
-      <Select placeholder={placeholder} className={s.select}>
+      <Select placeholder={placeholder} className={s.select} name={name}>
         {options.map((option, i) => (
           <SelectItem key={i} value={slugify(option)}>
             {option}
