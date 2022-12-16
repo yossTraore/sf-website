@@ -1,5 +1,5 @@
 import * as Accordion from '@radix-ui/react-accordion'
-import { useLayoutEffect } from '@studio-freight/hamo'
+import { useLayoutEffect, useOutsideClickEvent } from '@studio-freight/hamo'
 import cn from 'clsx'
 import { Button } from 'components/button'
 import { Hubspot } from 'components/hubspot'
@@ -9,10 +9,12 @@ import { renderer } from 'contentful/faq-renderer'
 import { renderer as globalRenderer } from 'contentful/renderer'
 import { slugify } from 'lib/slugify'
 import { useStore } from 'lib/store'
+import { useRef } from 'react'
 import shallow from 'zustand/shallow'
 import s from './contact-form.module.scss'
 
 export function ContactForm({ data }) {
+  const menuRef = useRef(null)
   const [contactIsOpen, setContactIsOpen] = useStore(
     (state) => [state.contactIsOpen, state.setContactIsOpen],
     shallow
@@ -29,9 +31,11 @@ export function ContactForm({ data }) {
     return () => document.removeEventListener('keydown', escFunction, false)
   }, [])
 
+  useOutsideClickEvent(menuRef, () => setContactIsOpen(false))
+
   return (
     <div className={cn(s.container, contactIsOpen && s.open)}>
-      <div className={cn(s.wrapper, contactIsOpen && s.open)}>
+      <div className={cn(s.wrapper, contactIsOpen && s.open)} ref={menuRef}>
         <div className={s.heading}>
           <Button className={s.cta} onClick={() => setContactIsOpen(false)}>
             close

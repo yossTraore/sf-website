@@ -1,12 +1,14 @@
-import { useLayoutEffect } from '@studio-freight/hamo'
+import { useLayoutEffect, useOutsideClickEvent } from '@studio-freight/hamo'
 import cn from 'clsx'
 import { ComposableImage } from 'components/composable-image'
 import { ScrollableBox } from 'components/scrollable-box'
 import { useStore } from 'lib/store'
+import { useRef } from 'react'
 import shallow from 'zustand/shallow'
 import s from './gallery.module.scss'
 
 export function Gallery() {
+  const contentRef = useRef(null)
   const [selectedProject, galleryVisible, setGalleryVisible] = useStore(
     (state) => [
       state.selectedProject,
@@ -15,6 +17,8 @@ export function Gallery() {
     ],
     shallow
   )
+
+  useOutsideClickEvent(contentRef, () => setGalleryVisible(false))
 
   useLayoutEffect(() => {
     const escFunction = (event) => {
@@ -40,13 +44,14 @@ export function Gallery() {
       </button>
       <ScrollableBox className={s.scroller}>
         {selectedProject?.assetsCollection?.items.map((asset, i) => (
-          <ComposableImage
-            key={i}
-            sources={asset.imagesCollection}
-            width={1038}
-            height={611}
-            large
-          />
+          <div key={i} ref={contentRef}>
+            <ComposableImage
+              sources={asset.imagesCollection}
+              width={1038}
+              height={611}
+              large
+            />
+          </div>
         ))}
       </ScrollableBox>
     </div>
