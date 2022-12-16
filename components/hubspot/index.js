@@ -244,7 +244,7 @@ const Form = ({ handlers, form, className, children, style }) => {
         disabled={!!form.message}
         className={s.button}
       >
-        <p className="cta-s uppercase font-medium ">{form.submitButton.text}</p>
+        {form.submitButton.text}
       </Button>
       {children}
     </form>

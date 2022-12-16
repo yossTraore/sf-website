@@ -29,7 +29,6 @@ This starter kit is composed of:
 - [Next.js](https://nextjs.org)
 - [Zustand](https://github.com/pmndrs/zustand)
 - [React Spring](https://github.com/pmndrs/react-spring)
-- [Embla](https://embla-carousel.com)
 - [Lenis](https://github.com/studio-freight/lenis)
 - [Clsx](https://www.npmjs.com/package/clsx)
 - From [Radix UI](https://www.radix-ui.com/):
