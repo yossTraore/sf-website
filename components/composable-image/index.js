@@ -1,7 +1,7 @@
 import { Image } from 'components/image'
 import s from './composable-image.module.scss'
 
-export function ComposableImage({ sources }) {
+export function ComposableImage({ sources, width = 684, height = 403 }) {
   const amount = sources.items.length
   return (
     <div className={s.images}>
@@ -10,9 +10,10 @@ export function ComposableImage({ sources }) {
           key={source.url}
           src={source.url}
           alt={source.title}
-          width={684 / amount}
-          height={403}
+          width={width / amount}
+          height={height}
           className={s.image}
+          style={{ '--height': height, '--width': width / amount }}
         />
       ))}
     </div>

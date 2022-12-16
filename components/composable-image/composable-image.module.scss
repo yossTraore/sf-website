@@ -7,9 +7,8 @@
 
   .image {
     grid-column: span 1;
-    aspect-ratio: 684 / 403;
     width: 100%;
-    height: desktop-vw(403px);
+    aspect-ratio: var(--width) / var(--height);
     border-radius: desktop-vw(8px);
 
     &:only-child {

@@ -1,0 +1,31 @@
+.gallery {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  padding: desktop-vh(110px) desktop-vw(201px);
+  height: 100%;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: opacity 500ms var(--ease-out-expo);
+
+  .scroller {
+    border-radius: desktop-vw(8px);
+  }
+
+  .close {
+    position: absolute;
+    left: desktop-vw(154px);
+    top: desktop-vw(110px);
+    width: desktop-vw(24px);
+    height: desktop-vw(24px);
+
+    .text {
+      transform: translateY(180%) rotate(-90deg);
+    }
+  }
+
+  &:not(.visible) {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
