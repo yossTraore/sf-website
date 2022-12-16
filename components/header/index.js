@@ -80,6 +80,17 @@ export const Header = ({ title, principles = [], contact }) => {
         <h1 className={cn('h1', s.title)}>{title}</h1>
       </div>
       <Separator />
+
+      {isMobile === true && (
+        <Marquee className={s.marquee} duration={20}>
+          {principles.map((principle, i) => (
+            <p key={i} className={cn('p', s.principle)}>
+              &nbsp;<span>{pad(i + 1)}</span>
+              &nbsp;{principle}&nbsp;//
+            </p>
+          ))}
+        </Marquee>
+      )}
       <ContactForm data={contact} />
     </header>
   )

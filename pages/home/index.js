@@ -1,5 +1,7 @@
+import { useMediaQuery } from '@studio-freight/hamo'
 import cn from 'clsx'
 import { ComposableImage } from 'components/composable-image'
+import { LayoutMobile } from 'components/layout-mobile'
 import { Link } from 'components/link'
 import { ScrollableBox } from 'components/scrollable-box'
 import { fetchCmsQuery } from 'contentful/api'
@@ -22,6 +24,7 @@ const Arrow = dynamic(() => import('icons/arrow.svg'), { ssr: false })
 
 export default function Home({ studioFreight, footer, contact, projects }) {
   const [showInfoModal, setShowInfoModal] = useState(false)
+  const isMobile = useMediaQuery('(max-width: 800px)')
   const [selectedProject, setSelectedProject] = useStore(
     (state) => [state.selectedProject, state.setSelectedProject],
     shallow
@@ -46,143 +49,153 @@ export default function Home({ studioFreight, footer, contact, projects }) {
       contactData={contact}
       footerLinks={footer.linksCollection.items}
     >
-      <div className={cn(s.content, 'layout-grid')}>
-        <section className={s.about}>
-          <p className={cn(s.title, 'p text-bold text-uppercase text-muted')}>
-            About
-          </p>
-          <ScrollableBox className={s.description}>
-            {renderer(studioFreight.about)}
-          </ScrollableBox>
-        </section>
-        <section className={s.projects}>
-          <p className={cn(s.title, 'p text-bold text-uppercase text-muted')}>
-            Projects
-          </p>
-          <ScrollableBox className={s.list} infinite>
-            <ul>
-              {projects.items.map((project) => (
-                <li
-                  key={project.sys.id}
-                  className={cn(
-                    selectedProject?.sys?.id === project.sys.id && s.active,
-                    s['list-item']
-                  )}
-                >
-                  <button onClick={() => setSelectedProject(project)}>
-                    <p className="p text-bold text-uppercase">{project.name}</p>
-                    <p className="p-xs text-uppercase">{project.industry}</p>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </ScrollableBox>
-        </section>
-        <section className={s['project-details']}>
-          <div className={s.heading}>
+      {isMobile === true && (
+        <LayoutMobile studioFreight={studioFreight} projects={projects} />
+      )}
+
+      {isMobile === false && (
+        <div className={cn(s.content, 'layout-grid')}>
+          <section className={s.about}>
             <p className={cn(s.title, 'p text-bold text-uppercase text-muted')}>
-              Project detail
+              About
             </p>
-            <div className={s.actions}>
-              <button
-                className="p-s decorate"
-                onClick={() => setShowInfoModal(!showInfoModal)}
-              >
-                {showInfoModal ? 'close' : 'info'}
-              </button>
-              <Link
-                href={selectedProject?.link}
-                className={cn('p-s decorate', s.external)}
-              >
-                site
-                <Arrow className={s.arrow} />
-              </Link>
-            </div>
-          </div>
-          <div className={s['details-content']}>
-            <div className={cn(s.images, !showInfoModal && s.visible)}>
-              <button
-                className={s['modal-trigger']}
-                onClick={() => setGalleryVisible(true)}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 26 26"
-                >
-                  <path
-                    stroke="var(--green)"
-                    d="M11 1H1v10M15 1h10v10M15 25h10V15M11 25H1V15m12-8v12m6-6H7"
-                  />
-                </svg>
-              </button>
-              <ScrollableBox>
-                {selectedProject?.assetsCollection?.items.map((asset, i) => (
-                  <ComposableImage key={i} sources={asset.imagesCollection} />
+            <ScrollableBox className={s.description}>
+              {renderer(studioFreight.about)}
+            </ScrollableBox>
+          </section>
+          <section className={s.projects}>
+            <p className={cn(s.title, 'p text-bold text-uppercase text-muted')}>
+              Projects
+            </p>
+            <ScrollableBox className={s.list} infinite>
+              <ul>
+                {projects.items.map((project) => (
+                  <li
+                    key={project.sys.id}
+                    className={cn(
+                      selectedProject?.sys?.id === project.sys.id && s.active,
+                      s['list-item']
+                    )}
+                  >
+                    <button onClick={() => setSelectedProject(project)}>
+                      <p className="p text-bold text-uppercase">
+                        {project.name}
+                      </p>
+                      <p className="p-xs text-uppercase">{project.industry}</p>
+                    </button>
+                  </li>
                 ))}
+              </ul>
+            </ScrollableBox>
+          </section>
+          <section className={s['project-details']}>
+            <div className={s.heading}>
+              <p
+                className={cn(s.title, 'p text-bold text-uppercase text-muted')}
+              >
+                Project detail
+              </p>
+              <div className={s.actions}>
+                <button
+                  className="p-s decorate"
+                  onClick={() => setShowInfoModal(!showInfoModal)}
+                >
+                  {showInfoModal ? 'close' : 'info'}
+                </button>
+                <Link
+                  href={selectedProject?.link}
+                  className={cn('p-s decorate', s.external)}
+                >
+                  site
+                  <Arrow className={s.arrow} />
+                </Link>
+              </div>
+            </div>
+            <div className={s['details-content']}>
+              <div className={cn(s.images, !showInfoModal && s.visible)}>
+                <button
+                  className={s['modal-trigger']}
+                  onClick={() => setGalleryVisible(true)}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 26 26"
+                  >
+                    <path
+                      stroke="var(--green)"
+                      d="M11 1H1v10M15 1h10v10M15 25h10V15M11 25H1V15m12-8v12m6-6H7"
+                    />
+                  </svg>
+                </button>
+                <ScrollableBox>
+                  {selectedProject?.assetsCollection?.items.map((asset, i) => (
+                    <ComposableImage key={i} sources={asset.imagesCollection} />
+                  ))}
+                </ScrollableBox>
+              </div>
+              <ScrollableBox className={cn(s.info, showInfoModal && s.visible)}>
+                {selectedProject.description && (
+                  <p className={cn(s.description, 'p')}>
+                    {selectedProject.description}
+                  </p>
+                )}
+                {selectedProject.testimonial && (
+                  <div className={s.testimonial}>
+                    <p
+                      className={cn(
+                        s.title,
+                        'p text-muted text-uppercase text-bold'
+                      )}
+                    >
+                      Testimonial
+                    </p>
+                    <p className="p">{selectedProject.testimonial}</p>
+                  </div>
+                )}
+                {selectedProject?.services?.length > 0 && (
+                  <div className={s.services}>
+                    <p
+                      className={cn(
+                        s.title,
+                        'p text-muted text-uppercase text-bold'
+                      )}
+                    >
+                      Services
+                    </p>
+                    <p className="p-s text-uppercase">
+                      {selectedProject?.services?.map((service, i) =>
+                        i === selectedProject.services.length - 1
+                          ? service
+                          : `${service}, `
+                      )}
+                    </p>
+                  </div>
+                )}
+                {selectedProject?.stack?.length > 0 && (
+                  <div className={s.stack}>
+                    <p
+                      className={cn(
+                        s.title,
+                        'p text-muted text-uppercase text-bold'
+                      )}
+                    >
+                      Stack
+                    </p>
+                    <p className="p-s text-uppercase">
+                      {selectedProject?.stack?.map((item, i) =>
+                        i === selectedProject.stack.length - 1
+                          ? item
+                          : `${item}, `
+                      )}
+                    </p>
+                  </div>
+                )}
               </ScrollableBox>
             </div>
-            <ScrollableBox className={cn(s.info, showInfoModal && s.visible)}>
-              {selectedProject.description && (
-                <p className={cn(s.description, 'p')}>
-                  {selectedProject.description}
-                </p>
-              )}
-              {selectedProject.testimonial && (
-                <div className={s.testimonial}>
-                  <p
-                    className={cn(
-                      s.title,
-                      'p text-muted text-uppercase text-bold'
-                    )}
-                  >
-                    Testimonial
-                  </p>
-                  <p className="p">{selectedProject.testimonial}</p>
-                </div>
-              )}
-              {selectedProject?.services?.length > 0 && (
-                <div className={s.services}>
-                  <p
-                    className={cn(
-                      s.title,
-                      'p text-muted text-uppercase text-bold'
-                    )}
-                  >
-                    Services
-                  </p>
-                  <p className="p-s text-uppercase">
-                    {selectedProject?.services?.map((service, i) =>
-                      i === selectedProject.services.length - 1
-                        ? service
-                        : `${service}, `
-                    )}
-                  </p>
-                </div>
-              )}
-              {selectedProject?.stack?.length > 0 && (
-                <div className={s.stack}>
-                  <p
-                    className={cn(
-                      s.title,
-                      'p text-muted text-uppercase text-bold'
-                    )}
-                  >
-                    Stack
-                  </p>
-                  <p className="p-s text-uppercase">
-                    {selectedProject?.stack?.map((item, i) =>
-                      i === selectedProject.stack.length - 1
-                        ? item
-                        : `${item}, `
-                    )}
-                  </p>
-                </div>
-              )}
-            </ScrollableBox>
-          </div>
-        </section>
-      </div>
+          </section>
+        </div>
+      )}
       <div className={cn(s.gallery, galleryVisible && s.visible)}>
         <button className={s.close} onClick={() => setGalleryVisible(false)}>
           <svg
