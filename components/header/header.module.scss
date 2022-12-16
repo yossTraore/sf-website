@@ -59,8 +59,11 @@
 
     .principle {
       font-weight: 700;
-      filter: blur(1.5px);
-      transition: filter 300ms ease-in-out;
+
+      @include desktop {
+        transition: filter 300ms ease-in-out;
+        filter: blur(1.5px);
+      }
 
       @include hover {
         &:hover {

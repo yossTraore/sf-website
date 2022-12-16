@@ -1,16 +1,22 @@
 .wrapper {
+  display: flex;
+  flex-direction: column;
   position: fixed;
   top: 0;
   right: 0;
   max-height: 100vh;
-  width: desktop-vw(732px);
   background-color: var(--black);
   z-index: 3;
   transition: transform 1s var(--ease-out-expo);
-  padding: desktop-vw(16px) var(--layout-columns-gap) desktop-vw(8px)
+  width: 100%;
+  padding: mobile-vw(16px) var(--layout-columns-gap) mobile-vw(8px)
     var(--layout-columns-gap);
-  display: flex;
-  flex-direction: column;
+
+  @include desktop {
+    width: desktop-vw(732px);
+    padding: desktop-vw(16px) var(--layout-columns-gap) desktop-vw(8px)
+      var(--layout-columns-gap);
+  }
 
   &:not(.open) {
     transform: translateX(100%);
@@ -23,7 +29,10 @@
     justify-content: flex-end;
 
     .cta {
-      margin-bottom: desktop-vw(19px);
+      margin-bottom: mobile-vw(19px);
+      @include desktop {
+        margin-bottom: desktop-vw(19px);
+      }
     }
   }
 
@@ -74,29 +83,51 @@
 
 .scrollable {
   max-height: 100%;
-  padding-bottom: desktop-vw(100px);
+  padding-bottom: mobile-vw(100px);
+
+  @include desktop {
+    padding-bottom: desktop-vw(100px);
+  }
 }
 
 .form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: desktop-vw(24px);
+  @include desktop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: desktop-vw(24px);
+  }
 }
 
 .accordion {
-  padding: desktop-vw(48px) 0 desktop-vw(24px) 0;
+  padding: mobile-vw(48px) 0 mobile-vw(24px) 0;
+
+  @include desktop {
+    padding: desktop-vw(48px) 0 desktop-vw(24px) 0;
+  }
 
   .title {
-    padding-bottom: desktop-vw(24px);
+    padding-bottom: mobile-vw(24px);
+
+    @include desktop {
+      padding-bottom: desktop-vw(24px);
+    }
   }
 
   &-root {
-    padding: desktop-vw(24px) 0;
+    padding: mobile-vw(24px) 0;
     padding-bottom: 0;
+
+    @include desktop {
+      padding: desktop-vw(24px) 0;
+    }
 
     .item {
       border-top: 1px solid var(--grey);
-      padding: desktop-vw(16px) 0;
+      padding: mobile-vw(16px) 0;
+
+      @include desktop {
+        padding: desktop-vw(16px) 0;
+      }
 
       &:last-child {
         border-bottom: 1px solid var(--grey);
@@ -111,9 +142,14 @@
       width: 100%;
 
       .icon {
-        width: desktop-vw(26px);
-        height: desktop-vw(26px);
         aspect-ratio: 1;
+        width: mobile-vw(26px);
+        height: mobile-vw(26px);
+
+        @include desktop {
+          width: desktop-vw(26px);
+          height: desktop-vw(26px);
+        }
 
         .x {
           transform-origin: center center;
@@ -129,9 +165,13 @@
   }
 
   &-content {
-    padding-top: desktop-vw(16px);
     overflow: hidden;
     max-width: 80%;
+    padding-top: mobile-vw(16px);
+
+    @include desktop {
+      padding-top: desktop-vw(16px);
+    }
 
     &[data-state='open'] {
       animation: slideDown 300ms ease-out;
@@ -146,14 +186,22 @@
         height: 0;
       }
       to {
-        padding: desktop-vw(16px) 0;
         height: var(--radix-accordion-content-height);
+        padding: mobile-vw(16px) 0;
+
+        @include desktop {
+          padding: desktop-vw(16px) 0;
+        }
       }
     }
 
     @keyframes slideUp {
       from {
-        padding: desktop-vw(16px) 0;
+        padding: mobile-vw(16px) 0;
+
+        @include desktop {
+          padding: desktop-vw(16px) 0;
+        }
         height: var(--radix-accordion-content-height);
       }
       to {

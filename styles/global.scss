@@ -99,13 +99,19 @@ svg.icon {
     transition: transform 0.95s cubic-bezier(0.19, 1, 0.22, 1);
   }
 
-  @include hover {
-    &:not(:hover) {
-      color: currentColor;
+  @include mobile {
+    color: currentColor;
+  }
 
-      &:before {
-        transform-origin: right;
-        transform: scaleX(0);
+  @include desktop {
+    @include hover {
+      &:not(:hover) {
+        color: currentColor;
+
+        &:before {
+          transform-origin: right;
+          transform: scaleX(0);
+        }
       }
     }
   }

@@ -1,3 +1,4 @@
+import { useLayoutEffect } from '@studio-freight/hamo'
 import cn from 'clsx'
 import { ComposableImage } from 'components/composable-image'
 import { ScrollableBox } from 'components/scrollable-box'
@@ -14,6 +15,17 @@ export function Gallery() {
     ],
     shallow
   )
+
+  useLayoutEffect(() => {
+    const escFunction = (event) => {
+      if (event.keyCode === 27) {
+        setGalleryVisible(false)
+      }
+    }
+
+    document.addEventListener('keydown', escFunction, false)
+    return () => document.removeEventListener('keydown', escFunction, false)
+  }, [])
 
   return (
     <div className={cn(s.gallery, galleryVisible && s.visible)}>

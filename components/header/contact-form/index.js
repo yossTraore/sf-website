@@ -12,10 +12,6 @@ import { useStore } from 'lib/store'
 import shallow from 'zustand/shallow'
 import s from './contact-form.module.scss'
 
-// const SeparatorSmall = dynamic(() => import('icons/separator-small.svg'), {
-//   ssr: false,
-// })
-
 export function ContactForm({ data }) {
   const [contactIsOpen, setContactIsOpen] = useStore(
     (state) => [state.contactIsOpen, state.setContactIsOpen],

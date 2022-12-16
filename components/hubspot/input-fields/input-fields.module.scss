@@ -1,16 +1,21 @@
 .inputs-basic {
   width: 100%;
-  padding: desktop-vw(15px) desktop-vw(16px);
-  height: desktop-vw(48px);
   background: transparent;
   color: var(--theme-secondary);
   border: 1px solid currentColor;
-  border-radius: desktop-vw(10px);
   display: flex;
   justify-content: space-between;
   text-transform: uppercase;
-
   -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  padding: mobile-vw(15px) mobile-vw(16px);
+  height: mobile-vw(48px);
+  border-radius: mobile-vw(10px);
+
+  @include desktop {
+    padding: desktop-vw(15px) desktop-vw(16px);
+    height: desktop-vw(48px);
+    border-radius: desktop-vw(10px);
+  }
 
   &::placeholder {
     font-size: mobile-vw(16px);
@@ -50,7 +55,11 @@
 
   .label {
     font-family: var(--font-secondary);
-    margin-bottom: desktop-vw(8px);
+    margin-bottom: mobile-vw(8px);
+
+    @include desktop {
+      margin-bottom: desktop-vw(8px);
+    }
   }
 
   .error {
@@ -73,31 +82,37 @@
   }
 
   // hacky stuff
-  &:nth-child(1) {
-    grid-column: span 1;
-  }
-  &:nth-child(2) {
-    grid-column: span 1;
-  }
-  &:nth-child(6) {
-    grid-column: span 1;
-  }
-  &:nth-child(7) {
-    grid-column: span 1;
-  }
-  &:nth-child(8) {
-    grid-column: span 1;
-  }
-  &:nth-child(9) {
-    grid-column: span 1;
+  @include desktop {
+    &:nth-child(1) {
+      grid-column: span 1;
+    }
+    &:nth-child(2) {
+      grid-column: span 1;
+    }
+    &:nth-child(6) {
+      grid-column: span 1;
+    }
+    &:nth-child(7) {
+      grid-column: span 1;
+    }
+    &:nth-child(8) {
+      grid-column: span 1;
+    }
+    &:nth-child(9) {
+      grid-column: span 1;
+    }
   }
 }
 
 .textarea {
   @extend .inputs-basic;
-  height: desktop-vw(177px);
   font-weight: 400;
   text-transform: unset;
+  height: mobile-vw(177px);
+
+  @include desktop {
+    height: desktop-vw(177px);
+  }
 
   &::placeholder {
     font-size: mobile-vw(16px);
@@ -125,25 +140,34 @@
 .multiple-checkboxes {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: desktop-vw(20px);
   grid-column: span 2;
+  max-width: 100%;
+  margin-bottom: mobile-vw(15px);
 
-  @include mobile {
-    max-width: 100%;
-    margin-bottom: mobile-vw(15px);
+  @include desktop {
+    margin-bottom: desktop-vw(20px);
   }
 
   .label {
     font-family: var(--font-secondary);
-    margin-bottom: desktop-vw(8px);
     display: block;
     width: 100%;
+    margin-bottom: mobile-vw(8px);
+
+    @include desktop {
+      margin-bottom: desktop-vw(8px);
+    }
   }
 
   .checkbox {
     &:not(:last-child) {
-      margin-right: desktop-vw(10px);
-      margin-bottom: desktop-vw(10px);
+      margin-right: mobile-vw(8px);
+      margin-bottom: mobile-vw(8px);
+
+      @include desktop {
+        margin-right: desktop-vw(8px);
+        margin-bottom: desktop-vw(8px);
+      }
     }
 
     input:checked + span,
@@ -154,20 +178,22 @@
     span {
       display: block;
       text-transform: uppercase;
-      padding: desktop-vw(15px) desktop-vw(16px);
+      padding: mobile-vw(15px) mobile-vw(16px);
+      border-radius: mobile-vw(24px);
       border: 1px solid;
-      border-radius: desktop-vw(24px);
       transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
 
-      &:not(:last-child) {
-        margin-right: desktop-vw(10px);
+      @include desktop {
+        padding: desktop-vw(15px) desktop-vw(16px);
+        border-radius: desktop-vw(24px);
       }
 
-      @include mobile {
-        font-size: mobile-vw(18px);
-        padding: mobile-vw(15px) mobile-vw(25px);
-        border-radius: mobile-vw(40px);
-        border: mobile-vw(2px) solid var(--black);
+      &:not(:last-child) {
+        margin-right: mobile-vw(8px);
+
+        @include desktop {
+          margin-right: desktop-vw(8px);
+        }
       }
     }
   }

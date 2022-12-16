@@ -9,8 +9,8 @@ const LayoutMobile = ({ projects, studioFreight }) => {
     <div className={s.content}>
       <section className={s['hero-image']}>
         <Image
-          src={'/mobile-temp-images/tetsuo.jpg'}
-          alt={'tetsuo placeholder face'}
+          src="/mobile-temp-images/tetsuo.jpg"
+          alt="tetsuo placeholder face"
           width={375}
           height={340}
         />

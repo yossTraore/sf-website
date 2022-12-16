@@ -54,12 +54,16 @@
     flex-direction: column;
 
     .image {
+      aspect-ratio: 343 / 238;
+      width: 100%;
+      height: mobile-vw(238px);
       margin-bottom: mobile-vw(16px);
     }
 
     .external {
       color: var(--green);
       margin-bottom: mobile-vw(24px);
+
       .arrow {
         display: inline;
         margin-right: 0;
@@ -101,8 +105,8 @@
 
     &[data-state='open'] {
       animation: slideDown 300ms ease-out;
-      margin-top: mobile-vw(16px);
     }
+
     &[data-state='closed'] {
       animation: slideUp 300ms ease-out;
     }
