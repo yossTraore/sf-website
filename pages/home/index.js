@@ -133,7 +133,9 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                 </button>
                 <ScrollableBox>
                   {selectedProject?.assetsCollection?.items.map((asset, i) => (
-                    <ComposableImage key={i} sources={asset.imagesCollection} />
+                    <button key={i} onClick={() => setGalleryVisible(true)}>
+                      <ComposableImage sources={asset.imagesCollection} />
+                    </button>
                   ))}
                 </ScrollableBox>
               </div>
