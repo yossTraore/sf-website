@@ -1,5 +1,5 @@
 import * as Accordion from '@radix-ui/react-accordion'
-import { useLayoutEffect, useOutsideClickEvent } from '@studio-freight/hamo'
+import { useLayoutEffect } from '@studio-freight/hamo'
 import cn from 'clsx'
 import { Button } from 'components/button'
 import { Hubspot } from 'components/hubspot'
@@ -31,7 +31,7 @@ export function ContactForm({ data }) {
     return () => document.removeEventListener('keydown', escFunction, false)
   }, [])
 
-  useOutsideClickEvent(menuRef, () => setContactIsOpen(false))
+  // useOutsideClickEvent(menuRef, () => setContactIsOpen(false))
 
   return (
     <div className={cn(s.container, contactIsOpen && s.open)}>
