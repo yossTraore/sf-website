@@ -35,6 +35,7 @@ export function ContactForm({ data }) {
 
   return (
     <div className={cn(s.container, contactIsOpen && s.open)}>
+      <div className={s.overlay} onClick={() => setContactIsOpen(false)} />
       <div className={cn(s.wrapper, contactIsOpen && s.open)} ref={menuRef}>
         <div className={s.heading}>
           <Button className={s.cta} onClick={() => setContactIsOpen(false)}>
