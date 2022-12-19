@@ -9,7 +9,7 @@ import { fetchCmsQuery } from 'contentful/api'
 import {
   contactEntryQuery,
   footerEntryQuery,
-  projectCollectionQuery,
+  projectListEntryQuery,
   studioFreightEntryQuery,
 } from 'contentful/queries/home.graphql'
 import { renderer } from 'contentful/renderer'
@@ -207,7 +207,7 @@ export default function Home({ studioFreight, footer, contact, projects }) {
 }
 
 export async function getStaticProps({ preview = false }) {
-  const [{ studioFreight }, { footer }, { contact }, { projectCollection }] =
+  const [{ studioFreight }, { footer }, { contact }, { projectList }] =
     await Promise.all([
       fetchCmsQuery(studioFreightEntryQuery, {
         preview,
@@ -218,7 +218,7 @@ export async function getStaticProps({ preview = false }) {
       fetchCmsQuery(contactEntryQuery, {
         preview,
       }),
-      fetchCmsQuery(projectCollectionQuery, {
+      fetchCmsQuery(projectListEntryQuery, {
         preview,
       }),
     ])
@@ -230,7 +230,7 @@ export async function getStaticProps({ preview = false }) {
       studioFreight,
       footer,
       contact,
-      projects: projectCollection,
+      projects: projectList.listCollection,
       id: 'home',
     },
     revalidate: 30,
