@@ -176,6 +176,7 @@ const fieldTypeSwitcher = (field, input, handlers) => {
           label={input.label}
           placeholder={input.placeholder}
           options={input.options}
+          required={input.required}
           {...field}
         />
       )

@@ -64,7 +64,7 @@ export function TextArea({
         htmlFor={name}
         className={cn(s.label, 'p-xs text-uppercase text-muted')}
       >
-        {label}
+        {label} {required && '*'}
       </label>
       <textarea
         type={type}
@@ -144,7 +144,12 @@ export function SelectField({
       >
         {label} {required && '*'}
       </label>
-      <Select placeholder={placeholder} className={s.select} name={name}>
+      <Select
+        placeholder={placeholder}
+        className={s.select}
+        name={name}
+        required={required}
+      >
         {options.map((option, i) => (
           <SelectItem key={i} value={slugify(option)}>
             {option}
