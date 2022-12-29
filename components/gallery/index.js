@@ -40,7 +40,7 @@ export function Gallery() {
             d="M11 1H1v10M15 1h10v10M15 25h10V15M11 25H1V15m7.8-6.2 8.4 8.4m0-8.4-8.4 8.4"
           />
         </svg>
-        <p className={cn(s.text, 'p-xs text-uppercase')}>Close</p>
+        <span className={cn(s.text, 'p-xs text-uppercase')}>Close</span>
       </button>
       <ScrollableBox className={s.scroller}>
         {selectedProject?.assetsCollection?.items.map((asset, i) => (
