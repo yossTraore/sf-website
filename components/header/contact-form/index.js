@@ -9,12 +9,15 @@ import { renderer } from 'contentful/faq-renderer'
 import { renderer as globalRenderer } from 'contentful/renderer'
 import { slugify } from 'lib/slugify'
 import { useStore } from 'lib/store'
+import { useRouter } from 'next/router'
 import { useRef } from 'react'
 import shallow from 'zustand/shallow'
 import s from './contact-form.module.scss'
 
 export function ContactForm({ data }) {
   const menuRef = useRef(null)
+  const router = useRouter()
+  const { contact } = router.query
   const [contactIsOpen, setContactIsOpen] = useStore(
     (state) => [state.contactIsOpen, state.setContactIsOpen],
     shallow
@@ -31,7 +34,9 @@ export function ContactForm({ data }) {
     return () => document.removeEventListener('keydown', escFunction, false)
   }, [])
 
-  // useOutsideClickEvent(menuRef, () => setContactIsOpen(false))
+  useLayoutEffect(() => {
+    setContactIsOpen(contact)
+  }, [contact])
 
   return (
     <div className={cn(s.container, contactIsOpen && s.open)}>
