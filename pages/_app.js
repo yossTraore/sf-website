@@ -1,7 +1,6 @@
 import { useDebug, useLayoutEffect } from '@studio-freight/hamo'
 import { raf } from '@studio-freight/tempus'
 import 'blaze-slider/dist/blaze.css'
-import { PageTransition } from 'components/page-transition'
 import { RealViewport } from 'components/real-viewport'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
@@ -11,6 +10,13 @@ import dynamic from 'next/dynamic'
 import Script from 'next/script'
 import { useEffect } from 'react'
 import 'styles/global.scss'
+
+const Noise = dynamic(
+  () => import('components/noise').then(({ Noise }) => Noise),
+  {
+    ssr: false,
+  }
+)
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -101,8 +107,8 @@ function MyApp({ Component, pageProps }) {
       />
       {/* <!-- End Hubspot script loader --> */}
 
-      <PageTransition />
       <RealViewport />
+      <Noise />
       <Component {...pageProps} />
     </>
   )
