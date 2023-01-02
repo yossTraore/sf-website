@@ -30,6 +30,7 @@
     height: desktop-vw(24px);
 
     .text {
+      display: block;
       transform: translateY(180%) rotate(-90deg);
     }
   }

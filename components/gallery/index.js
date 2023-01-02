@@ -42,7 +42,7 @@ export function Gallery() {
         </svg>
         <span className={cn(s.text, 'p-xs text-uppercase')}>Close</span>
       </button>
-      <ScrollableBox className={s.scroller}>
+      <ScrollableBox className={s.scroller} reset={!galleryVisible}>
         {selectedProject?.assetsCollection?.items.map((asset, i) => (
           <div key={i} ref={contentRef}>
             <ComposableImage

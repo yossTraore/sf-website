@@ -1,4 +1,4 @@
-import { useMediaQuery } from '@studio-freight/hamo'
+import { useLayoutEffect, useMediaQuery } from '@studio-freight/hamo'
 import cn from 'clsx'
 import { ComposableImage } from 'components/composable-image'
 import { Gallery } from 'components/gallery'
@@ -25,6 +25,7 @@ const Arrow = dynamic(() => import('icons/arrow.svg'), { ssr: false })
 
 export default function Home({ studioFreight, footer, contact, projects }) {
   const [showInfoModal, setShowInfoModal] = useState(false)
+  const [resetScroll, setResetScroll] = useState(false)
   const isMobile = useMediaQuery('(max-width: 800px)')
   const [selectedProject, setSelectedProject] = useStore(
     (state) => [state.selectedProject, state.setSelectedProject],
@@ -38,6 +39,15 @@ export default function Home({ studioFreight, footer, contact, projects }) {
   useEffect(() => {
     setSelectedProject(projects.items[0])
   }, [])
+
+  useLayoutEffect(() => {
+    if (selectedProject) {
+      setResetScroll(true)
+      setTimeout(() => {
+        setResetScroll(false)
+      }, 100)
+    }
+  }, [selectedProject])
 
   return (
     <Layout
@@ -78,7 +88,11 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                       s['list-item']
                     )}
                   >
-                    <button onClick={() => setSelectedProject(project)}>
+                    <button
+                      onClick={() => {
+                        setSelectedProject(project)
+                      }}
+                    >
                       <p className="p text-bold text-uppercase">
                         {project.name}
                       </p>
@@ -131,7 +145,7 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                     />
                   </svg>
                 </button>
-                <ScrollableBox>
+                <ScrollableBox reset={showInfoModal || resetScroll}>
                   {selectedProject?.assetsCollection?.items.map((asset, i) => (
                     <button key={i} onClick={() => setGalleryVisible(true)}>
                       <ComposableImage sources={asset.imagesCollection} />
@@ -139,7 +153,10 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                   ))}
                 </ScrollableBox>
               </div>
-              <ScrollableBox className={cn(s.info, showInfoModal && s.visible)}>
+              <ScrollableBox
+                className={cn(s.info, showInfoModal && s.visible)}
+                reset={!showInfoModal || resetScroll}
+              >
                 {selectedProject.description && (
                   <p className={cn(s.description, 'p')}>
                     {selectedProject.description}
