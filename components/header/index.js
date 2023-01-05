@@ -33,7 +33,7 @@ export const Header = ({ title, principles = [], contact }) => {
           <Link
             name="easter egg"
             className={s.egg}
-            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            href="https://github.com/studio-freight/sf-website"
           >
             <Stard />
           </Link>
