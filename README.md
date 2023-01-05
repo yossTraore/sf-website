@@ -47,7 +47,6 @@ The usual process for Next.js based apps/websites:
 ## Third Party
 
 - [Contentful Headless CMS (GraphQL API)](https://contentful.com/)
-- [Mailchimp CRM](https://mailchimp.com/)
 - [Hubspot CRM](https://hubspot.com/)
 - [Vercel (Hosting & Continuous Deployment)](https://vercel.com/home)
 - [GitHub Versioning](https://github.com/)
