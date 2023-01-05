@@ -1,9 +1,6 @@
 import { useDebug, useLayoutEffect } from '@studio-freight/hamo'
-import { raf } from '@studio-freight/tempus'
 import 'blaze-slider/dist/blaze.css'
 import { RealViewport } from 'components/real-viewport'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { GTM_ID } from 'lib/analytics'
 import { useStore } from 'lib/store'
 import dynamic from 'next/dynamic'
@@ -17,15 +14,6 @@ const Noise = dynamic(
     ssr: false,
   }
 )
-
-gsap.registerPlugin(ScrollTrigger)
-
-// merge rafs
-gsap.ticker.lagSmoothing(0)
-gsap.ticker.remove(gsap.updateRoot)
-raf.add((time) => {
-  gsap.updateRoot(time / 1000)
-}, 0)
 
 const Stats = dynamic(
   () => import('components/stats').then(({ Stats }) => Stats),
@@ -54,14 +42,8 @@ function MyApp({ Component, pageProps }) {
   }, [lenis, overflow])
 
   useLayoutEffect(() => {
-    if (lenis) ScrollTrigger.refresh()
-  }, [lenis])
-
-  useLayoutEffect(() => {
     window.history.scrollRestoration = 'manual'
   }, [])
-
-  ScrollTrigger.defaults({ markers: process.env.NODE_ENV === 'development' })
 
   return (
     <>

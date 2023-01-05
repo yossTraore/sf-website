@@ -1,4 +1,4 @@
 module.exports = {
-  siteUrl: process.env.WEBSITE_URL || 'https://studiofreight.com',
+  siteUrl: 'https://studiofreight.com',
   generateRobotsTxt: true, // (optional)
 }

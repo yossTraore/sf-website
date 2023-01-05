@@ -1,82 +1,66 @@
-[![SATUS](https://assets.studiofreight.com/satus/header.png)](https://github.com/studio-freight/satus)
+# Studio Freight Website
 
-<!-- <p align="center">
-  <a aria-label="Vercel logo" href="https://vercel.com">
-    <img src="https://badgen.net/badge/icon/Next?icon=zeit&label&color=black&labelColor=black">
-  </a>
-  <br/>
-  <a aria-label="NPM version" href="https://www.npmjs.com/package/swr">
-    <img alt="" src="https://badgen.net/npm/v/swr?color=black&labelColor=black">
-  </a>
-  <a aria-label="Package size" href="https://bundlephobia.com/result?p=swr">
-    <img alt="" src="https://badgen.net/bundlephobia/minzip/swr?color=black&labelColor=black">
-  </a>
-  <a aria-label="License" href="https://github.com/vercel/swr/blob/main/LICENSE">
-    <img alt="" src="https://badgen.net/npm/license/swr?color=black&labelColor=black">
-  </a>
-</p> -->
+## Setup
 
-## Introduction
+The usual process for Next.js based apps/websites:
 
-Satūs means start, beginning, planting, it's a set of tools we use as a template when starting a new project.
+1. Install node modules:
 
-<br/>
+   `$ pnpm i`
 
-## Composition
+2. Get the .env variables from Vercel (check `.env.template`), after [installing Vercel CLI](https://vercel.com/docs/cli):
 
-This starter kit is composed of:
+   `$ vc link`
 
-- [Next.js](https://nextjs.org)
-- [Zustand](https://github.com/pmndrs/zustand)
-- [React Spring](https://github.com/pmndrs/react-spring)
+   `$ vc env pull`
+
+3. run development environment:
+
+   `$ pnpm dev`
+
+## Stack
+
 - [Lenis](https://github.com/studio-freight/lenis)
-- [Clsx](https://www.npmjs.com/package/clsx)
-- From [Radix UI](https://www.radix-ui.com/):
-  - [Accordion](https://www.radix-ui.com/docs/primitives/components/accordion)
+- [Hamo](https://github.com/studio-freight/hamo)
+- [PNPM](https://pnpm.io/)
+- [Next.js](https://nextjs.org/)
+- Sass (Modules)
+- [Zustand](https://github.com/pmndrs/zustand)
+- [React Hook Form](https://react-hook-form.com/)
+- GraphQL (CMS API)
+- [Next-Sitemap](https://github.com/iamvishnusankar/next-sitemap) (postbuild script)
+- [@svgr/webpack](https://github.com/gregberge/svgr/tree/main) (SVG Imports in `next.config.js`)
 
-<br/>
+## Code Style & Linting
 
-## Features
+- Eslint ([Next](https://nextjs.org/docs/basic-features/eslint#eslint-config) and [Prettier](https://github.com/prettier/eslint-config-prettier) plugins)
+- [Prettier](https://prettier.io/) with the following settings available in `.pretierrc`:
+  ```json
+  {
+    "endOfLine": "auto",
+    "semi": false,
+    "singleQuote": true
+  }
+  ```
+- [Husky + lint-staged precommit hooks](https://github.com/okonet/lint-staged)
 
-This starter kit is composed of:
+## Third Party
 
-- SVG import through [@svgr/webpack](https://www.npmjs.com/package/@svgr/webpack)
-- Sass architecture and tooling:
-  - To VW Functions
-  - Reset
-  - Easings
-- Hooks:
-  - provided by @studio-freight/hamo
-  - - useScroll
-- Custom Cursor support
-- Real Viewport component
-- Grid Debugger
-- Github workflow to render lighthouse on slack:
-  make sure you update the `vercel_project_id` in `.github/workflows/lighthouse-on-vercel-preview-url.yml` to your Vercel project id.
+- [Contentful Headless CMS (GraphQL API)](https://contentful.com/)
+- [Mailchimp CRM](https://mailchimp.com/)
+- [Hubspot CRM](https://hubspot.com/)
+- [Vercel (Hosting & Continuous Deployment)](https://vercel.com/home)
+- [GitHub Versioning](https://github.com/)
 
-<br/>
+## Folder Structure
 
-## Flavors
+Alongside the usual Next.js folder structure (`/public`, `/pages`, etc.) We've added a few other folders to keep the code easier to read:
 
-- [Light](https://github.com/studio-freight/satus) (you're here)
-- [With Shopify](https://github.com/studio-freight/satus/tree/with-shopify)
-- [With Contentful](https://github.com/studio-freight/satus/tree/with-contentful)
-- [With react-three-fiber](https://github.com/studio-freight/satus/tree/with-r3f)
-- [With OGL](https://github.com/studio-freight/satus/tree/with-ogl)
-
-<br/>
-
-## Authors
-
-This toolkit is curated and maintained by the Studio Freight Things team:
-
-- Clement Roche ([@clementroche\_](https://twitter.com/clementroche_)) – [Studio Freight](https://studiofreight.com)
-- Guido Fier ([@uido15](https://twitter.com/uido15)) – [Studio Freight](https://studiofreight.com)
-- Leandro Soengas ([@lsoengas](https://twitter.com/lsoengas)) - [Studio Freight](https://studiofreight.com)
-- Franco Arza ([@arzafran](https://twitter.com/arzafran)) - [Studio Freight](https://studiofreight.com)
-
-<br/>
-
-## License
-
-[The MIT License.](https://opensource.org/licenses/MIT)
+- **/assets:** General Images/Videos and SVGs
+- **/components:** Reusable components with their respective Sass file
+- **/contentful:** Fragments/Queries/Renderers
+- **/config:** General settings (mostly Leva for now)
+- **/hooks:** Reusable Custom Hooks
+- **/layouts:** High level layout component
+- **/lib:** Reusable Scripts and State Store
+- **/styles:** Global styles and Sass partials
