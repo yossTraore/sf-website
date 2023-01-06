@@ -59,6 +59,8 @@ export function CustomHead({ title = '', description, keywords }) {
         <meta name="msapplication-TileColor" content="#00FF6A" />
         <meta name="theme-color" content="#00FF6A" />
         <link rel="icon" href="/favicon.ico" />
+        <meta name="twitter:image" content="https://studiofreight.com/og.jpg" />
+
         {/* END FAVICON */}
 
         <title>{title}</title>
