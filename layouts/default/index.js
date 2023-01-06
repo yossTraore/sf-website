@@ -1,10 +1,20 @@
 import cn from 'clsx'
-// import { useIsTouchDevice } from '@studio-freight/hamo'
-// import { Cursor } from 'components/cursor'
 import { CustomHead } from 'components/custom-head'
-import { Footer } from 'components/footer'
-import { Header } from 'components/header'
+import dynamic from 'next/dynamic'
 import s from './layout.module.scss'
+
+const Header = dynamic(
+  () => import('components/header').then(({ Header }) => Header),
+  {
+    ssr: false,
+  }
+)
+const Footer = dynamic(
+  () => import('components/footer').then(({ Footer }) => Footer),
+  {
+    ssr: false,
+  }
+)
 
 export function Layout({
   seo = {

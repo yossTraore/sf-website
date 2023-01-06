@@ -4,13 +4,13 @@ import { slugify } from 'lib/slugify'
 import s from './input-fields.module.scss'
 
 export function InputField({
-  name,
-  label,
-  type,
-  error,
+  name = '',
+  label = '',
+  type = '',
+  error = '',
   pattern = undefined,
-  placeholder,
-  value,
+  placeholder = '',
+  value = '',
   onChange,
   onBlur,
   required,
@@ -47,13 +47,13 @@ export function InputField({
 }
 
 export function TextArea({
-  name,
-  label,
-  type,
-  error,
+  name = '',
+  label = '',
+  type = '',
+  error = '',
   pattern = undefined,
-  placeholder,
-  value,
+  placeholder = '',
+  value = '',
   onChange,
   onBlur,
   required,
@@ -90,8 +90,8 @@ export function TextArea({
 }
 
 export function MultipleCheckboxField({
-  name,
-  label,
+  name = '',
+  label = '',
   register,
   options,
   required,
@@ -127,11 +127,11 @@ export function MultipleCheckboxField({
 }
 
 export function SelectField({
-  name,
-  label,
+  name = '',
+  label = '',
   options,
-  error,
-  placeholder,
+  error = '',
+  placeholder = '',
   // onChange,
   // onBlur,
   required = false,
