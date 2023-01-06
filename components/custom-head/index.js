@@ -2,7 +2,6 @@ import { NextSeo } from 'next-seo'
 import NextHead from 'next/head'
 
 export function CustomHead({ title = '', description, image, keywords }) {
-  console.log(image)
   return (
     <>
       <NextHead>
