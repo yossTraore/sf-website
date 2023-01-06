@@ -1,7 +1,7 @@
 import { NextSeo } from 'next-seo'
 import NextHead from 'next/head'
 
-export function CustomHead({ title = '', description, image, keywords }) {
+export function CustomHead({ title = '', description, keywords }) {
   return (
     <>
       <NextHead>
@@ -73,9 +73,9 @@ export function CustomHead({ title = '', description, image, keywords }) {
           locale: 'en_US',
           images: [
             {
-              url: image ? image.url : '/og.jpg',
-              width: image ? image.width : 1200,
-              height: image ? image.height : 630,
+              url: 'https://studiofreight.com/og.jpg',
+              width: 1200,
+              height: 630,
               alt: title,
             },
           ],
