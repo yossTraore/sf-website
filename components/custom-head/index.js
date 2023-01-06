@@ -2,6 +2,7 @@ import { NextSeo } from 'next-seo'
 import NextHead from 'next/head'
 
 export function CustomHead({ title = '', description, image, keywords }) {
+  console.log(image)
   return (
     <>
       <NextHead>
@@ -55,9 +56,9 @@ export function CustomHead({ title = '', description, image, keywords }) {
           href="/favicon-16x16.png"
         />
         <link rel="manifest" href="/site.webmanifest" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#336cff" />
-        <meta name="msapplication-TileColor" content="#336cff" />
-        <meta name="theme-color" content="#336CFF" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#00FF6A" />
+        <meta name="msapplication-TileColor" content="#00FF6A" />
+        <meta name="theme-color" content="#00FF6A" />
         <link rel="icon" href="/favicon.ico" />
         {/* END FAVICON */}
 
